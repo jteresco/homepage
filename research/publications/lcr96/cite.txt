@@ -1,0 +1,15 @@
+@INPROCEEDINGS{bottasso96a,
+        AUTHOR             = "{C.L. Bottasso, J.E. Flaherty, C. \"{O}zturan,
+		  M.S. Shephard, B.K. Szymanski, J.D. Teresco, 
+ 		  and L.H. Ziantz}",
+        TITLE              = {The Quality of Partitions Produced by an
+Iterative Load Balancer},
+        BOOKTITLE          = {Languages,
+		  Compilers, and Run-Time Systems for Scalable
+Computers},
+        EDITOR             = {B.K. Szymanski and B. Sinharoy},
+        PAGES              = {265--277},
+        PUBLISHER          = {Kluwer},
+        ADDRESS            = {Reading, MA},
+        YEAR               = {1996}
+}

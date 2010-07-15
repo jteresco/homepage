@@ -1,0 +1,21 @@
+@InProceedings{flaherty99c,
+  author = 	 {Joseph E. Flaherty and 
+                  Raymond M. Loy and 
+                  Mark S. Shephard and
+                  Michelle L. Simone and 
+                  Boleslaw K. Szymanski and 
+                  James D. Teresco and 
+                  Louis H. Ziantz},
+  title = 	 {Distributed Octree Data Structures and Local Refinement
+                  Method for the Parallel Solution of Three-Dimensional 
+                  Conservation Laws },
+  booktitle = 	 {Grid Generation and Adaptive Algorithms},
+  pages = 	 {113--134},
+  year = 	 {1999},
+  editor = 	 {M.W. Bern and J.E. Flaherty and M. Luskin},
+  volume = 	 {113},
+  series = 	 {The {IMA} Volumes in Mathematics and its Applications},
+  address = 	 {Minneapolis},
+  organization = {Institute for Mathematics and its Applications},
+  publisher =    {Springer}
+}

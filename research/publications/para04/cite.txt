@@ -1,0 +1,13 @@
+@InProceedings{teresco06a,
+  author = 	 {James D. Teresco and Jamal Faik and Joseph E. Flaherty},
+  title = 	 {Hierarchical Partitioning and Dynamic Load Balancing for Scientific Computation},
+  booktitle = 	 {Applied Parallel Computing. State of the Art in Scientific Computing: 7th International Conference, PARA 2004},
+  pages = 	 {911-920},
+  year = 	 {2006},
+  editor = 	 {Jack Dongarra, Kaj Madsen, Jerzy Wasniewski},
+  volume = 	 {3732},
+  series = 	 {Lecture Notes in Computer Science},
+  address = 	 {Lyngby},
+  publisher = {Springer},
+  note = {Previously published as Williams College Department of Computer Science Technical Report CS-04-04, 2004}
+}

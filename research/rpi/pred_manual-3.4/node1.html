@@ -1,0 +1,117 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="description" content="Library Instances (pred)">
+   <meta name="keywords" content="pred">
+   <meta name="resource-type" content="document">
+   <meta name="distribution" content="global">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (X11; I; SunOS 5.6 sun4u) [Netscape]">
+   <title>Library Instances (pred)</title>
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<link REL="STYLESHEET" HREF="pred.css">
+<link REL="next" HREF="node2.html">
+<link REL="previous" HREF="pred.html">
+<link REL="up" HREF="pred.html">
+<link REL="next" HREF="node2.html">
+</head>
+<body>
+
+<h1>
+<a NAME="SECTION00010000000000000000"></a>Library Instances</h1>
+<a NAME="sec:instances"></a>There are six instances of the library
+compiled with different flags available:
+<P>
+<table BORDER CELLPADDING=3 ALIGN=CENTER WIDTH=95% >
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred</code></td>
+
+<td ALIGN=LEFT>is compiled with -g and all optimizations turned
+off</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred-O</code></td>
+
+<td ALIGN=LEFT>does not use the -g option and uses -O3 -qstrict</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred-time</code></td>
+
+<td ALIGN=LEFT >is optimized just as pred-O is and contains code
+to do instrumentation; it will create a directory 'PredTimes' in your
+current working directory and deposit files with timings of
+refinement, predictive, and nonpredictive balancing.&nbsp; [<a
+NAME="tex2html1" HREF="footnode.html#fnm">*</a>]</td>
+</tr>
+
+<!-- 
+<a NAME="tex2html1" href="footnode.html#fnm"></a><a
+href="http://www.cs.rpi.edu/~scorec/pred_manual-3.4/footnode.html#fnm"
+NAME="tex2html1"><img SRC="foot_motif.gif" ALT="[*]" BORDER=1
+align=BOTTOM></a>
+-->
+
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred_oct</code></td>
+
+<td ALIGN=LEFT>contains functions to perform predictive Octree
+balancing; it is otherwise the same as pred</td> 
+</tr>
+
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred_oct-O</code></td>
+
+<td ALIGN=LEFT>contains functions to perform predictive
+Octree balancing; it is otherwise the same as pred-O</td> 
+</tr>
+
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred_oct-time</code></td>
+
+<td ALIGN=LEFT>contains functions to perform predictive Octree
+balancing; it is otherwise the same as pred-time</td> 
+</tr>
+</table>
+
+<p>Note that the <tt>*_oct*</tt> instances of the library are currently
+only used with Ray Loy's Parallel Euler Solver, since octree partitioning
+not yet available as a separate library.
+<p>The following instances of the library can be made available by contacting
+<i>ziantzl@cs.rpi.edu</i>
+:
+<p>
+<table BORDER CELLPADDING=3 ALIGN=CENTER WIDTH=95% >
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred_parmet</code></td>
+
+<td ALIGN=LEFT >contains functions to perform predictive balancing using the ParMetis [<a href="http://www.cs.rpi.edu/~scorec/pred_manual-3.4/node14.html#karypis97c">1</a>]
+partitioning library; it is otherwise the same as pred_oct</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred_parmet-O</code></td>
+
+<td ALIGN=LEFT >contains functions to perform predictive
+balancing using the ParMetis [<a href="http://www.cs.rpi.edu/~scorec/pred_manual-3.4/node14.html#karypis97c">1</a>]
+partitioning library; it is otherwise the same as pred_oct-O</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred_parmet-time</code></td>
+
+<td ALIGN=LEFT >contains functions to perform predictive balancingusing the ParMetis [<a href="http://www.cs.rpi.edu/~scorec/pred_manual-3.4/node14.html#karypis97c">1</a>]
+partitioning library; it is otherwise the same as pred_oct-time</td>
+</tr>
+</table>
+
+<p>More details are provided in <a href="http://www.cs.rpi.edu/~scorec/pred_manual-3.4/node12.html#sec:parmetis">Using pred with ParMetis</a>.
+<p>
+<hr>
+</body>
+</html>

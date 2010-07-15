@@ -1,0 +1,10 @@
+@InProceedings{flaherty97b,
+  author =       {Joseph E. Flaherty and Raymond M. Loy and  Mark S. Shephard an
+d Boleslaw K. Szymanski and James D. Teresco and Louis H. Ziantz},
+  title =        {Predictive load balancing for parallel adaptive finite element
+ computation},
+  booktitle =    {Proc. PDPTA '97},
+  editor =       {H. R. Arabnia},
+  volume =       {I},
+  year =         {1997},
+  pages =        {460--469}

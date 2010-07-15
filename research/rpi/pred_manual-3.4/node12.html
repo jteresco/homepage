@@ -1,0 +1,63 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="description" content="Using pred with ParMetis">
+   <meta name="keywords" content="pred">
+   <meta name="resource-type" content="document">
+   <meta name="distribution" content="global">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (X11; I; SunOS 5.6 sun4u) [Netscape]">
+   <title>Using pred with ParMetis</title>
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<link REL="STYLESHEET" HREF="pred.css">
+<link REL="next" HREF="node14.html">
+<link REL="previous" HREF="node10.html">
+<link REL="up" HREF="pred.html">
+<link REL="next" HREF="node13.html">
+</head>
+<body>
+<!--End of Navigation Panel-->
+<h1>
+<a NAME="SECTION00060000000000000000"></a>Using pred with ParMetis</h1>
+<a NAME="sec:parmetis"></a>&nbsp; In order to use pred with ParMetis, the
+user must do the following:
+<ul>
+<li>
+add <tt>-DPARMETIS</tt> to the compile line</li>
+
+<li>
+add the following to the list of includes:</li>
+
+<pre>-I$(SCSOFT_HOME)/scorec2metis/2.0/include&nbsp;
+-I$(SCSOFT_HOME)/ParMetis/1.0/include</pre>
+
+<li>
+add the following to the list of libraries to link in:</li>
+
+<pre>-L$(SCSOFT_HOME)/scorec2metis/2.0/lib/ibm6000mpi -lscorec2metis-O
+-L$(SCSOFT_HOME)/ParMetis/1.0/lib/ibm6000mpi -lparmetis
+-L$(SCSOFT_HOME)/MeTiS/2.0/lib/ibm6000 -lmetis</pre>
+
+<li>
+link with one of the <tt>pred_parmet*</tt> instances of pred</li>
+
+<br>&nbsp;
+<p>&nbsp;</ul>
+
+<p><br>
+<hr><!--Table of Child-Links--><a NAME="CHILD_LINKS"></a>
+<ul>
+<li>
+<a NAME="tex2html141" HREF="node13.html#SECTION00061000000000000000"></a><a href="http://www.cs.rpi.edu/~scorec/pred_manual-3.4/node13.html#SECTION00061000000000000000" NAME="tex2html141">Additions
+to Pred</a></li>
+</ul>
+<!--End of Table of Child-Links-->
+<br>
+<hr>
+<br><i></i>&nbsp;
+</body>
+</html>

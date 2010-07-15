@@ -1,0 +1,7 @@
+@TechReport{campbell03a,
+  author = 	 {Paul M. Campbell and Karen D. Devine and Joseph E. Flaherty and Luis G. Gervasio and James D. Teresco},
+  title = 	 {Dynamic Octree Load Balancing Using Space-Filling Curves},
+  institution =  {Williams College Department of Computer Science},
+  year = 	 {2003},
+  number = 	 {CS-03-01}
+}

@@ -1,0 +1,41 @@
+<HEADER>
+<TITLE>Abstract: Distributed Octree Data Structures and Local Refinement Method for the Parallel Solution of Three-Dimensional Conservation Laws</TITLE>
+</HEADER>
+<BODY>
+
+<H1>Distributed Octree Data Structures and Local Refinement Method for the Parallel Solution of Three-Dimensional Conservation Laws</H1>
+Joseph E. Flaherty,
+Raymond M. Loy,
+Mark S. Shephard,
+Michelle S. Simone,
+Boleslaw K. Szymanski,
+James D. Teresco,
+Louis H. Ziantz.
+<BR>
+<i> In M. Bern, J. Flaherty, and
+M. Luskin, editors Grid Generation and Adaptive Algorithms,
+volume 113 of The IMA Volumes in Mathematics and its
+Applications, pp. 113--134, 1999.</i>
+<P>
+Conservation laws are solved by a local Galerkin finite element
+procedure with adaptive space-time mesh refinement and explicit time
+integration.  A distributed octree structure representing a spatial
+decomposition of the domain is used for mesh generation, and later may
+be used to correct for processor load imbalances introduced at
+adaptive enrichment steps.  A Courant stability condition is used to
+select smaller time steps on smaller elements of the mesh, thereby
+greatly increasing efficiency relative to methods having a single
+global time step.  To accommodate the variable time steps, octree
+partitioning is extended to use weights derived from element size.
+Computational results are presented for the three-dimensional Euler
+equations of compressible flow solved on an IBM SP2 computer.  The
+problem examined is the flow inside a perforated shock tube.
+
+<P>
+<TABLE BORDER=0 CELLSPACING=18> 
+<TR > 
+<TD > <A HREF="cite.txt"> Citation</A> (BIBTEX)      </TD>
+<TD > <A HREF="ima.ps"> Paper</A> (PS; 4.7MB)     </TD>
+<TD > <A HREF="ima.ps.gz"> Paper</A> (Gzipped PS; 1.1MB)     </TD>
+</TR>
+</TABLE>

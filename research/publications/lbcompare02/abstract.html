@@ -1,0 +1,41 @@
+<HEADER>
+<TITLE>Abstract: A Comparison of Zoltan Dynamic Load Balancers for Adaptive Computation</TITLE>
+</HEADER>
+<BODY>
+
+<H1>A Comparison of Zoltan Dynamic Load Balancers for Adaptive Computation</H1>
+<BR>James D. Teresco and Lida P. Ungar,
+<BR>Williams College Department of Computer Science Technical Report CS-03-02, 2003.
+<BR><I>Abbreviated version appears in Proc. COMPLAS '03.</I>
+
+<P>
+Dynamic load balancing is an essential tool for parallel adaptive
+computation.  It has been an important research topic for more than a
+decade.  The <I>Zoltan</I> library provides applications with a
+reusable, object-oriented interface to several load balancing
+algorithms, including coordinate bisection, octree/space filling curve
+methods, and multilevel graph partitioners.  It allows run-time
+selection among balancing techniques, facilitating comparisons.  It
+also provides a framework in which to modify existing algorithms or to
+implement new algorithms.  We compare the performance of several
+available methods as mesh partitioners and as dynamic load balancers
+for an adaptive computation.  Partition quality metrics and running
+times of the balancers and the solution process are measured for
+several methods.  We also examine the effect of octant granularity for
+the Zoltan octree partitioning algorithm, and describe a modification
+of the recursive coordinate bisection algorithm that bisects along
+only one coordinate axis, to achieve a "slice" partitioning,
+designed to minimize interprocessor adjacency.
+
+<P>
+<table BORDER=0 CELLSPACING=18 >
+<tr>
+
+<td><a href="cite.txt">Citation</a> (BIBTEX)&nbsp;</td>
+
+<td><a href="lbcompare02.ps">Paper</a> (PS; 1.1MB)&nbsp;</td>
+
+<td><a href="lbcompare02.pdf">Paper</a> (PDF; 268KB)&nbsp;</td>
+</tr>
+</table>
+</BODY>

@@ -1,0 +1,73 @@
+<HEAD>
+<TITLE> Linking with PRED</TITLE>
+</HEAD>
+<BODY>
+<P>
+
+<center>
+<H1>Linking (PRED)</H1>
+</center>
+
+<P>
+
+Note
+
+<P>
+
+<em>
+Regardless of which library (see <A HREF="instances.html"> Library
+Instances </A>) is used, <tt>-lpred*</tt> should be placed BEFORE
+<tt>-lrefdref*</tt> in the link line. 
+</em>
+
+<P>
+
+Example Link Line
+
+<PRE>
+
+LIBTYPE=ibm6000
+
+SCSOFT_HOME = /dept/scorec/software
+
+COM_VER            = 1.1
+FRAME_MODEL_VER    = 0.4
+FRAME_UTIL_VER     = 0.1
+MDB_VER            = 3.0
+MEM_VER            = 1.0
+MESHOPT_VER        = 3.0
+MESHOPTPART_VER    = 2.0
+MESHTOOLS_VER      = 3.0
+PARA_VER           = 8.0
+PMDB_VER           = 5.0
+PRED_VER           = 3.1.1
+PRED_EXT           = -time
+REFDREF_VER        = 2.1
+
+
+LDLIBS   =  \
+           -L$(SCSOFT_HOME)/pred/$(PRED_VER)/lib/$(LIBTYPE)mpi -lpred$(PRED_EXT)  \
+	   -L$(SCSOFT_HOME)/refdref/$(REFDREF_VER)/lib/$(LIBTYPE)mpi -lrefdref  \
+	   -L$(SCSOFT_HOME)/pmdb/$(PMDB_VER)/lib/$(LIBTYPE)mpi -lpmdb   \
+	   -L$(SCSOFT_HOME)/MeshTools/$(MESHTOOLS_VER)/lib/$(LIBTYPE)mpi -lMesh_Tools  \
+           -L$(SCSOFT_HOME)/parasolid/$(PARA_VER) -lfrustrum -lfg -lparasolid \
+           -L$(SCSOFT_HOME)/comm_lib/$(COM_VER)/lib/$(LIBTYPE)mpi -lcomm_lib  \
+           -L$(SCSOFT_HOME)/framework/model/$(FRAME_MODEL_VER)/lib/$(LIBTYPE) -lparasolidmodel -lmodel \
+           -L$(SCSOFT_HOME)/meshdb/$(MDB_VER)/lib/$(LIBTYPE) -lmesh  \
+           -L$(SCSOFT_HOME)/meshOpt/$(MESHOPT_VER)/lib/$(LIBTYPE)mpi -lMesh_Opt \
+           -L$(SCSOFT_HOME)/meshOptPart/$(MESHOPTPART_VER)/lib/$(LIBTYPE)mpi -lmeshOptPart  \
+           -L$(SCSOFT_HOME)/Memory/$(MEM_VER)/lib/$(LIBTYPE) -lMemory  \
+           -L$(SCSOFT_HOME)/framework/util/$(FRAME_UTIL_VER)/lib/$(LIBTYPE) -lutil \
+           -lm
+
+
+</PRE>
+
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Louis Ziantz <BR>
+Tue Jul 15 17:27:31 EDT 1997
+</I>
+</ADDRESS>
+</BODY>

@@ -1,0 +1,297 @@
+<HTML>
+<!-- DRUM main web page -->
+<!-- $Id: index.html,v 1.15 2005/08/19 17:56:47 terescoj Exp $ -->
+<!-- Created 2004-03-01 by JDT -->
+<HEAD>
+<TITLE>DRUM: The Dynamic Resource Utilization Model</TITLE>
+<CENTER>
+<H1>DRUM: The Dynamic Resource Utilization Model</H1>
+<IMG SRC="drum.jpg">
+</CENTER>
+</HEAD>
+<HR>
+
+<BODY bgcolor="#8CB2D4">
+
+<CENTER>
+<TABLE BORDER=0 WIDTH=80%>
+<TR><TD ALIGN=CENTER>
+Jamal Faik, Joe Flaherty, Luis Gervasio<BR>
+Department of Computer Science<BR>
+Rensselaer Polytechnic Institute<BR>
+110 Eighth Street<BR>
+Troy, NY  12180
+</TD>
+<TD></TD>
+<TD ALIGN=CENTER>
+Jim Teresco<BR>
+Department of Computer Science<BR>
+Williams College<BR>
+47 Lab Campus Drive<BR>
+Williamstown, MA  01267
+</TD></TR></TABLE>
+</CENTER>
+
+<HR>
+
+<H3>Overview</H3>
+
+The <B>Dynamic Resource Utilization Model (DRUM)</B> supports
+resource-aware, large-scale scientific computing in heterogeneous and
+hierarchical parallel computing environments.  Clusters have gained
+wide acceptance as a viable alternative to tightly-coupled parallel
+computers.  They provide cost-effective environments for running
+computationally-intensive parallel and distributed applications.  An
+attractive feature of clusters is the ability to expand their
+computational power incrementally by incorporating additional nodes.
+This expansion often results in heterogeneous environments, as the
+newly-added nodes often have superior capabilities.  Grid technologies
+have enabled computation on even more heterogeneous and
+widely-distributed systems.  Internet-connected systems include more
+heterogeneity and extreme network hierarchy.  <P>
+
+DRUM encapsulates hardware resources and their interconnection
+topology.  DRUM provides monitoring facilities for dynamic evaluation
+of communication, memory, and processing capabilities.  Heterogeneity
+is quantified by aggregating the information from the monitors into a
+scalar form, easily usable by existing load balancing algorithms.<P>
+
+
+<CENTER>
+<IMG SRC="machineModel.jpg" ALT="Sample machine model">
+</CENTER>
+<P>
+
+DRUM is a standalone library, requiring only MPI and a C compiler.
+DRUM will make use of other libraries (<I>e.g.,</I> pthreads, SNMP, NWS) if
+they are available.  When combined with the partitioners and load
+balancers in Sandia National Laboratories' <A
+HREF="http://www.cs.sandia.gov/Zoltan/">Zoltan Toolkit</A>, DRUM
+provides a convenient and straightforward way to tailor partitions to
+a given parallel computing environment.<P>
+
+DRUM requires knowledge of the execution environment.  Some of this
+information can be inferred at run time, but other information must be
+specified manually.  DRUM provides a graphical front end called
+<I>DrumHead</I> that aids in
+this initial configuration, which is required only when first using
+DRUM, or when characteristics of the cluster are changed.<P>
+
+
+<CENTER>
+<IMG SRC="drumhead.jpg" ALT="Graphical configuration program">
+</CENTER>
+<P>
+
+<H3>Availability</H3>
+
+DRUM will be made freely available, but it is not yet ready for a
+general release.  If you would like to find out if a prerelease
+version might be useful, please contact the developers at
+<I>drum-devel AT cs.williams.edu</I> (replace AT with @).  It
+currently works for Solaris and Linux systems.  FreeBSD and Mac OS X/Darwin
+support is partially implemented but not yet functional.
+
+<H3>Publications</H3>
+
+The most thorough description of DRUM to date is contained in Jamal
+Faik's Ph.D. dissertation:
+
+<UL>
+
+<LI>
+<B>A Model for Resource-Aware Load Balancing on Heterogeneous and
+Non-dedicated Clusters</B></LI>
+
+<BR>Jamal Faik.
+<BR>Ph.D. Thesis.  Department of Computer Science.  Rensselaer
+Polytechnic Institute.  2005.
+
+<table BORDER=0 CELLSPACING=18 >
+<tr>
+<td><a href="faik-thesis-abstract.html">Abstract</a> (HTML)&nbsp;</td>
+
+<td><a href="faik-thesis-cite.txt">Citation</a> (BIBTEX)&nbsp;</td>
+
+<td><A HREF="faik-thesis.pdf">Full Thesis</A> (PDF; 1.08 MB)&nbsp;</td>
+</tr>
+</table>
+
+
+</UL>
+
+This article describes the Bullpen Cluster at Williams College and how
+it motivated DRUM and hierarchical partitioning and load balancing:
+
+<UL>
+
+<LI>
+<B>Resource-Aware Scientific Computation on a Heterogeneous Cluster</B></LI>
+
+<BR>James D. Teresco, Jamal Faik, and Joseph E. Flaherty.
+<BR>Previously published as Williams College Department of Computer Science Technical Report CS-04-10, 2004. 
+<BR><I>Computing in Science &amp; Engineering, Vol. 7, Number 2, pp. 40-50, 2005.</I>
+
+<table BORDER=0 CELLSPACING=18 >
+<tr>
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/cise05/abstract.html">Abstract</a> (HTML)&nbsp;</td>
+
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/cise05/cite.txt">Citation</a> (BIBTEX)&nbsp;</td>
+
+<td><A HREF="http://csdl.computer.org/comp/mags/cs/2005/02/c2toc.htm">Paper</A> (Link to CiSE web site)&nbsp;</td>
+</tr>
+</table>
+
+</UL>
+
+The last section of this article describes DRUM and presents some DRUM results:
+
+<UL>
+
+<LI>
+<B>New challenges in dynamic load balancing</B></LI>
+
+<BR>Karen D. Devine, Erik G. Boman, Robert T. Heaphy, Bruce A. Hendrickson,
+James D. Teresco, Jamal Faik, Joseph E. Flaherty, Luis G. Gervasio.
+<BR><I>Appl. Numer. Maths. Vol. 52, Issues 2-3, pp. 133-152, 2005.</I>
+
+
+<table BORDER=0 CELLSPACING=18 >
+<tr>
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/adapt03/abstract.html">Abstract</a> (HTML)&nbsp;</td>
+
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/adapt03/cite.txt">Citation</a> (BIBTEX)&nbsp;</td>
+
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/adapt03/adapt03.pdf">Paper</a> (PDF; 220KB)&nbsp;</td>
+</tr>
+</table>
+
+</UL>
+
+This manuscript describes DRUM in the some detail:
+
+<UL>
+
+<LI>
+<B>A model for resource-aware load balancing on heterogeneous clusters</B></LI>
+
+<BR>Jamal Faik, Joseph E. Flaherty, Luis G. Gervasio, James D. Teresco, Karen D. Devine
+<BR>Williams College Department of Computer Science Technical Report CS-05-01, 2005.
+<BR>
+Supercedes Williams College Department of Computer Science Technical Report CS-04-03.
+
+<table BORDER=0 CELLSPACING=18 >
+<tr>
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/tpds05/abstract.html">Abstract</a> (HTML)&nbsp;</td>
+
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/tpds05/cite.txt">Citation</a> (BIBTEX)&nbsp;</td>
+
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/tpds05/tpds05.pdf">Paper</a> (PDF; 331KB)&nbsp;</td>
+</tr>
+</table>
+
+</UL>
+
+This manuscript describes the DrumHead graphical configuration tool
+and work on the DRUM interface to the Network Weather Service:
+
+<UL>
+<LI>
+<B>Resource-aware Parallel Adaptive Computation for Clusters</B></LI>
+
+<BR>James D. Teresco, Laura Effinger-Dean and Arjun Sharma
+<BR><I>Proc. Computational Science -- ICCS 2005: 5th International
+Conference, Atlanta, GA, USA, Part II</I>, Volume 3515 of <I>Lecture
+Notes in Computer Science</I>, Vaidy S. Sunderam, Geert Dick van
+Albada, Peter M. A. Sloot, et al. (Eds).  pp. 107-115.  Springer. 2005.
+
+<table BORDER=0 CELLSPACING=18 >
+<tr>
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/iccs05/abstract.html">Abstract</a> (HTML)&nbsp;</td>
+
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/iccs05/cite.txt">Citation</a> (BIBTEX)&nbsp;</td>
+
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/iccs05/iccs05.pdf">Paper</a> (PDF; 225KB)&nbsp;</td>
+</tr>
+</table>
+</UL>
+
+This manuscript describes resource-aware parallel computation,
+including DRUM and hierarchical balancing:
+
+<UL>
+<LI>
+<B>Approaches to Architecture-Aware Parallel Scientific Computation</B></LI>
+
+<BR>James D. Teresco, Joseph E. Flaherty, Scott B. Baden, Jamal Faik, S&eacute;bastien Lacour, Manish Parashar, Valerie E. Taylor, and Carlos A. Varela.
+<BR>Williams College Department of Computer Science Technical Report CS-04-09, 2004. 
+<BR>Submitted to <I>Proc. PP'04: Frontiers of Scientific Computing</I>
+
+<table BORDER=0 CELLSPACING=18 >
+<tr>
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/pp04/abstract.html">Abstract</a> (HTML)&nbsp;</td>
+
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/pp04/cite.txt">Citation</a> (BIBTEX)&nbsp;</td>
+
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/pp04/pp04.pdf">Paper</a> (PDF; 649KB)&nbsp;</td>
+</tr>
+</table>
+</UL>
+
+This manuscript describes hierarchical balancing in Zoltan,
+which is part of the DRUM project:
+
+<UL>
+<LI>
+</A><B>Hierarchical Partitioning and Dynamic Load Balancing for Scientific Computation</B></LI>
+
+<BR>James D. Teresco.
+<BR>Williams College Department of Computer Science Technical Report CS-04-04, and Sandia Report SAND2004-1559A, Sandia National Laboratories, 2004. 
+<BR><I>PARA'04 Workshop on State-Of-The-Art in Scientific
+Computing,</I> To appear.
+
+<table BORDER=0 CELLSPACING=18 >
+<tr>
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/para04/abstract.html">Abstract</a> (HTML)&nbsp;</td>
+
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/para04/cite.txt">Citation</a> (BIBTEX)&nbsp;</td>
+
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/para04/para04ext.pdf">Extended Abstract</a> (PDF; 87KB)&nbsp;</td>
+
+<td><a href="http://www.cs.williams.edu/~terescoj/research/publications/para04/para04.pdf">Paper</a> (PDF; 200KB)&nbsp;</td>
+</tr>
+</table>
+</UL>
+
+<H3>Acknowledgements</H3>
+
+Faik, Gervasio, Teresco and Flaherty were supported in part by
+contract 15162 with 
+Sandia National Laboratories, a multiprogram laboratory operation
+by Sandia Corporation, a Lockheed Martin Company, for the United
+States Department of Energy under Contract DE-AC04-94AL85000.<P>
+
+Significant DRUM development was done by Rensselaer undergraduate Jin
+Chang, who is now a graduate student at the University of Chicago.<P>
+
+Karen Devine and Erik Boman at Sandia National Laboratories have been
+consulted extensively during the design and implementation of DRUM.<P>
+
+NWS support and FreeBSD support were added by Williams Summer Science
+program undergraduate Laura Effinger-Dean, and the new graphical user
+interface <I>DrumHead</I> was initially developed by Williams Summer
+Science program undergraduate Arjun Sharma.  Williams Summer Science
+program undergraduate Bartley Tablante developed new machine model
+tree construction routines that use DrumHead's XML files, added code
+to allow DRUM to guide Zoltan's hierarchical balancing procedures, and
+redesigned the Makefiles used to configure and build DRUM.<P>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>Jim Teresco -
+Fri Aug 19 13:55:32 EDT 2005
+</ADDRESS>
+
+</HTML>

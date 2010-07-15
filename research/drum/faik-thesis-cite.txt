@@ -1,0 +1,7 @@
+@PhdThesis{faik05b,
+  author =       {Jamal Faik},
+  title =        {A Model for Resource-Aware Load Balancing on Heterogeneous and Non-Dedicated Clusters},
+  school =       {Rensselaer Polytechnic Institute},
+  address=       {Troy},
+  year =         {2005}
+}

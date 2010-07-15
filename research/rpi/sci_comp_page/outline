@@ -1,0 +1,24 @@
+
+
+o Adaptive Solution Techniques (intro stolen from Dr. Flaherty)
+  - Jim's 1D code (text from Jim; link to Jim's Research page)
+  - Mohammed's 2D code (from papers and/or Mohammed; see if Mohammed
+has old pictures)
+o Linear Algebra (Wes)
+  - preconditioners
+o Error Estimation (? ; Dr. Flaherty always talks about Karen Devine's
+error estimator, but I don't know anything about it; we may drop this)
+o Integration (?) (Toshi ; they haven't published a paper about this;
+was the technique developed by someone else?; drop it?)
+o Automatic Solution Framework for PDEs (can Wes write briefly about
+this; steal something from Dr. Flaherty)
+o Applications (see if we can get pictures from Slimane; text from papers?)
+  - crystal growth
+  - composite media
+  - biomechanics (PSE link)
+
+(other points to keep in mind:
+    need to mention/define SCOREC in page at some point
+    add Dr. Shephard to the top of page ? probably
+    should Dr. Luk's research be on this page?
+)

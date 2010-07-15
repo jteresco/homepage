@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> Mesh Loading, Partitioning and Saving</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" Mesh Loading, Partitioning and Saving">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html54 HREF="node4.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html52 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html46 HREF="node2.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html55 HREF="node4.html"> Geometric Model Entity </A>
+<B>Up:</B> <A NAME=tex2html53 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html47 HREF="node2.html"> Introduction</A>
+<BR> <HR> <P>
+<H1><A NAME=SECTION00120000000000000000> Mesh Loading, Partitioning and Saving</A></H1>
+<P>
+<A NAME=opmpar>&#160;</A>
+  These routines operate on the files which have the following 
+standard suffixes:
+<UL><LI> <tt> .sms</tt> : suffix used for the <tt> SCOREC MDB</tt> files 
+               which store the mesh
+                information.
+<LI> <tt> .smd</tt> : suffix used for the <tt> SCOREC MDB</tt> files 
+               which contain geometric
+                model classification information.
+<LI> <tt> .pmdb</tt> : suffix used for <tt> PMDB</tt>  files containing the links
+                between partition boundary entities.
+<LI> <tt> .P.col</tt> : suffix for color file for meshes which are already
+                partitioned. <b>P</b> is the number of partitions.
+                This type of file contains the mapping of each region
+                or face onto processors.
+</UL>
+<P>
+  All the routines described below have the following common 
+arguments:
+<P>
+<TABLE BORDER>
+<TR>
+<TD><i>file</i></TD><TD>Prefix name of mesh files ; <tt>file.sms</tt> and <tt>file.smd</tt>.</TD>
+</TR>
+<TR>
+<TD><i>mesh</i></TD><TD>Initially null <tt>MDB</tt>  mesh handle ;  on return it contains the loaded mesh.</TD>
+</TR>
+<TR>
+<TD><i>ppmeshpb</i></TD><TD><tt>PMDB</tt> handle, pointer returned.</TD>
+</TR>
+</TABLE>
+<P>
+Any additional arguments are given separately.
+<P>
+<HR>
+<PRE>void pmdb_inertia_rb(
+char     *file,          /* IN    */
+pMesh     mesh,          /* OUT   */
+pMeshPB  *ppmeshpb)      /* OUT   */
+</PRE>
+<P>
+ This routine loads the whole mesh on processor 0 and 
+recursively partitions it in parallel  by bisecting it along the 
+principal axis of inertia matrix.
+<P>
+<HR>
+<PRE>void pmdb_init_load_mesh(
+char    *file,               /* IN   */
+pMesh    mesh,               /* OUT  */
+pMeshPB *ppmeshpb,           /* OUT  */
+int      num_load_procs)     /* IN   */
+</PRE>
+<P>
+<TABLE BORDER>
+<TR>
+<TD><i>num_load_procs</i></TD><TD>number of processors that will load the mesh. 
+      Processors with id <tt>i=0..num_load_procs-1</tt> load the mesh.</TD>
+</TR>
+</TABLE>
+<P>
+<HR>
+<PRE>void pmdb_empty_pmeshpb(
+pMesh    mesh,               /* OUT  */
+pMeshPB *ppmeshpb)           /* OUT  */
+</PRE>
+<P>
+Create an empty parallel mesh structure for insertion of entities and
+links by hand - useful in parallel mesh generation
+<P>
+<HR>
+<PRE>void pmdb_load_split_sms(
+char     *file,             /* IN  */
+pMesh     mesh,             /* OUT */
+pMeshPB  *ppmeshpb)         /* OUT */
+</PRE>
+<P>
+    This routine loads a split mesh produced by the 
+<code>splitter</code>
+<P>
+program and sets up the ip-links by internally calling 
+<tt> pmdb_geom_setuplinks</tt> routine.
+ This operator currently works on 3D all-tetrahedron or 2D
+all-face meshes.
+<P>
+<HR>
+<PRE>void pmdb_ortho_rb(
+char     *file,            /* IN  */
+int       num_axes,        /* IN  */
+int      *axes,            /* IN  */
+pMesh     mesh,            /* OUT */
+pMeshPB  *ppmeshpb)        /* OUT */
+</PRE>
+<P>
+   This operator loads and partitions a mesh using  orthogonal 
+recursive bisection[<A HREF="#berger"></A>]. The partitioning axes can be  given as 
+a parameter by the user. If the <code>axes[i]</code> are given, the partitioner
+will cyclically use the axes given as the line of bisection.
+<P>
+<TABLE BORDER>
+<TR>
+<TD><i>num_axes</i></TD><TD>number of bisection axes.</TD>
+</TR>
+<TR>
+<TD><i>axes</i></TD><TD>Integer array of axes with the encoding <tt>0=x, 1=y, 2=z</tt></TD>
+</TR>
+</TABLE>
+<P>
+<HR>
+<PRE>void pmdb_part_already(
+char     *file,        /* IN  */
+pMesh     mesh,        /* IN  */
+pMeshPB  *ppmeshpb)    /* OUT */
+</PRE>
+<P>
+   This function loads an already partitioned mesh. This operator expects,
+in addition to the <code>.sms</code> and <code>.smd</code> files, a color file suffixed
+ <code>.P.col</code>. Here <code>P</code> is the number of partitions. The color
+file can be produced, for example, by a sequential mesh partitioner
+Chaco [<A HREF="#hendrickson"></A>]. See
+<code>sms2chaco</code>
+ for further
+details on producing input files to Chaco from <code>.sms</code> files.
+<P>
+<HR>
+<PRE>void pmdb_read_msh_par(
+char     *file,           /* IN  */
+pMesh     mesh,           /* IN  */
+pMeshPB  *ppmeshpb)       /* OUT */
+</PRE>
+<P>
+This operator reads in the mesh which has been saved by
+<tt> pmdb_write_msh_par</tt>
+ routine.
+It reads files of the form <code>file.i.sms</code>  and <code>file.i.pmdb</code>  with
+<tt> i=0..num_of_processors-1</tt>, when passed the file prefix.
+<P>
+<HR>
+<PRE>void pmdb_write_msh_par(
+char     *file,            /* IN */
+pMeshPB   pmeshpb)         /* IN */
+</PRE>
+<P>
+   This operator saves a distributed mesh on the processors in the files
+<code>file.i.sms</code> and <code>file.i.pmdb</code> where <code>i=0,..,num_of_procs-1</code>.
+The file <code>file.i.sms</code> is the <tt> MDB</tt>  file and
+<code>file.i.pmdb</code> contains the information necessary to set up the links
+when the mesh is later loaded with <tt> pmdb_read_msh_par</tt>.
+<P>
+<BR><HR>
+<PRE>void pmdb_unlink_msh_par(
+char     *file,            /* IN */
+int      warn)             /* IN */
+</PRE>
+
+<P>
+   This operator deletes the files written by
+<TT>pmdb_write_msh_par</tt> - the files <code>file.i.sms</code> and
+<code>file.i.pmdb</code> where <code>i=0,..,num_of_procs-1</code>.  If
+<tt>warn</tt> is non-zero, a warning is printed if the files cannot be
+deleted.
+
+<P>
+
+<BR>
+ <HR><A NAME=tex2html54 HREF="node4.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html52 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html46 HREF="node2.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html55 HREF="node4.html"> Geometric Model Entity </A>
+<B>Up:</B> <A NAME=tex2html53 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html47 HREF="node2.html"> Introduction</A>
+<BR> <HR> <P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Thu May 23 08:34:43 EDT 1996
+</I>
+</ADDRESS>
+</BODY>

@@ -1,0 +1,14 @@
+@InProceedings{flaherty98a,
+  author =       {Joseph E. Flaherty and Mustaf{\`{a}} Dindar and Raymond M. Loy
+ and Mark S. Shephard and Boleslaw K. Szymanski and James D. Teresco and Louis H
+. Ziantz},
+  title =        {An adaptive and parallel framework for partial differential eq
+uations},
+  booktitle =    {Numerical Analysis 1997 (Proc. 17th Dundee Biennial Conf.)},
+  pages =        {74--90},
+  year =         {1998},
+  editor =       {D. F. Griffiths and D. J. Higham and G. A. Watson},
+  number =       {380},
+  series =       {Pitman Research Notes in Mathematics Series},
+  publisher =    {Addison Wesley Longman}
+}

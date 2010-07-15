@@ -1,0 +1,55 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="description" content="Include Files (pred)">
+   <meta name="keywords" content="pred">
+   <meta name="resource-type" content="document">
+   <meta name="distribution" content="global">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (X11; I; SunOS 5.6 sun4u) [Netscape]">
+   <title>Include Files (pred)</title>
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<link REL="STYLESHEET" HREF="pred.css">
+<link REL="next" HREF="node3.html">
+<link REL="previous" HREF="node1.html">
+<link REL="up" HREF="pred.html">
+<link REL="next" HREF="node3.html">
+</head>
+<body>
+<!--End of Navigation Panel-->
+<h1>
+<a NAME="SECTION00020000000000000000"></a>Include Files</h1>
+<a NAME="sec:includes"></a>&nbsp; To use pred, you need to include the
+following file:
+<pre>pred.h</pre>
+(located in <tt>/dept/scorec/software/pred/3.4/include</tt>).
+<p>A typical <b>INCLUDES</b> variable for use with pred looks like
+<pre>SCSOFT_HOME = /dept/scorec/software
+COM_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 2.0
+MDB_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 3.4
+MESHTOOLS_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 3.1
+MODEL_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0.8
+PMDB_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 5.1
+PRED_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 3.4
+PRED_EXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = -time
+# Hugues' new "old" library
+REFDREF_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1.0
+REFDREF_HOME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = /dept/scorec/scratch1/decouh2/develop/meshing/refdref
+INCLUDES&nbsp;&nbsp; =&nbsp; \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -I$(SCSOFT_HOME)/parallel/pred/$(PRED_VER)/include&nbsp; \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -I$(REFDREF_HOME)/$(REFDREF_VER)/include \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -I$(SCSOFT_HOME)/refdref/$(REFDREF_VER)/include&nbsp; \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -I$(SCSOFT_HOME)/parallel/pmdb/$(PMDB_VER)/include&nbsp;&nbsp;&nbsp; \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -I$(SCSOFT_HOME)/meshing/meshTools/$(MESHTOOLS_VER)/include&nbsp; \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -I$(SCSOFT_HOME)/parallel/comm/$(COM_VER)/include&nbsp; \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -I$(SCSOFT_HOME)/model/model/$(MODEL_VER)/include \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -I$(SCSOFT_HOME)/model/mesh/$(MDB_VER)/include</pre>
+
+<hr>
+<br><i></i>&nbsp;
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> Partition Boundary Queries</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" Partition Boundary Queries">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html74 HREF="node6.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html72 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html66 HREF="node4.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html75 HREF="node6.html"> Partition Boundary Updates</A>
+<B>Up:</B> <A NAME=tex2html73 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html67 HREF="node4.html"> Geometric Model Entity </A>
+<BR> <HR> <P>
+<H1><A NAME=SECTION00140000000000000000> Partition Boundary Queries</A></H1>
+<P>
+<A NAME=secpbq>&#160;</A>
+<P>
+  A full range of processor neighborhood adjacency information 
+can be queried from <tt> PMDB</tt>. These involve adjacent processors based
+on entity connectivity, lists of partition boundary entities and 
+addresses of  (links to) identical entities on other processors.
+Figure <A HREF="node5.html#lab_fig_qu"><IMG ALIGN=BOTTOM ALT="gif" SRC="http://www.cs.rpi.edu/icons/cross_ref_motif.gif"></A> shows an example mesh which is used to 
+illustrate the output of the query routines described below.
+The entity numbers shown are addresses of entities in actual implementation.
+<P>
+<P><A NAME=221>&#160;</A><A NAME=lab_fig_qu>&#160;</A><IMG  ALIGN=BOTTOM ALT="" SRC="qu.gif">
+<BR><STRONG>Figure:</STRONG> Example used for illustrating the query operators for 
+         partition boundary entities<BR>
+<P>
+<P>
+  <tt> PMDB</tt> allows two modes of links.  In full link mode, <i> all</i> partition 
+boundary entities store links to  identical entities on holder processors.
+In compressed or <i> minimal</i> link mode, only entities who cannot 
+derive their adjacency from higher dimensional entities store links to
+other identical entities. Substantial memory can be saved 
+when links are compressed.  The routines for compressing and uncompressing
+links are described in Section <A HREF="node6.html#secpbu"><IMG ALIGN=BOTTOM ALT="gif" SRC="http://www.cs.rpi.edu/icons/cross_ref_motif.gif"></A>. Depending on the 
+modes of links, the operators described below give different output.
+We illustrate these in the examples below.
+<P>
+<HR>
+<PRE>int pmdb_proc_adj(
+pMeshPB pmeshpb,         /* IN */
+eType   etype,           /* IN */
+int     ith)             /* IN */
+</PRE>
+<P>
+This routine  returns the
+<code>ith=0..</code><tt> pmdb_num_procs_adj()-1</tt>
+<P>
+neighbor processor id
+based on the passed connectivity <code>Tvertex</code> or <code>Tedge</code> or 
+<code>Tface</code>.  Return values for calls corresponding to 
+mesh in the above Figure are:.
+<P>
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD>on processor 0</TD><TD ALIGN=CENTER>full links</TD><TD ALIGN=CENTER>minimal links</TD>
+</TR>
+<TR>
+<TD><tt>pmdb_proc_adj(..,Tvertex,0)</tt></TD><TD ALIGN=CENTER>1</TD><TD ALIGN=CENTER>1</TD>
+</TR>
+<TR>
+<TD><tt>pmdb_proc_adj(..,Tvertex,1)</tt></TD><TD ALIGN=CENTER>2</TD><TD ALIGN=CENTER>2</TD>
+</TR>
+<TR>
+<TD><tt>pmdb_proc_adj(..,Tvertex,2)</tt></TD><TD ALIGN=CENTER>3</TD><TD ALIGN=CENTER>3</TD>
+</TR>
+</TABLE>
+</CENTER>
+<P>
+<HR>
+<PRE>pEntity pmdb_all_next_en(
+pMeshPB   pmeshpb,          /* IN     */
+eType     etype,            /* IN     */
+void    **temp)             /* IN/OUT */
+</PRE>
+<P>
+  This routine  traverses all the entities on the boundary of the
+ partition.
+<P>
+<TABLE BORDER>
+<TR>
+<TD><i>etype</i></TD><TD>type of partition boundary entities traversed</TD>
+</TR>
+<TR>
+<TD><i>temp</i></TD><TD>temporary variable which should be set to <I>null</I>
+                    before entering traversal.</TD>
+</TR>
+</TABLE>
+<P>
+
+Traversal for calls corresponding to
+mesh in the above Figure.
+<P>
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD>on processor 0</TD><TD ALIGN=CENTER>full links</TD><TD ALIGN=CENTER>minimal links</TD>
+</TR>
+<TR>
+<TD><tt>pmdb_all_next_en(..,Tvertex,..)</tt></TD><TD ALIGN=CENTER>1,3,5,7,9</TD><TD ALIGN=CENTER>5</TD>
+</TR>
+<TR>
+<TD><tt>pmdb_all_next_en(..,Tedge,..)</tt></TD><TD ALIGN=CENTER>2,4,8,6</TD><TD ALIGN=CENTER>2,4,8,6</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<P>
+<HR>
+<PRE>int pmdb_en_has_iplink(
+pEntity  item,           /* IN  */
+int      pid,            /* IN  */
+pEntity *offptr)         /* OUT */
+</PRE>
+<P>
+ This routine is used to check whether a given entity is on the 
+partition boundary and whether it is  shared with processor <code>pid</code>.
+<P>
+<TABLE BORDER>
+<TR>
+<TD><i>item</i></TD><TD>address of the entity.</TD>
+</TR>
+<TR>
+<TD><i>pid</i></TD><TD>processor id.</TD>
+</TR>
+<TR>
+<TD><i>offptr</i></TD><TD>address of the shared entity on processor <i>pid</i>.</TD>
+</TR>
+</TABLE>
+
+<P>
+The routine returns the following:
+<P>
+<TABLE BORDER>
+<TR>
+<TD><i>-1</i></TD><TD>if entity is not on the boundary.
+           <i>offptr</i> is returned as <i>null</i>.</TD>
+</TR>
+<TR>
+<TD><i>0</i></TD><TD>if entity is on a boundary but does not have  
+          links  in compressed (minimal link) mode, or does not have
+          a link to this specific <i>pid</i>. 
+           <i>offptr</I> is returned as <I>null</I></TD>
+</TR>
+<TR>
+<TD><I>1</I></TD><TD>if entity is on the boundary and has links to processor 
+          <I>pid</I>. <I>offptr</I> contains  the address of shared 
+          entity on processor <I>pid</I></TD>
+</TR>
+</TABLE>
+
+<B>Note: The above was updated on Thu Aug 17 16:30:29 EDT 2000 to
+correct a documentation error.  Previously, the documentation
+indicated that the 0 return was possible only with minimal links.  The
+routine will also return 0 when the entity has a link to one or more
+processors, but not to the specified one.</B>
+
+<P>
+<HR>
+<PRE>void pmdb_en_iplink(
+pEntity  loc_entity,    /* IN  */
+int      ith,           /* IN  */
+int     *pid,           /* OUT */
+pEntity *off_entity)    /* OUT */
+</PRE>
+<P>
+This routine traverses the list of links of a 
+partition boundary entity.
+<P>
+<TABLE BORDER>
+<TR>
+<TD><i>loc_entity</i></TD><TD>the local entity whose links are traversed.</TD>
+</TR>
+<TR>
+<TD><i>ith</I></TD><TD><tt>ith=0..pmdb_en_num_iplinks()-1</tt></TD>
+</TR>
+<TR>
+<TD><I>pid</I></TD><TD>processor id returned.</TD>
+</TR>
+<TR>
+<TD><I>off_entity</I></TD><TD>the address of the shared entity on processor <I>pid</I> returned.</TD>
+</TR>
+</TABLE>
+
+<P>
+Returned  (<tt> pid,off_entity</tt>) pairs for calls corresponding to
+mesh in the above Figure.
+<P>
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD>on processor 0</TD><TD ALIGN=CENTER>full links</TD><TD ALIGN=CENTER>minimal links</TD>
+</TR>
+<TR>
+<TD><tt>pmdb_en_iplink(5,0,..)</tt></TD><TD ALIGN=CENTER>(1,5)</TD><TD ALIGN=CENTER>(3,5)</TD>
+</TR>
+<TR>
+<TD><tt>pmdb_en_iplink(5,1,..)</tt></TD><TD ALIGN=CENTER>(2,5)</TD><TD ALIGN=CENTER>N/A</TD>
+</TR>
+<TR>
+<TD><tt>pmdb_en_iplink(5,2,..)</tt></TD><TD ALIGN=CENTER>(3,5)</TD><TD ALIGN=CENTER>N/A</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<P>
+<HR>
+<PRE>int  pmdb_en_num_iplinks
+pEntity entity)            /* IN */
+</PRE>
+<P>
+ This routine returns the number of links an <code>entity</code> has. 
+The number of links
+returned has these interpretations:
+<P>
+<TABLE BORDER>
+<TR>
+<TD><I>&lt; 0</I> (negative)</TD><TD>entity is not on partition boundary.</TD>
+</TR>
+<TR>
+<TD><I>= 0</I></TD><TD>entity is on boundary but have no 
+                    <i>minimal inter-processor</i> links.</TD>
+</TR>
+<TR>
+<TD><i>&gt; 0</i> (positive)</TD><TD>number of links, entity is on the partition boundary</TD>
+</TR>
+</TABLE>
+
+<P>
+ If full links are used, then the second case (<I>=0</I>) is never returned.
+ This case is returned only if the links has been compressed to
+ minimal links. 
+For the example mesh, <tt> pmdb_en_num_iplinks</tt>(5) will return 3 under 
+full link mode and 1 under minimal link mode on processor 0.
+<P>
+<HR>
+<PRE>void pmdb_get_owner(
+pEntity  entity,           /* IN  */
+int     *owner_pid,        /* OUT */
+pEntity *owner_entity)     /* OUT */
+</PRE>
+<P>
+ This function returns the ownership information of the entity.
+<P>
+<TABLE BORDER>
+<TR>
+<TD><i>entity</i></TD><TD>entity whose ownership is requested.</TD>
+</TR>
+<TR>
+<TD><i>owner_pid</I></TD><TD>owner processor id returned.</TD>
+</TR>
+<TR>
+<TD><i>owner_entity</I></TD><TD>owner entity address returned.</TD>
+</TR>
+</TABLE>
+
+<P>
+The entities  which have outlined boundaries in the example Figure a.1 indicate 
+the ownership. <tt> pmdb_get_owner(5,...)</tt> will return the pair (1,5).
+<P>
+<HR>
+<PRE>int  pmdb_is_en_on_pb(
+pEntity  entity,       /* IN   */
+int      pid,          /* IN   */
+pEntity *offptr)       /* OUT  */
+</PRE>
+<P>
+ This  function returns 1 if <code>entity</code> is on the partition boundary 
+adjacent to processor with id given by the parameter <code>pid</code>. The 
+variable <code>offptr</code> is assigned the address on the processor <code>pid</code> 
+on return in this case.
+If the entity is not on the partition boundary, then this routine returns
+<b>0</b> and <code>offptr</code> contains <code>null</code> on return.
+<P>
+<HR>
+<PRE>int pmdb_is_owner(
+pEntity entity)    /* IN */
+</PRE>
+<P>
+ This function returns 1 if the processor is the owner of the entity.
+ Otherwise, it returns 0.
+<P>
+<HR>
+<PRE>int pmdb_linked_num_procs(
+pMeshPB   pmeshpb,    /* IN  */
+eType     etype)      /* IN  */
+</PRE>
+<P>
+This function returns the number of adjacent processors based on 
+the passed connectivity <code>etype</code> of <code>Tvertex</code> or <code>Tedge</code> or 
+<code>Tface</code>. 
+If full links are used, the output of this function is the same as 
+<tt> pmdb_num_procs_adj</tt>
+. If however,
+links have been compressed with 
+<tt> pmdb_compress_links</tt>
+ to minimal
+representation, then the output is different. Only, processors based on 
+minimal link adjacency is returned.
+<P>
+<HR>
+<PRE>int pmdb_linked_procid(
+pMeshPB   pmeshpb,     /* IN */
+eType     etype,       /* IN */
+int       ith)         /* IN */
+</PRE>
+<P>
+This routine enumerates the processor ids of adjacent processors based 
+on the <code>etype</code> (Tvertex,Tedge,Tface) connectivity. The parameter
+<code>ith</code> takes on the values 
+<code>0..</code> <tt> pmdb_linked_num_procs</tt>
+-1.
+This operator has similar functionality as <tt> pmdb_proc_adj</tt>. For the 
+example mesh:
+<P>
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD>on processor 0</TD><TD ALIGN=CENTER>full links</TD><TD ALIGN=CENTER>minimal links</TD>
+</TR>
+<TR>
+<TD><tt>pmdb_linked_procid(..,Tvertex,0)</tt></TD><TD ALIGN=CENTER>1</TD><TD ALIGN=CENTER>3</TD>
+</TR>
+<TR>
+<TD><tt>pmdb_linked_procid(..,Tvertex,1)</tt></TD><TD ALIGN=CENTER>2</TD><TD ALIGN=CENTER>N/A</TD>
+</TR>
+<TR>
+<TD><tt>pmdb_linked_procid(..,Tvertex,2)</tt></TD><TD ALIGN=CENTER>3</TD><TD ALIGN=CENTER>N/A</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<P>
+<HR>
+<PRE>long pmdb_num_all_pb_en(
+pMeshPB pmeshpb,          /* IN */
+eType   etype)            /* IN */
+</PRE>
+<P>
+ This function returns the number of entities of type 
+<code>etype</code>=<code>Tvertex</code> or <code>Tedge</code> or <code>Tface</code> on 
+the partition boundary.
+<P>
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD>on processor 0</TD><TD ALIGN=CENTER>full links</TD><TD ALIGN=CENTER>minimal links</TD>
+</TR>
+<TR>
+<TD><tt>pmdb_num_all_pb_en(..,Tvertex)</tt></TD><TD ALIGN=CENTER>5</TD><TD ALIGN=CENTER>1</TD>
+</TR>
+<TR>
+<TD><tt>pmdb_num_all_pb_en(..,Tedge)</tt></TD><TD ALIGN=CENTER>4</TD><TD ALIGN=CENTER>4</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<P>
+<HR>
+<PRE>int pmdb_num_procs_adj(
+pMeshPB pmeshpb,        /* IN */
+eType   etype)          /* IN */
+</PRE>
+<P>
+This function returns the number of adjacent processors based on
+the passed connectivity <code>etype</code> of Tvertex or Tedge or Tface.
+Whether the links have been compressed with 
+<tt> pmdb_compress_links</tt>
+  or not, 
+the processor adjacency assumed and returned by this function is based on 
+full links.
+If adjacency based on minimal (compressed) links are required, 
+then 
+<tt> pmdb_linked_num_procs</tt>
+<P>
+should be used.
+<P>
+<HR>
+<PRE>long pmdb_owned_num_pb_en(
+pMeshPB pmeshpb,
+eType   etype)
+</PRE>
+<P>
+ This function returns the number of owned entities of <code>etype=</code> Tvertex,
+Tedge or Tface on the partition boundary.
+<P>
+<HR>
+<PRE>pEntity pmdb_proc_next_pb_en(
+pMeshPB   pmeshpb,          /* IN     */
+eType     etype,            /* IN     */
+int       ith,              /* IN     */
+void    **temp)             /* IN/OUT */
+</PRE>
+<P>
+    This op traverses the entities on the boundary of the
+    partition adjacent to the processor indexed by
+<code>ith=0..</code>  
+ <tt> pmdb_linked_num_procs</tt> 
+-1.
+<P>
+<HR>
+<PRE>long pmdb_proc_num_pb_en(
+pMeshPB   pmeshpb,     /* IN  */
+eType     etype,       /* IN  */
+int       ith)         /* IN  */
+</PRE>
+<P>
+  This function gives the number of entities of <code>etype</code> on
+the partition boundary adjacent with the <code>ith</code> adjacent
+processor, <code>i=0..</code> <tt> pmdb_linked_num_procs</tt>.  To
+traverse the entities themselves use: <tt> pmdb_proc_next_pb_en</tt> .
+<P>
+
+<P>
+<HR>
+<PRE>long pmdb_glob_en_num(
+pEntity entity          /* IN */
+)
+</PRE>
+<P>
+  If global numbers have been generated for the entities by 
+<tt>pmdb_dref_numb_own_gen</tt>
+, then 
+this routine can be used to query the global number of any entity.
+The entity numbers start with 1 and not with 0.
+<P>
+<HR>
+<PRE>void pmdb_check_links(
+pMeshPB   pmeshpb)   /* IN */
+</PRE>
+<P>
+ This routine can be used to check the correctness of the 
+links and the distributed mesh. It is provided as a debugging aid and 
+should be used by applications who modify <tt> PMDB</tt> data structures by 
+the update routines which were described in Section <A HREF="node6.html#secpbu"><IMG ALIGN=BOTTOM ALT="gif" SRC="http://www.cs.rpi.edu/icons/cross_ref_motif.gif"></A>.
+<P>
+<BR> <HR><A NAME=tex2html74 HREF="node6.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html72 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html66 HREF="node4.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html75 HREF="node6.html"> Partition Boundary Updates</A>
+<B>Up:</B> <A NAME=tex2html73 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html67 HREF="node4.html"> Geometric Model Entity </A>
+<BR> <HR> <P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Wed Jun 16 13:17:34 EDT 1999
+</I>
+</ADDRESS>
+</BODY>

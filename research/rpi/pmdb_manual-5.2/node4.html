@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> Geometric Model Entity Access Routines</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" Geometric Model Entity Access Routines">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html64 HREF="node5.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html62 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html56 HREF="node3.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html65 HREF="node5.html"> Partition Boundary Queries</A>
+<B>Up:</B> <A NAME=tex2html63 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html57 HREF="node3.html"> Mesh LoadingPartitioning </A>
+<BR> <HR> <P>
+<H1><A NAME=SECTION00130000000000000000> Geometric Model Entity Access Routines</A></H1>
+<P>
+<A NAME=secge>&#160;</A>
+<P>
+
+When a mesh entity is migrated, its classification information should
+also be migrated.  Since addresses are different on each processor,
+the classification should be translated into other portable
+identification. These operators build a translation table which when
+given the type and geometric modeler tag of an entity, translates it
+to the local address of the corresponding geometric entity. A hash
+table is used and performs the translation from the tuple
+<code>(eType,tag)</code> to local geometric entity address.  <P>
+
+<HR>
+<PRE>void pmdb_ge_clean_tabl(
+int  flag)          /* IN */
+</PRE>
+<P>
+  This routine cleans and initializes the hash table.
+<P>
+<TABLE BORDER>
+<TR>
+<TD><i>flag</i></TD><TD>1 if it is called the first time and 0 otherwise.</TD>
+</TR>
+</TABLE>
+<P>
+<HR>
+<PRE>pGEntity pmdb_ge_get_entity(
+eType    etype,    /* IN */
+int      tag)      /* IN */
+</PRE>
+<P>
+ This returns the address of local geometric entity.
+<P>
+<TABLE BORDER>
+<TR>
+<TD><i>etype</i></TD><TD>type of entity.</TD>
+</TR>
+<TR>
+<TD><i>tag</i></TD><TD>geometric modeler tag number.</TD>
+</TR>
+</TABLE>
+<P>
+<HR>
+<PRE>void pmdb_ge_tabl_new(
+pModel model)       /* IN */
+</PRE>
+<P>
+ When given the geometric <code>model</code> handle, this routine 
+builds the hash table.
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Thu Aug  3 10:30:30 EDT 1995
+</I>
+</ADDRESS>
+</BODY>

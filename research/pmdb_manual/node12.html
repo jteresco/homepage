@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> Visualization Routines</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" Visualization Routines">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+
+ <BR> <HR><A NAME=tex2html134 HREF="miscops.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html132 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html126 HREF="node11.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html135 HREF="miscops.html"> Miscellaneous Routines</A>
+<B>Up:</B> <A NAME=tex2html133 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html127 HREF="node11.html"> Load Balancing</A>
+<BR> <HR> <P>
+
+<H1><A NAME=SECTION00190000000000000000> Visualization Routines</A></H1>
+<P>
+
+<PRE>
+int pmdb_write_ext_dx(
+char *filename,      /* IN */
+pMeshPB pmeshpb,     /* IN */
+char *cellfile,      /* IN */
+int celldim,         /* IN */
+char *nodefile,      /* IN */
+int nodedim,         /* IN */
+unsigned char flags  /* IN */
+)
+</PRE>
+
+
+Write out a dx file of the current mesh.  There is only one file
+containing a component for each processor's part of the mesh.  Note
+that there is a serial version of this command in the Mesh Database
+called <tt>M_writeDXfile()</tt>.
+
+<P>
+
+If <tt>cellfile</tt> is non-null, it specifies a file name template
+for cell data.  The cellfile string must contain a <tt>%d</tt> which
+will be replaced with the processor number.  You should create a
+separate cell data file for each processor.  Each file should have one
+line for each cell (in order of <tt>M_nextRegion()</tt> ) with
+<tt>celldim</tt> numbers on each line.  E.g. cellfile name
+<tt>"cell.%d.dat"</tt> will make dx look for cell data in
+<tt>cell.0.dat</tt>, <tt>cell.1.dat</tt>, etc.  Cellfile may be
+<tt>NULL</tt> in which case there is no cell data attached to the dx
+object.<P>
+
+Likewise for <tt>nodefile</tt> and <tt>nodedim</tt>. <P>
+
+<tt>flags</tt> indicates any special options, such as a black and
+white file or a surface mesh only.  The following (and some
+combinations) can be specified.  Specify combinations with a bitwise
+"or" operation.<P>
+
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD>Flag</TD><TD>Description</TD>
+</TR>
+<TR>
+<TD><tt>PMDB_DX_DEFAULT</tt></TD><TD>Write default, three-dimensional
+full mesh, in color</TD>
+</TR>
+<TR>
+<TD><tt>PMDB_DX_SURFACE</tt></TD><TD>Write out only the surface mesh</TD>
+</TR>
+<TR>
+<TD><tt>PMDB_DX_BW</tt></TD><TD>Write out a black and white version of the mesh</TD>
+</TR>
+<TR>
+<TD><tt>PMDB_DX_2D</tt></TD><TD>Write out a 2D mesh</TD>
+</TR>
+</TABLE>
+</CENTER>
+<P>
+
+Returns 0/nonzero for failure/success.
+It should catch ANY file i/o errors e.g. out of disk space
+Note: Failure to compress prints out a warning but does not cause
+the routine to return 0.<P>
+
+<HR>
+
+The following routines output IBM Data Explorer data files which
+enable the partitioned meshes to be visualized.  These have all been
+superceded by the function <tt>pmdb_write_ext_dx</tt>, described
+above.
+
+<P>
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD ALIGN=CENTER><tt>pmdb_write_2d_dx</tt></TD><TD>2D  meshes, colored</TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER><tt>pmdb_write_dx</tt></TD><TD>3D  meshes, colored</TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER><tt>pmdb_write_bw_dx</tt></TD><TD>3D meshes, black and white</TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER><tt>pmdb_write_sur_dx</tt></TD><TD>surface of 3D meshes, colored </TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER><tt>pmdb_write_sur_bw_dx</tt></TD><TD>surface of 3D meshes, black and white</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<P>
+ The arguments to these routines are the same and is given below:
+<P>
+<TABLE BORDER>
+<TR>
+<TD><tt>char *file</tt>:</TD><TD>File prefix.  Output is placed in <code>file.dx</code></TD>
+</TR>
+<TR>
+<TD><tt>pMesh mesh</tt>:</TD><TD>MDB mesh handle</TD>
+</TR>
+<TR>
+<TD><tt>pMeshPB pmeshpb</tt>:</TD><TD>PMDB mesh handle.</TD>
+</TR>
+</TABLE>
+
+<P>
+
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Mon Oct 23 13:42:16 EDT 1995
+</I>
+</ADDRESS>
+</BODY>

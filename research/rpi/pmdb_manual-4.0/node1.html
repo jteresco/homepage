@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> PMDB User's Manual</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" PMDB User's Manual">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html23 HREF="node2.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html21 HREF="root.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html17 HREF="root.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html24 HREF="node2.html"> Introduction</A>
+<B>Up:</B> <A NAME=tex2html22 HREF="root.html">No Title</A>
+<B> Previous:</B> <A NAME=tex2html18 HREF="root.html">No Title</A>
+<BR> <HR> <P>
+<CENTER>
+<H1><A NAME=SECTION00100000000000000000> PMDB User's Manual</A></H1>
+<H3>Version 4.0</H3>
+<P>
+<FONT SIZE=+2>
+Can &Ouml;zturan<BR>
+Jim Teresco
+</FONT>
+</CENTER>
+<P>
+
+<I>Note</I>: Not all of these operators are available in PMDB 4.0.
+Those dealing with alternate load-balancing selection schemes and
+weighted elements will not be available until version 4.1 is released.
+-Jim<P>
+
+<I>Note for PMDB 3.2 users</I>:  When linking with PMDB 4.0, all other
+source code which include <TT>pmshops.h</TT> should be compiled using
+the PMDB 4.0 version of <TT>pmshops.h</TT>.  It should work even if
+you do not recompile, but you may end up calling bounce routines which
+bind to the old operator names and call the new.  If you recompile,
+macro replacement will allow the new routines to be called directly
+without any source code changes.<P>
+
+<A NAME=lab_app_man>&#160;</A>
+<HR>
+<UL> 
+<LI> <A NAME=tex2html25 HREF="node2.html#SECTION00110000000000000000"> Introduction</A>
+<LI> <A NAME=tex2html26 HREF="node3.html#SECTION00120000000000000000"> Mesh Loading, Partitioning and Saving</A>
+<LI> <A NAME=tex2html27 HREF="node4.html#SECTION00130000000000000000"> Geometric Model Entity Access Routines</A>
+<LI> <A NAME=tex2html28 HREF="node5.html#SECTION00140000000000000000"> Partition Boundary Queries</A>
+<LI> <A NAME=tex2html29 HREF="node6.html#SECTION00150000000000000000"> Partition Boundary Updates</A>
+<LI> <A NAME=tex2html32 HREF="node9.html#SECTION00160000000000000000"> Partition Boundary Node Gather/Scatter Maps</A>
+<LI> <A NAME=tex2html33 HREF="node10.html#SECTION00170000000000000000"> Migration</A>
+<LI> <A NAME=tex2html34 HREF="node11.html#SECTION00180000000000000000"> Load Balancing</A>
+<LI> <A NAME=tex2html35 HREF="node12.html#SECTION00190000000000000000"> Visualization Routines</A>
+<LI> <A HREF="miscops.html#start"> Miscellaneous Routines</A>
+<LI> <A HREF="part_stats.html#start">Partition Quality Analysis
+Routines</A>
+<LI>Communication Routines - <i>moved to their own library...</i>
+</UL>
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Tue Nov 28 16:42:52 EST 1995
+</I>
+</ADDRESS>
+</BODY>

@@ -1,0 +1,9 @@
+@InBook{teresco06b,
+  author = 	 {James D. Teresco and Joseph E. Flaherty and Scott B. Baden and Jamal Faik and S\'ebastien Lacour and Manish Parashar and Valerie E. Taylor and Carlos A. Varela},
+  editor = 	 {Michael A. Heroux, Padma Raghavan, and Horst D. Simon},
+  title = 	 {Parallel Processing for Scientific Computing},
+  chapter = 	 {Approaches to Architecture-Aware Parallel Scientific Computation},
+  publisher = 	 {SIAM},
+  year = 	 {2006},
+  pages = 	 {33--58}
+}

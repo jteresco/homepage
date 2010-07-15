@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Uniform Element Workload Predictive Balancing</TITLE>
+<META NAME="description" CONTENT="Uniform Element Workload Predictive Balancing">
+<META NAME="keywords" CONTENT="pred">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="pred.css">
+<LINK REL="previous" HREF="node10.html">
+<LINK REL="up" HREF="node10.html">
+<LINK REL="next" HREF="node12.html">
+</HEAD>
+<BODY >
+<H2><A NAME="SECTION00051000000000000000">
+Uniform Element Workload Predictive Balancing</A>
+</H2>
+<A NAME="sec:program.uniform"></A>
+The following example program successfully builds and runs with the
+provided makefile (6-22-99):
+<P><UL>
+<LI> Files to build the program (tar file: <TT>example.tar</TT>) may be
+found in <BR>
+<TT>/home/35/ziantl/develop/parallel/pred/4.2/pred/src/example</TT> on
+the SP.
+</UL>
+<P>
+Untarring the file will create a directory named <B>example</B>.  The
+Makefile included in the tar file uses the SCOREC common makefile and
+assumes that library paths are set up accordingly.  To build the
+sample executable, type
+<PRE>
+gmake BUILDSYS=sp2gcc PARALLEL=mpi NODEP=1 MODELER=parasolid
+</PRE>
+This will create the appropriate <code>bin/$(ARCHOS)</code> subdirectory
+in the example directory automatically before generating the
+executable.  The program may be run on the SP by typing:
+<PRE>
+poerun -procs 2  bin/ibm_4/pred.test_parasolid.exe 
+shocktube single &lt;number&gt;
+</PRE>
+where <code>&lt;number&gt;</code> is one of the following:
+<P><TABLE CELLPADDING=3 BORDER ALIGN=CENTER WIDTH=95% >
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>0</TD>
+<TD ALIGN="LEFT" NOWRAP>do not perform predictive balancing</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>1</TD>
+<TD ALIGN="LEFT" NOWRAP>perform predictive ITB balancing</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>2</TD>
+<TD ALIGN="LEFT" NOWRAP>perform predictive <I>k</I>-way partitioning using ParMetis&nbsp;[<A
+ HREF="node12.html#karypis97c">1</A>]</TD>
+</TR>
+</TABLE>
+<P>
+<BR><HR>
+</BODY>
+</HTML>

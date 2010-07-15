@@ -28,10 +28,19 @@ Office: Roger Bacon 332<br>
 
 <p class ="heading">Fall 2010 Courses</p>
 
-<ul>
+<div class="text">
 <li>Computer Science 010, Introduction to Computer Applications</li>
 <li>Computer Science 220, Assembly Language and Computer Architecture</li>
-</ul>
+</div>
+
+<p class ="heading">Research Interests</p>
+
+<div class="text">
+<!--#include virtual="research/interests.html" -->
+<p>
+<a href="research/">[More]</a>
+
+</div>
 
 <p class="bottom"></p>
 

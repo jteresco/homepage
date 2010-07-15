@@ -1,0 +1,56 @@
+This is TeX, C Version 3.14 (format=lplain 91.9.24)  1 AUG 1995 14:39
+**images.tex
+(images.tex
+LaTeX Version 2.09 <14 January 1991>
+
+(/fs5/grads10/terescoj/research/PMDB-4.0/doc/ethesis.sty
+RPI Thesis Style
+\c@firstchapter=\count79
+\descriptionmargin=\dimen99
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
+\captionwidth=\skip41
+\lcaptionwidth=\skip42
+\numcomm=\count89
+\numcount=\count90
+) (/src/tex/macros/psfig.sty
+\@unused=\write3
+\ps@stream=\read0
+\p@intvaluex=\dimen100
+\p@intvaluey=\dimen101
+psfig/tex 1.10-dvips
+)
+! I can't find file `amssymb.sty'.
+<to be read again> 
+                   \relax 
+\@documentstyle ...let \@elt \input \@optionfiles 
+                                                  \let \@elt \relax \makeato...
+l.7 ...mentstyle[psfig,11pt,amssymb,chap]{ethesis}
+                                                  
+Please type another input file name
+! Emergency stop.
+<to be read again> 
+                   \relax 
+\@documentstyle ...let \@elt \input \@optionfiles 
+                                                  \let \@elt \relax \makeato...
+l.7 ...mentstyle[psfig,11pt,amssymb,chap]{ethesis}
+                                                  
+*** (job aborted, file error in nonstop mode)
+
+ 
+Here is how much of TeX's memory you used:
+ 425 strings out of 4463
+ 4240 string characters out of 63281
+ 33020 words of memory out of 262141
+ 2385 multiletter control sequences out of 9500
+ 18996 words of font info for 72 fonts, out of 72000 for 255
+ 14 hyphenation exceptions out of 607
+ 11i,0n,17p,157b,15s stack positions out of 300i,40n,60p,3000b,4000s
+No pages of output.

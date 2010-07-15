@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> Partition Boundary Node Gather/Scatter Maps</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" Partition Boundary Node Gather/Scatter Maps">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html114 HREF="node10.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html112 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html106 HREF="node8.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html115 HREF="node10.html"> Migration</A>
+<B>Up:</B> <A NAME=tex2html113 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html107 HREF="node8.html"> pmdb_dref_own_gen</A>
+<BR> <HR> <P>
+<H1><A NAME=SECTION00160000000000000000> Partition Boundary Node Gather/Scatter Maps</A></H1>
+<P>
+<A NAME=opgs>&#160;</A>
+<P>
+These operators return arrays of node (<tt> pNode</tt>) 
+numbers on the partition boundary and also establish 
+the correspondence between the node numbers
+of two adjacent processors. They can be used as gather/scatter maps
+for the exchange of solution values between processors.
+Let <tt> dofs</tt> denote the 
+array of values corresponding to the nodes. Let also 
+<tt> p1.smap.p2</tt> be the array returned by call to <tt> pmdb_send_map_node</tt>
+on processor p1 corresponding to the partition boundary with <tt> p2</tt>. 
+Similarly, let 
+<tt> p2.rmap.p1</tt> be the array returned by call to <tt> pmdb_recv_map_node</tt>
+on processor p2 corresponding to the partition boundary with <tt> p1</tt>.
+Then the <tt> dofs</tt> are related by:
+<P>
+<PRE>        dofs[p1.smap.p2[i]] = dofs[p2.rmap.p1[i]]
+</PRE>
+<P>
+Figure a.2 is used to illustrate these operators whose details 
+are given below.
+<P>
+<P><A NAME=474>&#160;</A><A NAME=lab_fig_gs>&#160;</A><IMG  ALIGN=BOTTOM ALT="" SRC="gs.gif">
+<BR><STRONG>Figure:</STRONG> Example illustrating the <tt> pNode</tt>s and their gather scatter maps<BR>
+<P>
+<HR>
+<PRE>long pmdb_all_map_nodes(
+pMeshPB pmeshpb,        /* IN  */
+long    *map)           /* OUT */
+</PRE>
+<P>
+ This routine returns all the maps (numbers) for the nodes on the 
+partition boundary in array <code>map</code>. The size of <code>map</code> is assumed to be
+<tt> pmdb_size_all_map_nodes</tt>
+() and
+should be allocated by the user before this routine is called.
+For the example mesh in Figure a.2, the following map is 
+returned if executed on the processor 0.
+<P>
+<CENTER>
+<code>map = [8,9,5,4,1,10,11,12,13]</code>
+</CENTER>
+<P>
+<HR>
+<PRE>void pmdb_clean_pbnodes(
+pMeshPB pmeshpb)      /* IN */
+</PRE>
+<P>
+ This operator cleans the memory that was used in storing 
+partition boundary node mappings. It can be
+called right after one is done getting the maps. 
+It <i> should</i>  be called if 
+ <tt> pmdb_init_pbnodes</tt>
+() will be invoked later.
+<P>
+<HR>
+<PRE>long pmdb_init_pbnodes(
+pMeshPB pmeshpb)      /* IN */
+</PRE>
+<P>
+   This routine should be called before any of the gather/scatter map 
+retrieval routines are called in this section. The partition boundary
+entities are traversed and all the node numbers of <code>pNode</code>s attached
+to these entities are collected. This routine does neighborhood 
+communications in order to pass the entity pointers and compute the 
+correspondent maps on processors which share boundary entities.
+<P>
+<HR>
+<PRE>long pbop_map_node_size(
+pMeshPB pmeshpb,          /* IN */
+int     ith)              /* IN */
+</PRE>
+<P>
+         Returns the number of partition boundary nodes (pNodes) 
+adjacent to <code>ith</code> processor.  
+If executed on processor 0 with the mesh of 
+ Figure a.2, the following  will be returned ; 
+<tt> pbop_map_node_size(..,0)</tt> <b>= 5</b> and  
+<tt> pbop_map_node_size(..,1)</tt> <b>= 1</b>.
+ In order to get the id corresponding to the <code>ith</code> processor, the routine
+<tt> pmdb_adj_proc()</tt> can be used.
+<P>
+<HR>
+<PRE>long pmdb_recv_map_node(
+pMeshPB pmeshpb,         /* IN */
+long    *buffer,         /* IN */
+int     ith)             /* IN */
+</PRE>
+<P>
+ This routine puts the actual receive map on the <code>ith</code> adjacent processor
+in the user provided long array <code>buffer</code>. Its functionality is 
+similar to <tt> pmdb_send_map_node</tt>.
+<P>
+On processor 0, if <code>ith=0</code>, i.e. the adjacent processor which  has 
+id 1, 
+the call <tt> pmdb_recv_map_node(..,0) </tt> will return 
+<code>buffer = [8,9,5,10,11]</code>.
+<P>
+<HR>
+<PRE>long pmdb_send_map_node(
+pMeshPB  pmeshpb,          /* IN */
+long    *buffer,           /* IN */
+int      ith)              /* IN */
+</PRE>
+<P>
+This routine puts the actual send map on the <code>ith</code> adjacent processor
+in the user allocated long <code>buffer</code>.  The size of the <code>buffer</code> can be
+obtained by a call to  <tt> pmdb_map_node_size</tt>.
+When completed, this function returns the size
+of map put on the <code>buffer</code>.
+<P>
+On processor 0, if <code>ith=0</code>, i.e. the adjacent processor which  has
+id 1,
+the call <tt> pmdb_send_map_node(..,0) </tt> will return
+<code>buffer = [5,9,8,11,10]</code>.
+<P>
+<BR> <HR><A NAME=tex2html114 HREF="node10.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html112 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html106 HREF="node8.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html115 HREF="node10.html"> Migration</A>
+<B>Up:</B> <A NAME=tex2html113 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html107 HREF="node8.html"> pmdb_dref_own_gen</A>
+<BR> <HR> <P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Thu Aug  3 10:35:34 EDT 1995
+</I>
+</ADDRESS>
+</BODY>

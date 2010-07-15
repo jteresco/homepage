@@ -1,0 +1,9 @@
+
+@Article{teresco00b,
+  author = 	 {James D. Teresco and Mark W. Beall and Joseph E. Flaherty and Mark S. Shephard},
+  title = 	 {A hierarchical partition model for adaptive finite element computation},
+  journal = 	 CMAME,
+  year = 	 {2000},
+  volume = 	 {184},
+  pages = 	 {269--285}
+}

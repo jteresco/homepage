@@ -1,0 +1,16 @@
+@INPROCEEDINGS{flaherty00a,
+  AUTHOR =      { Joseph E. Flaherty and 
+                  Raymond M. Loy and 
+                  Mark S. Shephard and
+                  James D. Teresco},
+  TITLE  =      { Software for the parallel adaptive solution of conservation laws by discontinuous {Galerkin} methods },
+  BOOKTITLE =   {Discontinous Galerkin Methods Theory, Computation and
+                Applications},
+  EDITOR =      {B. Cockburn and G.E. Karniadakis and S.-W. Shu},
+  SERIES =      {Lecture Notes in Compuational Science and Engineering},
+  VOLUME =      {11},
+  PAGES =       {113--124},
+  PUBLISHER =   {Springer},
+  ADDRESS =     {Berlin},
+  YEAR =	{ 2000 }
+}

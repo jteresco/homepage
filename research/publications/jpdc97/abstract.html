@@ -1,0 +1,45 @@
+<HEADER>
+<TITLE>Abstract: Adaptive Local Refinement with Octree Load-Balancing for the
+Parallel Solution of Three-Dimensional Conservation Laws</TITLE>
+</HEADER>
+<BODY>
+
+<H1>Adaptive Local Refinement with Octree Load-Balancing for the
+Parallel Solution of Three-Dimensional Conservation Laws</H1>
+<BR>
+Joseph E. Flaherty,
+Raymond M. Loy,
+Mark S. Shephard,
+Boleslaw K. Szymanski,
+James D. Teresco,
+Louis H. Ziantz.
+<BR>
+<i> J. Parallel and Dist. Comput., Vol. 47, pp. 139-152, 1997.</i>
+
+<P>
+
+Conservation laws are solved by a local Galerkin finite element
+procedure with adaptive space-time mesh refinement and explicit time
+integration.  The Courant stability condition is used to select
+smaller time steps on smaller elements of the mesh, thereby greatly
+increasing efficiency relative to methods having a single global time step.
+Processor load imbalances, introduced at adaptive enrichment steps,
+are corrected by using traversals of an octree representing a spatial
+decomposition of the domain.  To accommodate the variable time steps,
+octree partitioning is extended to use weights derived from element
+size.  Partition boundary smoothing reduces the communications volume
+of partitioning procedures for a modest cost.  Computational results
+comparing parallel octree and inertial partitioning procedures are
+presented for the three-dimensional Euler equations of compressible
+flow solved on an IBM SP2 computer.
+
+
+<P>
+<TABLE BORDER=0 CELLSPACING=18> 
+<TR > 
+<TD > <A HREF="cite.txt"> Citation</A> (BIBTEX)      </TD>
+<TD > <A HREF="jpdc.ps"> Paper</A> (PS; 3.8MB)     </TD>
+<TD > <A HREF="jpdc.ps.gz"> Paper</A> (Gzipped PS; 783KB)     </TD>
+</TR>
+</TABLE>
+</BODY>

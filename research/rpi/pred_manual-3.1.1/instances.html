@@ -1,0 +1,67 @@
+<HEAD>
+<TITLE> PRED Library Instances</TITLE>
+</HEAD>
+<BODY>
+<P>
+
+<center>
+<H1>Library Instances (PRED)</H1>
+</center>
+
+<P>
+
+There are three instances of the library compiled with different
+flags available:
+
+<P>
+
+<TABLE BORDER>
+<TR>
+<TD><code>pred</code></TD><TD>is compiled with -g and all optimizations turned off</TD>
+</TR>
+<TR>
+<TD><code>pred-O</code></TD><TD>does not use the -g option and uses -O3 -qstrict</TD>
+</TR>
+<TR>
+<TD><code>pred-time</code></TD><TD>is optimized just as pred-O is and contains code to do
+instrumentation; it will create a directory 'PredTimes' in your
+current working directory and deposit files with timings of
+refinement, predictive, and nonpredictive balancing.  If this library
+is used and nonpredictive balancing is to be done during refinement, a
+call to
+  <tt>refdref_set_rebal_func(pred_nonpred_balance_refdref)</tt>
+should be made to handle the timing of the nonpredictive balancing.</TD>
+</TR>
+</TABLE>
+
+
+<P>
+
+Please contact ziantzl@cs.rpi.edu if you wish to use the following
+instances of the library:
+
+<P>
+
+<TABLE BORDER>
+<TR>
+<TD><code>pred_oct</code></TD><TD> contains functions to perform predictive Octree
+balancing; it is otherwise the same as pred</TD>
+</TR>
+<TR>
+<TD><code>pred_oct-O</code></TD><TD>contains functions to perform predictive Octree
+balancing; it is otherwise the same as pred-O</TD>
+</TR>
+<TR>
+<TD><code>pred_oct-time</code></TD><TD>contains functions to perform predictive Octree
+balancing; it is otherwise the same as pred-time</TD>
+</TR>
+</TABLE>
+
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Louis Ziantz <BR>
+Tue Jul 15 17:27:31 EDT 1997
+</I>
+</ADDRESS>
+</BODY>

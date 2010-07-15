@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Uniform Element Workload Predictive Balancing</TITLE>
+<META NAME="description" CONTENT="Uniform Element Workload Predictive Balancing">
+<META NAME="keywords" CONTENT="pred">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="pred.css">
+<LINK REL="next" HREF="manual.variable.html">
+<LINK REL="previous" HREF="manual.mods.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="manual.variable.html">
+</HEAD>
+<BODY >
+<H2><A NAME="SECTION00043000000000000000">
+General Functions for Predictive Balancing</A>
+</H2>
+<P><UL>
+<P><LI> <TT>void pred_set_ref_bal_func(PRED_CBPROC
+  set_pred_ref_bal_func)</TT>
+<P>
+Allows a load balancing function to be registered with pred.
+The load balancing function registered with the predictive library
+should have the following prototype format:
+<PRE>
+void set_pred_ref_bal_func(pMeshPB);
+</PRE>
+Load balancing after each stage of enrichment is shut
+off by a call to this function.
+<P>
+For example, the prototype for Iterative Tree Balancing is 
+<PRE>
+void pmdb_load_balance(pMeshPB);
+</PRE>
+To use ITB predictively during enrichment, you would call
+<PRE>
+pred_set_ref_bal_func(pmdb_load_balance);
+</PRE>
+before the first call to refdref.
+<P>
+An example of registering another load balancer may be found in
+  <A HREF="manual.other-bal.html#sec:manual.other-bal">Making Other Balancers Predictive</A>.
+<P>
+<LI> <TT>void pred_unset_ref_bal_func(void)</TT>
+<P>
+Used to clear the load balancing function registered with pred
+so that it is no longer used.  Calling this function shuts off
+predictive balancing.  Load balancing after each stage of
+enrichment is turned back on by a call to this function.
+<P>
+<LI> <TT>int pred_ref_balancing_on(void)</TT>
+<P>
+Returns 1 if predictive balancing before refinement is turned
+on; 0 otherwise. <BR>
+<P>
+<LI> <TT>int pred_balancing_on(void)</TT>
+<P>
+Returns 1 if predictive balancing before refinement is turned on; 0
+otherwise.  If extensions to allow for predictive balancing before
+coarsening are ever added, this will return 1 if balancing before
+refinement or coarsening is turned on.  Currently, identical to <TT>
+pred_ref_balancing_on</TT>.
+<P></UL><HR>
+</BODY>
+</HTML>

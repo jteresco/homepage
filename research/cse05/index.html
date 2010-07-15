@@ -1,0 +1,138 @@
+<TITLE>Resource-Aware Parallel Computation Minisymposium Talks</TITLE>
+<H1>Resource-Aware Parallel Computation Minisymposium Talks</H1>
+<H2><A HREF="http://www.siam.org/meetings/CSE05/">2005 SIAM Conference on
+Computational Science and Engineering</A></H2>
+
+<HR>
+
+A minisymposium on resource-aware parallel computation was held in
+February, 2005, at the <A
+HREF="http://www.siam.org/meetings/CSE05/">2005 SIAM Conference on
+Computational Science and Engineering</A> in Orlando.  The
+minisymposium, organized by <A HREF="/~terescoj">Jim Teresco</A> and
+Jamal Faik, featured six talks.  The presentation slides from five of
+those talks are included here.<P>
+
+The abstract for the minisymposium:
+Modern large-scale scientific computation problems must execute in
+parallel computational environments to achieve acceptable
+performance. Target parallel environments range from supercomputers
+and Grid environments to clusters and collections of transient and
+widely distributed resources. hierarchical and heterogeneous systems
+are increasingly common. This presents challenges for the development
+of portable and efficient software, influencing general purpose tools
+such as programming languages, message-passing implementations, and
+middleware systems, domain-specific libraries such as dynamic load
+balancers, and application software. Efficiency requires that software
+be optimized based on system characteristics and domain
+knowledge. This minisymposium will examine the state-of-the-art in
+resource-aware computing.<P>
+
+<HR>
+
+The talks:
+
+<UL>
+<LI><I>An Overview of Resource-Aware Parallel Computation</I>,
+    James D. Teresco, Williams College.<P>
+
+Abstract:
+Target parallel environments for modern large-scale scientific
+computation include supercomputers, hierarchical Grid environments,
+heterogeneous clusters, and collections of transient and widely
+distributed resources.  This variety influences the development of
+portable and efficient software, including general purpose tools such
+as programming languages, message-passing implementations, and
+middleware systems, domain-specific libraries such as dynamic load
+balancers, and application software.  Efficiency requires that
+software be optimized based on system characteristics and domain
+knowledge.  This talk introduces resource-aware computing and
+highlights some state-of-the-art approaches.<P>
+
+   <A HREF="teresco.pdf">Presentation Slides (PDF)</A><P>
+
+<LI><I>Scientific Computation on Heterogeneous Clusters using DRUM</I>,
+    Jamal Faik, Rensselaer Polytechnic Institute.<P>
+
+   <A HREF="faik.ppt">Presentation Slides (PPT)</A><P>
+
+<LI><I>Architecture-Aware Autonomic Adaptations within the Common Component Architecture</I>,
+    Manish Parashar, Rutgers University; Jaideep Ray, Sandia National
+    Laboratories (speaker).<P>
+
+   <A HREF="parashar.pdf">Presentation Slides (PDF)</A><P>
+
+<LI><I>Automatic Deployment of MPI Applications on a Computational Grid</I>,
+    S&eacute;bastien Lacour, IRISA / INRIA Rennes, France and Argonne
+    National Laboratory; Christian P&eacute;rez, IRISA / INRIA Rennes,
+    France.<P>
+
+Abstract:
+Computational grids offer a huge computational power.  MPI
+applications can take advantage of that power thanks to MPICH-G2, the
+popular, grid-enabled MPI implementation.
+
+Ideally, deploying an application on a grid should be as automatic as
+possible.  In particular, the user should not have to manually select
+and specify the resources which will run an application.
+
+We describe a middleware which takes in input a description of the
+grid resources and a description of the MPICH-G2 application.  This
+middleware automatically selects the resources required to run the
+parallel application and automatically launches the application.  The
+middleware also provides the MPICH-G2 library with the topology
+information necessary for more efficiency in a grid environment.<P>
+
+   <A HREF="lacour.pdf">Presentation Slides (PDF)</A><P>
+
+<LI><I>Middleware for Load Balancing using Decentralized Agent
+    Coordination</I>, Carlos Varela, Rensselaer Polytechnic
+    Institute.<P> 
+
+Abstract:
+
+The Internet is becoming a ubiquitous platform for high-performance
+distributed computing. In this talk, we present a new software
+framework for distributed computing over large scale dynamic and
+heterogeneous networks. Our framework wraps computation into
+autonomous actors, self organizing computing entities, which freely
+roam over the network to find optimal target execution environments.
+
+We introduce an actor-oriented programming language (SALSA), a
+distributed run-time environment (WWC), and a middleware
+infrastructure for autonomous reconfiguration and load balancing
+(IOS).  Load balancing is completely transparent to application
+programmers.  The middleware triggers actor migration based on
+profiling resources in a completely decentralized manner.  Our
+infrastructure also considers the dynamic addition and removal of
+nodes from the computation, while continuously balancing the load
+given the changing resources.
+
+To balance computational load, we introduce peer-to-peer randow work
+stealing (RS).  We also introduce two more informed variations
+thereof: application topology-sensitive (ATS), and network
+topology-sensitive (NTS) work stealing. We evaluate different load
+balancing strategies applied to diverse actor interconnection
+topologies over heterogeneous networks.
+
+In essence, the presented middleware is a decentralized virtual
+network of agents.  The framework modularity provides a testbed to
+evaluate distributed systems performance and scalability under
+different middleware agent topologies, application and resource
+profiling mechanisms, peer-to-peer communication protocols, and
+application reconfiguration decision functions.<P>
+
+   <A HREF="varela.ppt">Presentation Slides (PPT)</A><P>
+
+<LI><I>Performance-Directed Resource Allocation</I>
+    Valerie Taylor, Texas A&amp;M University; Seung-Hye Jang (speaker).<P>
+
+   <A HREF="jang.pdf">Presentation Slides (PDF)</A><P>
+
+</UL>
+
+<HR>
+<ADDRESS>
+E-mail domain: cs.williams.edu, username: terescoj --
+Thu Mar 24 21:55:02 EST 2005
+</ADDRESS>

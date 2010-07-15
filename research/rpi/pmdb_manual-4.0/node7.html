@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> pmdb_dref_numb_own_gen</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" pmdb_dref_numb_own_gen">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html96 HREF="node8.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html94 HREF="node6.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html88 HREF="node6.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html97 HREF="node8.html"> pmdb_dref_own_gen</A>
+<B>Up:</B> <A NAME=tex2html95 HREF="node6.html"> Partition Boundary Updates</A>
+<B> Previous:</B> <A NAME=tex2html89 HREF="node6.html"> Partition Boundary Updates</A>
+<BR> <HR> <P>
+<H2><A NAME=SECTION00151000000000000000> pmdb_dref_numb_own_gen</A></H2>
+<P>
+<A NAME=pmdbdref_numb_own_gen>&#160;</A>
+<P>
+<PRE>void pmdb_dref_numb_own_gen(
+pMeshPB   pmeshpb)
+</PRE>
+<P>
+
+This function should be called after refinement and derefinement to
+global number the newly created entities and to establish the
+ownership information for the shared partition boundary entities.
+Note that global numbering is <i> not</i> necessary theoretically for
+migration algorithm to work. However, it is provided since it helps in
+debugging.  Currently, <tt> PMDB</tt> provides it automatically.
+Nevertheless, global numbering uses memory as well as computational
+cost since the whole mesh has to be traversed locally on each
+processor. A future version of <tt> PMDB</tt> will make it optional
+and require call to only <tt> pmdb_dref_own_gen</tt>.  <P>
+
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Tue Aug  1 14:37:38 EDT 1995</I>
+</ADDRESS>
+</BODY>

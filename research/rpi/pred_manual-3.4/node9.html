@@ -1,0 +1,74 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="description" content="Making Other Balancers Predictive">
+   <meta name="keywords" content="pred">
+   <meta name="resource-type" content="document">
+   <meta name="distribution" content="global">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (X11; I; SunOS 5.6 sun4u) [Netscape]">
+   <title>Making Other Balancers Predictive</title>
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<link REL="STYLESHEET" HREF="pred.css">
+<link REL="previous" HREF="node8.html">
+<link REL="up" HREF="node4.html">
+<link REL="next" HREF="node10.html">
+</head>
+<body>
+
+<h2>
+<a NAME="SECTION00045000000000000000"></a>Making Other Balancers Predictive</h2>
+The following functions may be used to create other predictive balancing
+calls:
+<ul>
+<li>
+<tt>void pred_setup_before_ref_bal(pMeshPB pmeshpb)</tt></li>
+
+<p>Performs all setup operations needed to do a predictive balancing before
+refinement.
+<br>&nbsp;
+<li>
+<tt>void pred_cleanup_after_ref_bal(pMeshPB pmeshpb)</tt></li>
+
+<p>Performs all cleanup operations needed after a predictive balancing
+before refinement.
+<br>&nbsp;
+<li>
+<tt>void pred_set_ref_bal_func(void (*set_pred_ref_bal_func)()</tt></li>
+
+<p>Allows a predictive balancing call other than the defaults to be registered
+with pred.
+<br>&nbsp;
+<li>
+<tt>void pred_unset_ref_bal_func(void)</tt></li>
+
+<p>Used to clear a predictive balancing function registered with pred so
+that it is no longer used.
+<br>&nbsp;
+<br>&nbsp;</ul>
+EXAMPLE of the use of the functions in this section:
+<pre>void pred_example_balance_before_ref(pMeshPB pmeshpb)
+{
+&nbsp; pred_setup_before_ref_bal(pmeshpb);
+&nbsp; call_example_balancer(pmeshpb);
+&nbsp; pred_cleanup_after_ref_bal(pmeshpb);
+}</pre>
+After this is defined, the following may be called:
+<pre>&nbsp; pred_set_ref_bal_func(pred_example_balance_before_ref);</pre>
+Now, when predictive balancing is performed,
+<br><tt>pred_example_balance_before_ref()</tt> will be called before refinement.
+<br>&nbsp;
+<p>
+<hr>
+</body>
+</html>
+
+
+
+
+
+

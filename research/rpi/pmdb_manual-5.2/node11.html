@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> Load Balancing</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" Load Balancing">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html134 HREF="node12.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html132 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html126 HREF="node10.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html135 HREF="node12.html"> Visualization Routines</A>
+<B>Up:</B> <A NAME=tex2html133 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html127 HREF="node10.html"> Migration</A>
+<BR> <HR> <P>
+<H1><A NAME=SECTION00180000000000000000> Load Balancing</A></H1>
+<A NAME=opload>&#160;</A>
+<P>
+<HR>
+
+<PRE>void pmdb_set_load_balance_params(
+pMeshPB  pmeshpb,       /* IN */
+int      first_arg,     /* IN */
+...,                    /* additional args, IN */
+NULL)
+</PRE>
+<P>
+This routine allows the application to set various paramters to the
+load balancing operator.  This function takes a variable-length
+argument list, so any number of the paramters can be set with a single
+call.  The list <B>must</B> be terminated with an argument
+<code>NULL</code>.  Any of these parameters can also be set by using
+environment variables by the same names.  The following is a list of
+arguments and possible values:
+<P>
+<TABLE BORDER>
+<TR>
+<TD>Argument Name</TD><TD>Type</TD><TD>Valid Values</TD><TD>Description</TD>
+</TR>
+<TR>
+<TD><code>PMDB_DEF_LB_SEL_METHOD</code></TD> <TD><code>int</code></TD>
+<TD>selection methods</TD> <TD>Set the selection method to use when
+migrating elements for load balancing.  Default is
+<code>PMDB_LB_SLICE</code>, which was used for PMDB versions prior to
+version 4.0</TD>
+</TR>
+<TR>
+<TD><code>PMDB_LB_SEL_METHOD</code></TD> <TD><code>int</code></TD>
+<TD>selection methods</TD> <TD>Set the default selection method to use when
+migrating elements for load balancing.  Default is
+<code>PMDB_LB_SLICE</code>, which was used for PMDB versions prior to
+version 4.0</TD>
+</TR>
+<TR>
+<TD><code>PMDB_LB_MAX_ITER</code></TD> <TD><code>int</code></TD>
+<TD>any integer <code>&gt;= 0</code></TD> <TD>Set the number of iterations for load
+balancing.  A value of 0 disables load balancing.  This corresponds to
+the <code>max_iter</code> parameter to the old
+<code>load_balance()</code> operator.</TD>
+</TR>
+<TR>
+<TD><code>PMDB_LB_MAX_INTERNAL_ITER</code></TD> <TD><code>int</code></TD>
+<TD>any integer <code>&gt;= 0</code></TD> <TD>Set the number of
+internal iterations for load
+balancing.  This value is the number of "slices" or "interface-sized"
+chunks that will be migrated between recomputation of the load flow
+tree.  Smaller values will result in a slower algorithm, but can
+potentially deal with the small interface values without degrading the
+interprocessor boundary as much.  Default is 100.</TD>
+</TR>
+<TR>
+<TD><code>PMDB_LB_DEBUG_LEVEL</code></TD> <TD><code>int</code></TD>
+<TD>0,1,2,3</code></TD> <TD>
+<TABLE BORDER>
+<TR>
+<TD COLSPAN=2>Set the amount of output
+to be produced by the load balancing algorithm</TD>
+</TR>
+<TR>
+<TD>0</TD><TD>No output</TD>
+</TR>
+<TR>
+<TD>1</TD><TD>Basic stats (default)</TD>
+</TR>
+<TR>
+<TD>2</TD><TD>Report on each internal iteration</TD>
+</TR>
+<TR>
+<TD>3</TD><TD>Report each element migrated</TD>
+</TR>
+</TABLE>
+</TR>
+<TR>
+<TD><code>PMDB_LB_TOLERANCE</code></TD> <TD><code>long</code></TD>
+<TD>any long int <code>&gt;= 1</code></TD> <TD>Set the load imbalance
+tolerance.  After the greatest load difference between any two
+processors falls to this level, the load balancing will terminate.
+This corresonds to the <code>tol</code> argument to the old
+<code>load_balance()</code> operator.  Default is 1.</TD>
+</TR>
+<TR>
+<TD><code>PMDB_LB_INTERFACE_THRESH</code></TD> <TD><code>long</code></TD>
+<TD>any long int <code>&gt;= 0</code></TD> <TD>Set the initial
+interface thrershold to consider partitions connected for the
+computation of the load flow tree.  This value is decreased
+automatically in successive iterations of the iterative load balancing
+algorithm.  Default is 0.</TD>
+</TR>
+</TABLE>
+<P>
+
+Values for the load-balancing selection methods.  
+<P> 
+<TABLE BORDER>
+<TR> 
+<TD>Name</TD><TD>Description</TD> 
+</TR> 
+<TR>
+
+<TD><code>PMDB_LB_SLICE</code></TD> <TD> Select elements for migration
+by "peeling" slices from the interprocessor boundary.  This is the
+default, and is the only method used in versions of PMDB before
+4.0.</TD>
+
+</TR> 
+<TR> 
+
+<TD><code>PMDB_LB_GEOM</code></TD> <TD> Select elements for migration
+by choosing elements with the greatest difference in the distances
+from the element to the centroids of the sending and receiving
+processors. </TD>
+
+</TR> <TR>
+
+<TD><code>PMDB_LB_PROJECTION</code></TD> <TD> Select elements for
+migration by choosing elements with the greatest projected difference
+in the distances from the element to the centroids of the sending and
+receiving processors.  The projection is from the centroid of the
+candidate element onto the line connecting the centroids of the
+sending and receiving processors.</TD>
+
+</TR> 
+<TR> 
+
+<TD><code>PMDB_LB_GEOM_PRED</code></TD> <TD> Same as
+<code>PMDB_LB_GEOM</code>, except that partition centroids used are an
+estimate of the centroid after the balancing is complete.</TD>
+
+</TR> <TR>
+
+<TD><code>PMDB_LB_PROJECTION_PRED</code></TD> <TD> Same as
+<code>PMDB_LB_PROJECTION</code>, except that partition centroids used
+are an estimate of the centroid after the balancing is complete.</TD>
+
+</TR> 
+</TABLE>
+
+<P>
+<HR>
+<PRE>void pmdb_load_balance(
+pMeshPB  pmeshpb)       /* IN */
+</PRE>
+<P>
+This routine implements the iterative tree based load balancing 
+algorithm, based on the paramters set by environment variables or by
+previous calls to <code>pmdb_set_load_balance_params()</code>.
+
+<P>
+<HR>
+<PRE>void  load_balance(
+pMeshPB  pmeshpb,       /* IN */
+long     tol,           /* IN */
+int      max_iter)      /* IN */
+</PRE>
+<P>
+
+This routine implements the iterative tree based load balancing
+algorithm.  <code>tol</code> is the load tolerance and
+<code>max_iter</code> is the maximum number of load balancing
+iterations to be performed.  This function is obsolete and has been
+replaced with the functions described above.
+
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Mon Oct 16 11:32:33 EDT 1995
+</i>
+</ADDRESS>
+</BODY>

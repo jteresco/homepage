@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> Migration</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" Migration">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html124 HREF="node11.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html122 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html116 HREF="node9.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html125 HREF="node11.html"> Load Balancing</A>
+<B>Up:</B> <A NAME=tex2html123 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html117 HREF="node9.html"> Partition Boundary Node </A>
+<BR> <HR> <P>
+<H1><A NAME=SECTION00170000000000000000> Migration</A></H1>
+<P>
+<A NAME=opmig>&#160;</A>
+  In order to migrate entities, the user should take three steps:
+First, all the  data which are attached to the entities should be 
+<i> registered</i> with its four character <tt> MDB</tt> identification tag. This 
+registration process is done only once at the beginning of the program. 
+During the program run, it is also possible to <i> unregister</i> tags 
+which have already been registered.   If an entity which has unregistered
+data attached is migrated, 
+memory leaks will 
+result since there is no way for <tt> PMDB</tt> (which does not have  
+access to <tt> MDB</tt> internal data structures) 
+to find out whether any data
+is attached to an entity.  There may be unintentional attempts by different 
+library writers to use identical tags for their own attached data. Such 
+actions can have disastrous effects. The return codes from registration
+mechanism also provides a means to prevent such scenarios.
+<P>
+ Having registered attached data, the user needs to prepare arrays which 
+contain the entities to be migrated  and their destination processor ids.
+ Since preparing these arrays maybe cumbersome, a utility
+routine is provided to do this. The user  can call 
+<tt> pmdb_insert_mig_entity</tt>() repeatedly with the entity address
+and the destination processor for migration to prepare these arrays.
+<P>
+ Finally, the migration routines themselves can be called to perform 
+the movement of entities to destination processors and to do a follow-up
+link update procedure.
+<P>
+<HR>
+
+<PRE>int pmdb_tag_registerI(
+pMeshPB pmeshpb,       /* IN */
+eType   etype,         /* IN */
+char   *tag,           /* IN */
+unsigned char opts)    /* IN */
+</PRE>
+<P>
+
+This function registers an integer attached data for entities of
+<code>etype</code>.  The integer data is of length
+<code>sizeof(long)</code> bytes.  Once a tag has been registered, when
+entities of <code>etype</code> are migrated, the attached data is also
+migrated and attached back when the entity is created at the target
+processor.  <P>
+
+It returns 1 if the <code>tag</code> has been successfully registered and 
+0 if it has not successfully been registered due to presence of
+a duplicate tag.
+<P>
+
+The additional options allow the attachment of data with a requirement
+that the tag be unique and that the data should not be migrated.  To
+obtain the default behavior, <code>PMDB_TAG_DEFAULT</code> should be
+passed in for <code>opts</code>.  Other options are
+<code>PMDB_TAG_NOMIGRATE</code> to specify attachments that should not
+be migrated, but are being registered for the purpose of ensuring
+uniqueness, and <code>PMDB_TAG_UNIQUE</code> causes the program to
+abort if the same tag has been registered twice.  To specify both,
+pass in <code>PMDB_TAG_NOMIGRATE|PMDB_TAG_UNIQUE</code>.
+<P>
+
+<HR>
+<PRE>int pmdb_tag_unregisterI(
+pMeshPB pmeshpb,         /* IN */
+eType   etype,           /* IN */
+char   *tag)             /* IN */
+</PRE>
+<P>
+This routine deletes a registered integer data <code>tag</code>.
+It returns 1 if the tag has been successfully unregistered (deleted) and 
+0 if the <code>tag</code> could not be found for unregistering.
+<P>
+
+<HR>
+<PRE>int pmdb_tag_registerP(
+pMeshPB pmeshpb,       /* IN */
+eType   etype,         /* IN */
+char   *tag,           /* IN */
+int     size,          /* IN */
+unsigned char opts)    /* IN */
+</PRE>
+<P>
+
+This function registers a pointer attached data for entities of
+<code>etype</code>.  The data is <i> assumed</i> to be in contiguous
+block. It is possible to handle structures containing pointers to
+other data by allocating all the data including the structure itself
+in <i> one</i> contiguous block.  <P>
+
+If <code>size</code> <b>&gt; 0</b>, then the attached data is assumed
+to have <i> fixed</i> length and its length in bytes is given by
+<code>size</code>.  If, on the other hand, <code>size</code> <b>&lt;
+0</b>, then the attached data has <i> variable</i> length and the <i>
+first</i> integer (<code>sizeof(int)</code> bytes) of the attached
+data is assumed to contain the size of the attached data in bytes
+including the first integer itself.  <P> At its completion, the
+routine returns <b>1</b> if the <code>tag</code> has been successfully
+registered and 0 otherwise.
+<P>
+
+See <tt>pmdb_tag_registerI</tt> for a description of the
+<code>opts</code> argument.
+<P>
+
+<HR>
+<PRE>int pmdb_tag_unregisterP(
+pMeshPB pmeshpb,          /* IN */
+eType   etype,            /* IN */
+char   *tag)              /* IN */
+</PRE>
+<P>
+This routine deletes a registered pointer attached data tag. It 
+returns 1 if the tag has been successfully unregistered (deleted) and
+0 if it could not be found for unregistering.
+<P>
+
+<HR>
+<PRE>void pmdb_insert_mig_entity(
+pEntity     entity,         /* IN  */
+int         pid,            /* IN  */
+int        *num_procs,      /* OUT */
+int       **procids,        /* OUT */
+long      **num_entities,   /* OUT */
+pEntity  ***send_entities)  /* OUT */
+</PRE>
+<P>
+   This function is used to prepare arrays of entities and target
+processor to be fed into the  migration operators
+<tt> pmdb_migrate_faces</tt>
+ and
+<tt> pmdb_migrate_regions</tt>
+.
+<P>
+<TABLE BORDER>
+<TR>
+<TD><i>entity</I></TD><TD>entity to be migrated.</TD>
+</TR>
+<TR>
+<TD><i>pid</i></TD><TD>destination processor for migration.</TD>
+</TR>
+<TR>
+<TD><I>procids</I></TD><TD>array of processor ids returned.</TD>
+</TR>
+<TR>
+<TD><i>num_entities</i></TD><TD>array of number of entities targeted to each processor</TD>
+</TR>
+</TABLE>
+
+<P>
+<HR>
+<PRE>void pmdb_migrate_faces(
+pMeshPB     pmeshpb,           /* IN  */
+int         num_sends,         /* IN  */
+long       *num_send_faces,    /* IN  */
+pEntity   **send_faces,        /* IN  */
+int        *dest_pid,          /* IN  */
+int        *num_recvs,         /* OUT */
+long      **num_recv_faces,    /* OUT */
+pEntity  ***recv_faces,        /* OUT */
+int       **src_pid)           /* OUT */
+</PRE>
+<P>
+ This routine migrates faces to other processors. It needs to be called 
+by all processors.
+<P>
+<TABLE BORDER>
+<TR>
+<TD><i>pmeshpb</i></TD><TD><tt>PMDB</tt> handle.</TD>
+</TR>
+<TR>
+<TD><i>num_sends</i></TD><TD>number of processors to send to.</TD>
+</TR>
+<TR>
+<TD><i>num_send_faces</i></TD><TD>array of number of faces to send.</TD>
+</TR>
+<TR>
+<TD><i>send_faces</i></TD><TD>array of arrays of faces to send.</TD>
+</TR>
+<TR>
+<TD><i>dest_pid</i></TD><TD>array of ids of processors to send to</TD>
+</TR>
+<TR>
+<TD><i>num_recvs</i></TD><TD>number of receives (returned)</TD>
+</TR>
+<TR>
+<TD><i>num_recv_faces</i></TD><TD>array number of received faces (returned)</TD>
+</TR>
+<TR>
+<TD><i>recv_faces </i></TD><TD>array of arrays of received faces (returned)</TD>
+</TR>
+<TR>
+<TD><i>src_pid </i></TD><TD>array of ids of processors received from (returned)</TD>
+</TR>
+</TABLE>
+
+<P>
+<HR>
+<PRE>void pmdb_migrate_regions(
+pMeshPB     pmeshpb,
+int         num_sends,
+long       *num_send_regions,
+pEntity   **send_regions,
+int        *dest_pid,
+int        *num_recvs,
+long      **num_recv_regions,
+pEntity  ***recv_regions,
+int       **src_pid)
+</PRE>
+<P>
+ This routine migrates regions to other processors. It needs to be 
+called by all processors.  The arguments are the same as 
+<tt> pmdb_migrate_faces</tt> with faces replaced by regions.
+<P>
+<BR> <HR><A NAME=tex2html124 HREF="node11.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html122 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html116 HREF="node9.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html125 HREF="node11.html"> Load Balancing</A>
+<B>Up:</B> <A NAME=tex2html123 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html117 HREF="node9.html"> Partition Boundary Node </A>
+<BR> <HR> <P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Mon Oct 16 11:26:15 EDT 1995
+</I>
+</ADDRESS>
+</BODY>

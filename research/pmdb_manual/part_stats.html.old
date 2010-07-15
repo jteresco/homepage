@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> Partition Quality Analysis Routines</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" Misc">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+
+ <BR> <HR><A HREF="comm.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"> </A>  <A NAME=tex2html140 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html136 HREF="miscops.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html135 HREF="comm.html"> Communication Routines</A>
+<B>Up:</B> <A NAME=tex2html141 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html137 HREF="miscops.html"> Miscellaneous Operators</A>
+<BR> <HR> <P>
+<H1><A NAME=start> Partition Quality Analysis Routines</A></H1>
+<P>
+
+The recommended method to obtain partition quality statistics is
+through the <tt>pmdb_metrics</tt> routine.  This is a variable-length
+argument list function.<P>
+
+<PRE>
+void pmdb_metrics(
+pMeshPB pmeshpb,       /* IN */
+int first_arg,         /* IN */
+...)
+</PRE>
+
+The arguments are specified in pairs.  The first is the partition
+quality statistic to be computed and the second is the address of the
+appropriate storage in which to store the result.  The list should be
+terminated with a NULL argument.  <P>
+
+The following is a
+list of values which can be computed and the type of the argument
+which should be passed in the second argument in the type-address
+pair.<P>
+
+<TABLE BORDER>
+<TR>
+<TD>Argument Name</TD><TD>Type</TD><TD>Description</TD>
+</TR>
+<TR><TD><CODE>PMDB_MIN_LOAD</CODE></TD><TD><CODE>long *</CODE></TD>
+<TD>Returns the minimum load on any processor</TD></TR>
+<TR><TD><CODE>PMDB_MAX_LOAD</CODE></TD><TD><CODE>long *</CODE></TD>
+<TD>Returns the maximum load on any processor</TD></TR>
+<TR><TD><CODE>PMDB_AVG_LOAD</CODE></TD><TD><CODE>long *</CODE></TD>
+<TD>Returns the average load of all processors</TD></TR>
+<TR><TD><CODE>PMDB_LOCAL_LOAD</CODE></TD><TD><CODE>long *</CODE></TD>
+<TD>Returns the load on the local processor for each caller</TD></TR>
+<TR><TD><CODE>PMDB_GLOBAL_LOAD</CODE></TD><TD><CODE>long *</CODE></TD>
+<TD>Returns the global load on all processors</TD></TR>
+<TR><TD><CODE>PMDB_MAX_LOCAL_SI</CODE></TD><TD><CODE>double *</CODE></TD>
+<TD>Returns the maximum local surface index</TD></TR>
+<TR><TD><CODE>PMDB_AVG_LOCAL_SI</CODE></TD><TD><CODE>double *</CODE></TD>
+<TD>Returns the average local surface index</TD></TR>
+<TR><TD><CODE>PMDB_LOCAL_SI</CODE></TD><TD><CODE>double *</CODE></TD>
+<TD>Returns the local surface index</TD></TR>
+<TR><TD><CODE>PMDB_GLOBAL_SI</CODE></TD><TD><CODE>double *</CODE></TD>
+<TD>returns the global surface index</TD></TR>
+<TR><TD><CODE>PMDB_AVG_FACE_DISCONN</CODE></TD><TD><CODE>double *</CODE></TD>
+<TD>Returns the average number of face-connected components per processor</TD></TR>
+<TR><TD><CODE>PMDB_AVG_EDGE_DISCONN</CODE></TD><TD><CODE>double *</CODE></TD>
+<TD>Returns the average number of edge-connected components per processor</TD></TR>
+<TR><TD><CODE>PMDB_AVG_VERTEX_DISCONN</CODE></TD><TD><CODE>double *</CODE></TD>
+<TD>Returns the average number of vertex-connected components per processor</TD></TR>
+<TR><TD><CODE>PMDB_MAX_FACE_DISCONN</CODE></TD><TD><CODE>int *</CODE></TD>
+<TD>Returns the maximum number of face-connected components on any processor</TD></TR>
+<TR><TD><CODE>PMDB_MAX_EDGE_DISCONN</CODE></TD><TD><CODE>int *</CODE></TD>
+<TD>Returns the maximum number of edge-connected components on any processor</TD></TR>
+<TR><TD><CODE>PMDB_MAX_VERTEX_DISCONN</CODE></TD><TD><CODE>int *</CODE></TD>
+<TD>Returns the maximum number of vertex-connected components on any processor</TD></TR>
+<TR><TD><CODE>PMDB_FACE_DISCONN</CODE></TD><TD><CODE>int *</CODE></TD>
+<TD>Returns the number of face-connected components on the local processor</TD></TR>
+<TR><TD><CODE>PMDB_EDGE_DISCONN</CODE></TD><TD><CODE>int *</CODE></TD>
+<TD>Returns the number of edge-connected components on the local processor</TD></TR>
+<TR><TD><CODE>PMDB_VERTEX_DISCONN</CODE></TD><TD><CODE>int *</CODE></TD>
+<TD>Returns the number of vertex-connected components on the local processor</TD></TR>
+<TR><TD><CODE>PMDB_MAX_ADJACENCY</CODE></TD><TD><CODE>double *</CODE></TD>
+<TD>Returns the maximum percentage of processors adjacent to any processor</TD></TR>
+<TR><TD><CODE>PMDB_AVG_ADJACENCY</CODE></TD><TD><CODE>double *</CODE></TD>
+<TD>Returns the average percentage of processors adjacent to any processor</TD></TR>
+<TR><TD><CODE>PMDB_LOCAL_ADJACENCY</CODE></TD><TD><CODE>double *</CODE></TD>
+<TD>Returns the percentage of processors adjacent to the local processor</TD></TR>
+<TR><TD><CODE>PMDB_COMM_MATRIX</CODE></TD><TD><CODE>char **</CODE></TD>
+<TD>Returns the communication matrix - pass in an array of
+num_procs*num_procs characters.  Entry <code>[i][j]</code> will contain <TT>'X'</TT> if the
+processors <tt>i</tt> and <tt>j</tt> are adjacent.</TD></TR>
+<TR><TD><CODE>PMDB_INTERFACE_MATRIX</CODE></TD><TD><CODE>long **</CODE></TD>
+<TD>Returns a matrix of the interface sizes (number of shared faces)
+between each pair of processors.  Pass in an array of
+num_procs*num_procs long's.  Entry <code>[i][j]</code> will contain the
+number of shared faces between processor <tt>i</tt> and processor
+<tt>j</tt>.</TD></TR>
+
+</TABLE>
+
+<PRE>
+void pmdb_part_info(
+pMeshPB pmeshpb)       /* IN */
+</PRE>
+
+<I>Available beginning in version 4.2.</I>
+
+Prints statistical information about entities on interprocessor,
+shared entity ownership, and other information.
+
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Fri Oct 11 16:18:11 EDT 1996
+</I>
+</ADDRESS>
+</BODY>

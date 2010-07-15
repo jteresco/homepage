@@ -1,0 +1,473 @@
+\batchmode
+
+
+
+
+
+\documentstyle[psfig,11pt,amssymb,chap]{ethesis}
+\makeatletter
+%
+
+
+%
+
+
+
+
+
+%
+
+
+
+ %
+
+
+
+%
+
+%
+
+
+
+
+
+\newlength{\boxwidth}
+
+
+
+
+
+
+\includeonly{Man/chp_man}
+%
+
+\newcommand {\pw}[1]{\ \mbox{\bf #1}\ }
+
+\newcommand {\outline}[1]{%
+\begin{center}
+\fbox{ \begin{minipage}{415pt}
+\vspace{1 ex}
+#1
+\end{minipage} }
+\vspace{1 ex}
+\end{center}
+}
+
+\newcommand {\dline}{\noindent \rule{5.9in}{0.01in} \noindent}
+
+\newcommand {\tabi}{\hspace{1in}\=\hspace{4.8in}\kill {\bf Arguments} \\ }
+
+\newcommand {\htmlref}[2]{#1}
+
+\newcommand {\boxfigure}[3]{
+        \begin{figure}[#1]
+                \setlength{\boxwidth}{#2}
+                \addtolength{\boxwidth}{.1in}
+
+                \centering
+                \framebox[\boxwidth]{
+                        \begin{minipage}{#2}
+                        #3
+                        \end{minipage}
+                }
+        \end{figure}
+}
+
+\newcommand {\pmdbargs}[1]{
+\noindent
+\begin{tabular}{p{1.0in}p{4.9in}}
+{\bf \underline{Arguments}} & \\ 
+#1
+\end{tabular}
+}
+
+\newcommand {\progbox}[1]{
+                \setlength{\boxwidth}{5.9in}
+                \addtolength{\boxwidth}{.1in}
+
+                \centering
+                \framebox[\boxwidth]{
+                        \begin{minipage}{5.9in}
+                        #1
+                        \end{minipage}
+                }
+}
+
+\newtheorem {theorem}{Theorem}
+
+\newtheorem {lemma}{Lemma}
+
+\newtheorem {conjecture}{Conjecture}
+
+\newtheorem {proposition}{Proposition}
+
+\newtheorem {definition}{Definition}
+
+\makeatother
+\newenvironment{tex2html_wrap}{}{}
+\newwrite\lthtmlwrite
+\def\lthtmltypeout#1{{\let\protect\string\immediate\write\lthtmlwrite{#1}}}%
+\newbox\sizebox
+\begin{document}
+\pagestyle{empty}
+\appendix
+\stepcounter{chapter}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{figure}\noindent \rule{5.9in}{0.01in} \noindent
+ 
+
+\begin{verbatim}#include <stdlib.h>
+#include <stdio.h>
+#include <mpi.h>
+#include "MSops.h"
+#include "pmshops.h"
+
+main(
+int argc,
+char *argv[])
+{
+   pMesh      mesh          ;      /*  MDB mesh handle                  */
+   pGModel    model         ;      /*  MDB model handle                 */
+   pMeshPB    pmeshpb       ;      /*  PMDB distributed mesh handle     */
+   char       file[20]      ;      /*  string                           */
+   int        rc            ;      /*  return code                      */
+   int        axes[]= {0,1} ;      /*  axis used for orthogonal 
+                                       bisection                        */
+   int        num_axes = 2  ;      /*  number of axes                   */
+   
+
+   rc=MPI_Init(&argc, &argv);      /* initialize MPI                    */
+
+   MD_init() ;                     /* MDB: initialize the mesh database */
+   model = GM_new(0) ;             /* MDB: initialize geometric model   */
+
+   sprintf(file,"%s.smd",argv[1]) ;
+
+   M_load(model,file) ;            /* MDB: load geometric model         */
+   pmdb_ge_tabl_new(model) ;       /* initialize geometric entity hash
+                                      table on all processors           */
+
+   mesh = MM_new(1,model) ;        /* MDB: initialize a mesh object     */
+   
+   pmdb_ortho_rb(argv[1],num_axes,axes,mesh,&pmeshpb) ; /* load mesh and 
+                                      inertial partitioning             */
+
+   do_something(argv[1],mesh,pmeshpb) ; 
+
+   M_delete(mesh) ; 
+   MD_exit() ; 
+
+   MPI_Finalize() ;                /* finalize MPI                      */
+}
+\end{verbatim}
+
+\noindent \rule{5.9in}{0.01in} \noindent
+ 
+\label{lab_man_ex1}
+\end{figure}
+}
+
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{tabular}% latex2html id marker 132
+{p{1.0in}p{4.9in}}
+{\bf \underline{Arguments}} & \\  
+
+\verb$file$     & Prefix name of mesh files ;
+                  \verb$file.sms$ and \verb$file.smd$. \\  
+\verb$mesh$     & Initially null {\tt MDB}  mesh handle ;  on return it
+                   contains the loaded mesh. \\  
+\verb$ppmeshpb$ & {\tt PMDB} handle, pointer returned.
+
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{p{1.0in}p{4.9in}}
+{\bf \underline{Arguments}} & \\  
+
+{\tt num\_load\_procs} &  number of processors that will load the mesh. 
+      Processors with id {\tt i=0..num\_load\_procs-1} load the mesh.
+
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{p{1.0in}p{4.9in}}
+{\bf \underline{Arguments}} & \\  
+
+{\tt num\_axes}  &  number of bisection axes. \\  
+\verb$axes$      &  Integer array of axes with 
+                    the encoding \verb$0=x, 1=y, 2=z$. \\  
+
+\end{tabular}
+}
+
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{tabular}{p{1.0in}p{4.9in}}
+{\bf \underline{Arguments}} & \\  
+
+\verb$flag$ & 1 if it is called the first time and 0 otherwise.  \\  
+
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{p{1.0in}p{4.9in}}
+{\bf \underline{Arguments}} & \\  
+
+\verb$etype$   & type of entity.  \\  
+\verb$tag$     & geometric modeler tag number.  \\  
+
+\end{tabular}
+}
+
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{figure}[htb]
+\centerline{
+\vbox{\psfig{file=Man/Figures/qu.eps,width=4.30in,height=3.50in}}
+}
+
+\label{lab_fig_qu}
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{|l|c|c|} \hline
+on processor 0      & full links  & minimal links  \\  \hline \hline 
+{\tt pmdb\_proc\_adj(..,Tvertex,0)} &  1  & 1   \\  \hline
+{\tt pmdb\_proc\_adj(..,Tvertex,1)} &  2  & 2   \\  \hline
+{\tt pmdb\_proc\_adj(..,Tvertex,2)} &  3  & 3   \\  \hline
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{p{1.0in}p{4.9in}}
+{\bf \underline{Arguments}} & \\  
+
+\verb$etype$    &   type of partition boundary entities traversed \\  
+\verb$temp$     &   temporary variable which should be set to \verb$null$ 
+                    before entering traversal.\\  
+
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{|l|c|c|} \hline 
+on processor 0  & full links  & minimal links                  \\  \hline \hline
+{\tt pmdb\_all\_next\_en(..,Tvertex,..)} & 1,3,5,7,9 & 5       \\  \hline 
+{\tt pmdb\_all\_next\_en(..,Tedge,..) }  &  2,4,8,6  & 2,4,8,6  \\  \hline 
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{p{1.0in}p{4.9in}}
+{\bf \underline{Arguments}} & \\  
+
+\verb$item$   & address of the entity. \\  
+\verb$pid$    & processor id.          \\  
+\verb$offptr$ & address of the shared entity on processor \verb$pid$.
+
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{cp{4.9in}}
+ $-1$  &  if entity is not on the boundary.
+           \verb$offptr$ is returned as \verb$null$. \\ 
+ $0$   &  if entity is on the boundary but does not have  
+          links  in compressed (minimal link) mode. 
+           \verb$offptr$ is returned as \verb$null$. \\ 
+ $1 $  &  if entity is on the boundary and has links to processor 
+          \verb$pid$. \verb$offptr$ contains  the address of shared 
+          entity on processor \verb$pid$. \\ 
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{p{1.0in}p{4.9in}}
+{\bf \underline{Arguments}} & \\  
+
+{\tt loc\_entity} & the local entity whose links are traversed.\\  
+\verb$ith$        &  {\tt ith=0..pmdb\_en\_num\_iplinks()-1}   \\  
+\verb$pid$        & processor id returned. \\  
+{\tt off\_entity}  &  the address of the shared entity on processor \verb$pid$ 
+                     returned.\\  
+
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{|l|c|c|} \hline
+on processor 0   & full links  & minimal links    \\  \hline \hline
+{\tt pmdb\_en\_iplink(5,0,..)} &  (1,5)  & (3,5)    \\  \hline
+{\tt pmdb\_en\_iplink(5,1,..)} &  (2,5)  & N/A   \\  \hline
+{\tt pmdb\_en\_iplink(5,2,..)} &  (3,5)  & N/A   \\  \hline
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{p{1.0in}p{4.9in}}
+$< 0$ (negative) &  entity is not on partition boundary.  \\ 
+$= 0$            &  entity is on boundary but have no 
+                    {\it minimal inter-processor} links. \\ 
+$> 0 $ (positive) & number of links, entity is on the partition boundary \\ 
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$(=0)$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline624: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{p{1.0in}p{4.9in}}
+{\bf \underline{Arguments}} & \\  
+
+\verb$entity$       &   entity whose ownership is requested. \\  
+{\tt owner\_pid}    & owner processor id returned. \\  
+{\tt owner\_entity} & owner entity address returned. \\  
+
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{|l|c|c|} \hline
+on processor 0      & full links  & minimal links  \\  \hline \hline
+{\tt pmdb\_linked\_procid(..,Tvertex,0)} &  1  & 3     \\  \hline
+{\tt pmdb\_linked\_procid(..,Tvertex,1)} &  2  & N/A   \\  \hline
+{\tt pmdb\_linked\_procid(..,Tvertex,2)} &  3  & N/A   \\  \hline
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{|l|c|c|} \hline
+on processor 0      & full links  & minimal links  \\  \hline \hline
+{\tt pmdb\_num\_all\_pb\_en(..,Tvertex)} &  5  & 1   \\  \hline
+{\tt pmdb\_num\_all\_pb\_en(..,Tedge)}   &  4  & 4   \\  \hline
+\end{tabular}
+}
+
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{tabular}{p{1.0in}p{4.9in}}
+{\bf \underline{Arguments}} & \\  
+
+{\tt loc\_p\_en}   &  local entity address. \\  
+{\tt pid}          &  off-processor id. \\  
+{\tt off\_p\_en}   &   off-processor shared entity address. \\  
+
+\end{tabular}
+}
+
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{figure}[htb]
+\centerline{
+\vbox{\psfig{file=Man/Figures/gs.eps,width=3.90in,height=3.50in}}
+}
+\label{lab_fig_gs}
+
+\end{figure}
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$= [8,9,5,4,1,10,11,12,13]$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline632: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$=[8,9,5,10,11]$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline638: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+{\newpage
+\clearpage
+\samepage \setbox\sizebox=\hbox{$=[5,9,8,11,10]$}\lthtmltypeout{latex2htmlSize :tex2html_wrap_inline640: \the\ht\sizebox::\the\dp\sizebox.}\box\sizebox
+}
+
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{tabular}{p{1.0in}p{4.9in}}
+{\bf \underline{Arguments}} & \\  
+
+{\tt entity}        & entity to be migrated.               \\  
+{\tt pid}           & destination processor for migration. \\  
+{\tt procids}       & array of processor ids returned.     \\  
+{\tt num\_entities} & array of number of entities targeted to each processor \\  
+
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}{p{1.0in}p{4.9in}}
+{\bf \underline{Arguments}} & \\  
+
+{\tt pmeshpb}          &  \verb$PMDB$ handle. \\  
+{\tt num\_sends}       & number of processors to send to. \\  
+{\tt num\_send\_faces} & array of number of faces to send. \\  
+{\tt send\_faces}      & array of arrays of faces to send. \\  
+{\tt dest\_pid}        & array of ids of processors to send to \\  
+{\tt num\_recvs}       & number of receives (returned) \\  
+{\tt num\_recv\_faces} & array number of received faces (returned) \\  
+{\tt recv\_faces }     & array of arrays of received faces (returned) \\  
+{\tt src\_pid }        & array of ids of processors received from (returned) \\  
+
+\end{tabular}
+}
+
+\stepcounter{section}
+\stepcounter{section}
+{\newpage
+\clearpage
+\samepage \begin{tabular}{|c|l|} \hline 
+{\tt pmdb\_write\_2d\_dx}       &  2D  meshes, colored                     \\ 
+\hline 
+{\tt pmdb\_write\_dx}           &  3D  meshes, colored                     \\ 
+\hline 
+{\tt pmdb\_write\_bw\_dx}       &  3D meshes, black and white              \\ 
+\hline 
+{\tt pmdb\_write\_sur\_dx}      &  surface of 3D meshes, colored           \\ 
+\hline 
+{\tt pmdb\_write\_sur\_bw\_dx}  &  surface of 3D meshes, black and white   \\ 
+\hline 
+\end{tabular}
+}
+
+{\newpage
+\clearpage
+\samepage \begin{tabular}% latex2html id marker 599
+{p{1.4in}p{4.0in}}
+{\tt char    *file}:    &  File prefix.  Output is placed in \verb$file.dx$ \\ 
+{\tt pMesh    mesh}:    &  MDB mesh handle      \\ 
+{\tt pMeshPB  pmeshpb}: &  PMDB mesh handle.    \\ 
+\end{tabular}
+}
+
+
+\end{document}

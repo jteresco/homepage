@@ -1,0 +1,13 @@
+@TECHREPORT{flaherty97a,
+        AUTHOR             = {Joseph E. Flaherty and Raymond M. Loy and  Mark S.
+ Shephard and Boleslaw K. Szymanski and James D. Teresco and Louis H. Ziantz},
+        TITLE              = {Adaptive Local Refinement with Octree Load-Balanci
+ng for the Parallel Solution of Three-Dimensional Conservation Laws},
+        INSTITUTION        = {Institute for Mathematics and its Applications, Un
+iversity of Minnesota},
+        NOTE               = {To appear, {\em J. Parallel and Dist. Comput.}},
+        YEAR               = {1997},
+        TYPE               = {IMA Preprint Series},
+        NUMBER             = {1483}
+}
+

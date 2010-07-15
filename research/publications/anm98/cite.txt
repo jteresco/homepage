@@ -1,0 +1,11 @@
+@Article{flaherty98b,
+  author =       {Joseph E. Flaherty and Raymond M. Loy and 
+                  Can {\"{O}}zturan and  Mark S. Shephard and Boleslaw
+                  K. Szymanski and James D. Teresco and Louis H. Ziantz},
+  title =        {Parallel Structures and Dynamic Load Balancing for Adaptive Fi
+nite Element Computation},
+  journal =      ANM,
+  year =         {1998},
+  volume =       {26},
+  pages =        {241--263},
+}

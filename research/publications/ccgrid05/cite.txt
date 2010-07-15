@@ -1,0 +1,7 @@
+@TechReport{elmaghraoui05a,
+  author = 	 {Kaoutar El~Maghraoui and Carlos A. Varela and Boleslaw K. Szymanski and Joseph E. Flaherty and James D. Teresco},
+  title = 	 {A Middleware Framework for Dynamically Reconfigurable {MPI} Applications},
+  institution =  {Williams College Department of Computer Science},
+  number = 	 {CS-04-09},
+  year = 	 {2004}
+}

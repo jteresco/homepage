@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> Communication Routines</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" Misc">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+
+ <BR> <HR><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif_gr.gif">   <A NAME=tex2html140 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html136 HREF="part_stats.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B>Up:</B> <A NAME=tex2html141 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html137 HREF="part_stats.html"> Partition Quality Analysis Routines</A>
+<BR> <HR> <P>
+<H1><A NAME=start> Communication Routines</A></H1>
+<P>
+
+There is a group of collective communication routines in PMDB that can
+also be useful to applications, and these are made available as a
+message-library independent method of doing some commonly-used
+collective communications.<P>
+<HR>
+
+<PRE>void com_init()</PRE>
+
+This function initializes internal communication variables for PMDB's
+communications.  This is called by any of the parallel mesh loading
+and partitioning operators automatically, but if you plan to use any
+of the other communication routines before calling a mesh loading or
+partitioning routine, you should first call <tt>com_init()</tt><P>
+
+<HR>
+
+<PRE>int com_numprocs()</PRE>
+
+This function returns the number of processors, as computed by
+<tt>com_init()</tt><P>
+
+<HR>
+
+<PRE>int com_pid()</PRE>
+
+This function returns the process ID as computed by
+<tt>com_init()</tt><P>
+
+<HR>
+
+<PRE>void com_all_sync()</PRE>
+
+This function synchronizes all processors<P>
+
+<HR>
+
+<PRE>void pmdb_sync_io()</PRE>
+
+Call this function to synchronize output.  It doesn't always work,
+unforuntately.  stdout printing is often highly asynchronous...<P>
+
+<HR>
+
+<h2>Combine Operators</h2>
+
+In the following functions, there are three arguments.  <tt>in</tt>
+provides an input array of <tt>count</tt> values, and the result of
+the operation is returned in the array <tt>out</tt>.<P>
+
+<HR>
+
+<PRE>
+void com_prefix_long(
+long *in,        /* IN */
+long *out,       /* OUT */
+int count)       /* IN */
+</PRE>
+
+This operator does a parallel prefix addition operation for
+<tt>long</tt> values.<P>
+
+<HR>
+
+<PRE>
+void com_prefix_int(
+int *in,         /* IN */
+int *out,        /* OUT */
+int count)       /* IN */
+</PRE>
+
+This operator does a parallel prefix addition operation for
+<tt>int</tt> values.<P>
+
+<HR>
+
+<PRE>
+void com_prefix_float(
+float *in,       /* IN */
+float *out,      /* OUT */
+int count)       /* IN */
+</PRE>
+
+This operator does a parallel prefix addition operation for
+<tt>float</tt> values.<P>
+
+<HR>
+
+<PRE>
+void com_prefix_double(
+double *in,      /* IN */
+double *out,     /* OUT */
+int count)       /* IN */
+</PRE>
+
+This operator does a parallel prefix addition operation for
+<tt>double</tt> values.<P>
+
+<HR>
+
+<PRE>
+void com_add_long(
+long *in,        /* IN */
+long *out,       /* OUT */
+int count)       /* IN */
+</PRE>
+
+This operator does an all-processor-result addition operation for
+<tt>long</tt> values.<P>
+
+<HR>
+
+<PRE>
+void com_max_long(
+long *in,        /* IN */
+long *out,       /* OUT */
+int count)       /* IN */
+</PRE>
+
+This operator does an all-processor-result max operation for
+<tt>long</tt> values.<P>
+
+
+<HR>
+
+<PRE>
+void com_add_int(
+int *in,         /* IN */
+int *out,        /* OUT */
+int count)       /* IN */
+</PRE>
+
+This operator does an all-processor-result addition operation for
+<tt>int</tt> values.<P>
+
+<HR>
+
+<PRE>
+void com_max_int(
+int *in,         /* IN */
+int *out,        /* OUT */
+int count)       /* IN */
+</PRE>
+
+This operator does an all-processor-result max operation for
+<tt>int</tt> values.<P>
+
+<HR>
+
+<PRE>
+void com_add_double(
+double *in,      /* IN */
+double *out,     /* OUT */
+int count)       /* IN */
+</PRE>
+
+This operator does an all-processor-result addition operation for
+<tt>double</tt> values.<P>
+
+<HR>
+
+<PRE>
+void com_max_double(
+double *in,      /* IN */
+double *out,     /* OUT */
+int count)       /* IN */
+</PRE>
+
+This operator does an all-processor-result max operation for
+<tt>double</tt> values.<P>
+
+<HR>
+
+<PRE>
+void com_min_double(
+double *in,      /* IN */
+double *out,     /* OUT */
+int count)       /* IN */
+</PRE>
+
+This operator does an all-processor-result min operation for
+<tt>double</tt> values.<P>
+
+<HR>
+
+<PRE>
+void com_bcast_int(
+int *buffer,      /* IN/OUT */
+int root,         /* IN */
+int count)        /* IN */
+</PRE>
+
+This operator does a broadcast operation of the buffer of <tt>int</tt>
+values from the buffer on processor <tt>root</tt> to the buffer on all
+other processors.<P>
+
+<HR>
+
+<PRE>
+void com_bcast_double(
+double *buffer,   /* IN/OUT */
+int root,         /* IN */
+int count)        /* IN */
+</PRE>
+
+This operator does a broadcast operation of the buffer of <tt>double</tt>
+values from the buffer on processor <tt>root</tt> to the buffer on all
+other processors.<P>
+
+<HR>
+
+<PRE>
+void com_comp_recvs(
+int num_sends,    /* IN */
+int *dest_pids,   /* IN */
+int *num_recvs    /* OUT */
+int **src_pids)   /* OUT */
+</PRE>
+
+This operator computes a list and number of source pids for each
+processor, based on the number of sends and the destination pids for
+each processor.  <tt>dest_pids</tt> points to a list of
+<tt>num_sends</tt> pids which this processor wished to send to.
+<tt>num_recvs</tt> is returned as the number of requests that other
+processors made to this processor, and <tt>src_pids</tt> is a pointer
+to a list of the pids which made requests.  <I>Note: the pointer
+returned in <tt>src_pids</tt> is dynamically allocated memory, and
+must be released with a call to <tt>free()</tt> after the values are
+used.</I> <P>
+
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Thu Nov  2 10:16:48 EST 1995
+</I>
+</ADDRESS>
+</BODY>

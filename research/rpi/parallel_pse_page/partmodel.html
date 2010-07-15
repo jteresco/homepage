@@ -1,0 +1,60 @@
+<HEADER>
+<TITLE>Partition Model</TITLE>
+</HEADER>
+<BODY BGCOLOR="#ffffff" TEXT="#000000" LINK="#ff00ff" VLINK="#0000ff"
+ALINK="#00ff00">
+
+<P>
+
+<center>
+<H1>Partition Model</H1>
+<TABLE BORDER=0>
+<TR>
+<TD ALIGN=CENTER><IMG SRC="gif/2dmesh.gif"></TD>
+<TD ALIGN=CENTER><IMG SRC="gif/2dmesh-part-color.gif"></TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER><B>a) Sample two dimensional mesh</B></TD>
+<TD ALIGN=CENTER><B>b) Classification of mesh on partition model</B></TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER><IMG SRC="gif/2dpart-pattern-mach.gif"></TD>
+<TD ALIGN=CENTER><IMG SRC="gif/proc-assign.gif"></TD>
+</TR>
+</TR>
+<TR>
+<TD ALIGN=CENTER><B>c) Classification on process model</B></TD>
+<TD ALIGN=CENTER><B>d) Classification on machine model</B></TD>
+</TR>
+</TABLE>
+
+</center>
+
+<P>
+The partition model is one level of a hierarchical classification.  A
+mesh entity is classified on a partition model entity.  Partition
+model entities (represented by the colors in (b)) are classified on
+<b>process model</B> entities (c), allowing multiple partitions to be
+assigned to a single process or thread of execution.  And the process
+model entities are classified on a <b>machine model</B> (d), allowing
+multiple processes to be assigned to a single machine ``entity'' (a
+physical machine or processor), which is useful with symmetric
+multi-processing (SMP), different network speeds, or heterogeneous
+processors.
+<P>
+
+The next generation of parallel architecture is likely to consist of
+SMP nodes connected by a fast (or potentially not so fast) network.  A
+possibility is a machine similar to an IBM SP2, but with multiple
+processing units on each node.  This sort of architecture can be
+accounted for in the model hierarchy by assigning multiple processes
+to a single machine.  Boundaries between submeshes which are
+classified on different partition models but which are assigned to the
+same processor (or at least the same address space) will not need
+duplicated entities and can access information about the neighboring
+processor's mesh without communication.  This is much less costly than
+a true interprocessor message, which must traverse some sort of
+network.  This type of information should be available to a load
+balancer, and this model hierarchy will provide for that.
+
+</BODY>

@@ -1,0 +1,43 @@
+<HEADER>
+<TITLE>Abstract: A Hierarchical Partition Model for Adaptive Finite
+Element Computation</TITLE>
+</HEADER>
+<BODY>
+
+<H1>A Hierarchical Partition Model for Adaptive Finite
+Element Computation</H1>
+
+<br>James D. Teresco, Mark W. Beall,
+Joseph E. Flaherty,
+Mark S. Shephard.
+<br><i>Comput. Methods. Appl. Mech. Engrg., Vol. 184, pp. 269-285, 2000.</i>
+
+<P>
+Software tools for the solution of partial differential equations
+using parallel adaptive finite element methods have been developed.
+We describe the design and implementation of the parallel mesh
+structures within an adaptive framework.  The most fundamental concept
+is that of a hierarchical partition model used to distribute finite
+element meshes and associated data on a parallel computer.  The
+hierarchical model represents heterogeneous processor and network
+speeds, and may be used to represent processes in any parallel
+computing environment, including an SMP, a distributed-memory
+computer, a network of workstations, or some combination of these.
+Using this model to segment the computation into chunks which can fit
+into cache memory provides a potential efficiency gain from an
+increased cache hit rate, even in a single processor environment.  The
+information about different processor speeds, memory sizes, and the
+corresponding interconnection network can be useful in a dynamic load
+balancing algorithm which seeks to achieve a good balance with minimal
+interprocessor communication penalties when a slow interconnection
+network is involved.
+
+<P>
+<TABLE BORDER=0 CELLSPACING=18> 
+<TR > 
+<TD > <A HREF="cite.txt">Citation</A> (BIBTEX)      </TD>
+<TD > <A HREF="cmame.ps">Paper</a> (PS; 3.1MB)&nbsp;</td>
+<td><a href="cmame.ps.gz">Paper</a> (Gzipped PS; 220KB)&nbsp;</td>
+</TR>
+</TABLE>
+</BODY>

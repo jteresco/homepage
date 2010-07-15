@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> PMDB Element Weighting Routines</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" Misc">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+
+ <BR> <HR><A HREF="part_stats.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"> </A>  <A NAME=tex2html140 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html136 HREF="node12.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html135 HREF="part_stats.html"> Partition Quality Analysis Routines</A>
+<B>Up:</B> <A NAME=tex2html141 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html137 HREF="node12.html"> Visualization</A>
+<BR> <HR> <P>
+<H1><A NAME=start> Element Weighting Routines</A></H1>
+<P>
+<H2>PMDB support for non-unit weights on regions</H2>
+
+The measure of imbalance or "cost function" that reflects the
+computational load on each processor is generally chosen as the number
+of elements on a processor with <I>h</I>-refinement.  However,
+heterogeneous costs are necessary when (<I>i</I>) using
+<I>p</I>-refinement or spatially-dependent solution methods,
+(<I>ii</I>) using spatially-dependent time steps, (<I>iii</I>)
+enforcing boundary conditions, and (<I>iv</I>) using predictive load
+balancing.  PMDB provides an element weighting scheme that can be used
+to address each of these needs.
+
+
+<HR>
+<PRE>
+PMDB_CBPROC pmdb_register_weight_func(
+pMeshPB pmeshpb,
+PMDB_CBPROC func);
+</PRE>
+
+This function registers a weight function.  When PMDB need to
+determine the weight assigned to an element.  The type
+<TT>PMDB_CBPROC</TT> is defined as:
+
+<PRE>
+typedef PMDB_ELT_WT (*PMDB_CBPROC)(pEntity, PMDB_ELT_WT);
+</PRE>
+
+Currently, <TT>PMDB_ELT_WT</TT> is a <TT>float</TT>, and below
+<TT>PMDB_PART_WT</TT> is a <TT>double</TT>.
+
+<P>
+<HR>
+<PRE>
+PMDB_ELT_WT pmdb_element_weight(
+pMeshPB pmeshpb,
+pEntity pentity);
+</PRE>
+
+This function returns the current weight of the given entity.
+
+<P>
+<HR>
+<PRE>
+PMDB_PART_WT pmdb_partition_load(
+pMeshPB pmeshpb);
+</PRE>
+
+This function returns total weight of the local partition.
+
+<P>
+<HR>
+<PRE>
+void pmdb_weight_change(
+pMeshPB pmeshpb,
+pEntity entity, 
+PMDB_ELT_WT old_weight);
+</PRE>
+
+This function informs PMDB that the weight of the given entity has
+been changed.  The old weight is sent as the third argument and the
+new weight is computed by a call to the registered weight function.
+This is necessary to maintain the correct partition load.
+Alternately, after changing weights, the function
+<TT>pmdb_weight_recompute_load</TT>, described next, may be called
+instead to recompute all weights.
+
+<P>
+<HR>
+<PRE>
+void pmdb_weight_recompute_load(
+pMeshPB pmeshpb);
+</PRE>
+
+This function recomputes the current partition load by querying each
+element and summing the weights.
+
+<P>
+<HR>
+<PRE>
+int pmdb_using_weights(
+pMeshPB pmeshpb);
+</PRE>
+
+This function returns whether or not weighting is in use, that is, if
+any weight function is currently registered.
+
+<P>
+
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Tue Feb  9 12:53:44 EST 1999
+</I>
+</ADDRESS>
+</BODY>

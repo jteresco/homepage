@@ -1,0 +1,175 @@
+<HTML>
+<!-- zoltanParams main web page -->
+<!-- $Id: index.html,v 1.1 2004/03/11 20:40:31 terescoj Exp $ -->
+<!-- Created 2004-03-11 by JDT -->
+<HEAD>
+<TITLE>zoltanParams: Library for Parsing Zoltan Parameters</TITLE>
+<CENTER>
+<H1>zoltanParams: Library for Parsing Zoltan Parameters</H1>
+</CENTER>
+</HEAD>
+<HR>
+
+<BODY bgcolor="#8CB2D4">
+
+<CENTER>
+<TABLE BORDER=0 WIDTH=60%>
+<TR>
+<TD ALIGN=CENTER>
+<IMG SRC="smallwilliamslogo.jpg">
+</TD>
+<TD ALIGN=CENTER>
+Jim Teresco<BR>
+Department of Computer Science<BR>
+Williams College<BR>
+47 Lab Campus Drive<BR>
+Williamstown, MA  01267
+</TD></TR></TABLE>
+</CENTER>
+
+<HR>
+
+<H3>Overview</H3>
+
+Sandia National Laboratories' <A
+HREF="http://www.cs.sandia.gov/Zoltan/">Zoltan Toolkit</A>
+provides partitioning, load balancing, and other services to parallel
+applications.  Zoltan's behavior is, in part, defined by function
+calls that set a variety of parameters.  For example, the call<P>
+
+<CENTER><TT>
+ierr = Zoltan_Set_Param(zz, "OCT_MAXOBJECTS", "40");
+</TT></CENTER><P>
+
+will set the parameter <TT>OCT_MAXOBJECTS</TT> to <TT>40</TT> in the
+<TT>Zoltan_Struct *zz</TT>.<P>
+
+The <I>zoltanParams</I> utility allows applications to specify these
+parameters in a text file, allowing changes to Zoltan parameters
+without need to edit source code, recomipile, and relink the
+applications.  A typical situation where this is useful is when trying
+different partitioning algorithms and parameters to see which works
+best for a particular application on a particular computer.  When
+using Zoltan's hierarchical balancing procedures (to be included in a
+future Zoltan release) and when interfacing with the <A
+HREF="http://www.cs.williams.edu/drum/">Dynamic Resource Utilization
+Model (DRUM)</A> to do resource-aware partitioning in heterogeneous
+and hierarchical parallel computing environments, the number of
+parameters that may be set makes a tool such as <I>zoltanParams</I>
+especially useful.<P>
+
+The format of a <I>zoltanParams</I> input file is simple.  It contains
+any number of lines of the format:<P>
+
+<PRE>
+  ZOLTAN_PARAM PARAM_VALUE
+</PRE>
+
+which is translated into a call to <TT>Zoltan_Set_Param</TT>, setting
+the given parameter to the given value.<P>
+
+When used in conjunction with hierarchical balancing (Zoltan method
+<TT>"HIER"</TT>), the file format is slightly more complicated.  If
+the parameter is <TT>"LB_METHOD"</TT> and its value is set to
+<TT>"HIER"</TT>, the next part of the file is interpreted as
+hierarchical balancing parameters:<P>
+
+<PRE>
+  num_levels
+  level 0 partitions for each proc
+  level 0 parameters
+  end with LEVEL END
+  level 1 partitions for each proc
+  level 1 parameters
+  end with LEVEL END
+  ...
+
+  End file with EOF
+</PRE>
+
+<H3>Usage</H3>
+
+To make use of the <I>zoltanParams</I> library, it must be compiled,
+either as a standalone library or by adding the source files to the
+application's build process.  The one C source file
+<TT>zoltanParams_read_file.c</TT> requires MPI and Zoltan.<P>
+
+To use <I>zoltanParams</I>, an application should replace part of its
+Zoltan initialization sequence with a <I>zoltanParams</I> call.  A
+typical Zoltan initialization sequence, such as:<P>
+
+<PRE>
+  /* create zoltan lb object */
+  lb = Zoltan_Create(MPI_COMM_WORLD);
+
+  /* register callbacks (not shown) */
+
+  /* set zoltan parameters */
+  Zoltan_Set_Param(lb, "NUM_GID_ENTRIES", "2");
+  Zoltan_Set_Param(lb, "NUM_LID_ENTRIES", "0");
+  Zoltan_Set_Param(lb, "OBJ_WEIGHT_DIM", "1");
+  Zoltan_Set_Param(lb, "EDGE_WEIGHT_DIM", "0");
+  Zoltan_Set_Param(lb, "RETURN_LISTS", "EXPORT");
+  Zoltan_Set_Param(lb, "OCT_METHOD", "2");
+  Zoltan_Set_Param(lb, "OCT_MAXOBJECTS", "40");
+  Zoltan_Set_Param(lb, "OCT_MINOBJECTS", "10");
+  Zoltan_Set_Param(lb, "LB_METHOD", "OCTPART");
+</PRE>
+
+would be replaced by this code:
+
+<PRE>
+  /* create zoltan lb object */
+  lb = Zoltan_Create(MPI_COMM_WORLD);
+
+  /* register callbacks (not shown) */
+
+  zoltanParams_read_file(lb, "zoltan.params", MPI_COMM_WORLD);
+</PRE>
+
+where the file <TT>"zoltan.params"</TT> in the working directory
+contains:
+
+<PRE>
+NUM_GID_ENTRIES 2
+NUM_LID_ENTRIES 0
+OBJ_WEIGHT_DIM 1
+EDGE_WEIGHT_DIM 0
+RETURN_LISTS EXPORT
+OCT_METHOD 2
+OCT_MAXOBJECTS 40
+OCT_MINOBJECTS 10
+LB_METHOD OCTPART
+</PRE>
+
+Note: <I>zoltanParams</I> uses static storage to save hierarchical
+balancing parameters, and such parameters are stored permanently by
+<TT>zoltanParams_read_file</TT> and remain available for use by
+hierarchical balancing until overridden by a subsequent call to
+<TT>zoltanParams_read_file</TT>.
+
+<H3>Availability</H3>
+
+<I>zoltanParams</I> is freely available.  To get a copy, please contact
+the developer at <I>terescoj AT cs.williams.edu</I> (replace AT
+with @).  It is written in standard C, and should compile anywhere
+that has a decent C compiler.
+
+<H3>Acknowledgements</H3>
+
+The author was supported by contract 15162 with Sandia National
+Laboratories, a multiprogram laboratory operation by Sandia
+Corporation, a Lockheed Martin Company, for the United States
+Department of Energy under Contract DE-AC04-94AL85000.  The library
+was developed while the author was visiting the Computer Science
+Research Institute at Sandia National Laboratories.<P>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>Jim Teresco -
+Thu Mar 11 13:33:07 MST 2004
+</ADDRESS>
+
+</HTML>

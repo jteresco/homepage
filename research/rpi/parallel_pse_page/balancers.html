@@ -1,0 +1,62 @@
+<HEADER>
+<TITLE>Dynamic Load Balancing</TITLE>
+</HEADER>
+<BODY BGCOLOR="#ffffff" TEXT="#000000" LINK="#ff00ff" VLINK="#0000ff"
+ALINK="#00ff00">
+
+<P>
+
+<center>
+<H1>Dynamic Load Balancing</H1>
+</center>
+
+<P>
+
+
+Initial mesh partitioning uses either Inertial Recursive Bisection
+(IRB), which repeatedly bisects the mesh in a direction orthogonal to
+the principal axis of inertia of the domain, or Octree Partitioning
+(OCT), which uses the octree structure underlying the mesh to achieve
+a balanced load.  Rebalancing must be parallel since the mesh is
+distributed.  Available dynamic load balancing procedures include
+Iterative Tree Balancing (ITB), which migrates entities between
+partitions by optimizing neighborhood load-request trees, Parallel
+Sort Inertial Recursive Bisection (PSIRB), which performs IRB with a
+parallel sort of the data, and OCT.  A predictive procedure in which error indicators are used during
+load balancing to help reduce imbalance during both the refinement
+stage of enrichment and the subsequent solution phase has also been
+developed.
+ 
+<BR>
+<BR>
+
+<center>
+<H4>Nonpredictive vs. Predictive Procedures</H4>
+</center>
+
+<!--
+<center>
+<TABLE BORDER=0>
+<TR>
+<TD>
+<IMG SRC="gif/enrich.current.color.light.simplified.gif">
+</TD><TD>
+<IMG SRC="gif/enrich.pred.color.light.simplified.gif">
+</TD>
+</TR>
+</TABLE>
+</center>
+-->
+
+<center>
+<IMG SRC="gif/enrich.both.color.light.simplified.gif">
+</center>
+
+<P>
+
+<center>
+<b> Nonpredictive vs. Predictive Procedures: </b> (left) Existing nonpredictive enrichment procedure (While a few iterations of ITB are done after each stage, a full load balancing is only performed after enrichment is complete). (right) Predictive enrichment procedure which can eliminate the need for load balancing after enrichment while moving a coarser structure.
+</center>
+
+
+</BODY>

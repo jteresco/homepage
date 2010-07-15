@@ -1,0 +1,12 @@
+@INPROCEEDINGS{szymanski96a,
+        AUTHOR             = "{B.K. Szymanski, E. Deelman,
+J.E. Flaherty, C.D. Norton, J.D. Teresco and L.H. Ziantz}",
+        TITLE              = {Parallel Scientific Computing on the IBM
+SP2 at Rensselaer's Scientific Computation Research Center},
+        BOOKTITLE          = {Proc. Sup'Eur 96 High Performance
+Computing in Europe on IBM Platforms},
+        PAGES              = {97--110},
+        ADDRESS            = {Krakow, Poland},
+        MONTH              = {September},
+        YEAR               = {1996}
+}

@@ -1,0 +1,81 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="description" content="Linking (pred)">
+   <meta name="keywords" content="pred">
+   <meta name="resource-type" content="document">
+   <meta name="distribution" content="global">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (X11; I; SunOS 5.6 sun4u) [Netscape]">
+   <title>Linking (pred)</title>
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<link REL="STYLESHEET" HREF="pred.css">
+<link REL="next" HREF="node4.html">
+<link REL="previous" HREF="node2.html">
+<link REL="up" HREF="pred.html">
+<link REL="next" HREF="node4.html">
+</head>
+<body>
+<!--End of Navigation Panel-->
+<h1>
+<a NAME="SECTION00030000000000000000"></a>Linking</h1>
+<a NAME="sec:linking"></a>&nbsp; Note: <i>Regardless of which library (see
+Library Instances ) is used, <tt>-lpred*</tt> should be placed BEFORE <tt>-lrefdref*</tt>
+in the link line.</i>
+<p>Example Link Line
+<pre>LIBTYPE=ibm_4
+SCSOFT_HOME = /dept/scorec/software
+COM_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 2.0
+MDB_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 3.4
+MEM_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1.0
+MESHOPT_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 3.0
+MESHOPTPART_VER&nbsp;&nbsp;&nbsp; = 2.0
+MESHTOOLS_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 3.1
+MODEL_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0.8
+PARA_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 8.0
+PARA_MODEL_VER&nbsp;&nbsp;&nbsp;&nbsp; = 0.8
+PMDB_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 5.1
+PRED_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 3.4
+PRED_EXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = -time
+# Hugues' new "old" library
+REFDREF_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1.0
+REFDREF_HOME = /dept/scorec/scratch1/decouh2/develop/meshing/refdref
+UTIL_VER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0.1
+LDLIBS&nbsp;&nbsp; =&nbsp; \
+&nbsp; -L$(SCSOFT_HOME)/parallel/pred/$(PRED_VER)/lib/$(LIBTYPE) \
+&nbsp; -lpred$(PRED_EXT)-mpi&nbsp; \
+&nbsp; -L$(REFDREF_HOME)/$(REFDREF_VER)/lib/$(LIBTYPE) \
+&nbsp; -lrefdref-mpi&nbsp; \
+&nbsp; -L$(SCSOFT_HOME)/parallel/pmdb/$(PMDB_VER)/lib/$(LIBTYPE) \
+&nbsp; -lpmdb-mpi&nbsp;&nbsp; \
+&nbsp; -L$(SCSOFT_HOME)/meshing/meshTools/$(MESHTOOLS_VER)/lib/$(LIBTYPE) \
+&nbsp; -lmeshTools-mpi&nbsp; \
+&nbsp; -L$(SCSOFT_HOME)/parasolid/$(PARA_VER) \
+&nbsp; -lfrustrum -lfg -lparasolid \
+&nbsp; -L$(SCSOFT_HOME)/parallel/comm/$(COM_VER)/lib/$(LIBTYPE) \
+&nbsp; -lcomm-mpi&nbsp; \
+&nbsp; -L$(SCSOFT_HOME)/model/model/$(MODEL_VER)/lib/$(LIBTYPE) \
+&nbsp; -lmodel \
+&nbsp; -L$(SCSOFT_HOME)/model/parasolidModel/$(PARA_MODEL_VER)/lib/$(LIBTYPE) \
+&nbsp; -lparasolidModel \
+&nbsp; -L$(SCSOFT_HOME)/model/mesh/$(MDB_VER)/lib/$(LIBTYPE) \
+&nbsp; -lmesh&nbsp; \
+&nbsp; -L$(SCSOFT_HOME)/meshing/meshOpt/$(MESHOPT_VER)/lib/$(LIBTYPE) \
+&nbsp; -lmeshOpt \
+&nbsp; -L$(SCSOFT_HOME)/parallel/meshOptPart/$(MESHOPTPART_VER)/lib/$(LIBTYPE) \
+&nbsp; -lmeshOptPart&nbsp; \
+&nbsp; -L$(SCSOFT_HOME)/util/memory/$(MEM_VER)/lib/$(LIBTYPE)&nbsp;
+&nbsp; -lmemory&nbsp; \
+&nbsp; -L$(SCSOFT_HOME)/util/util/$(UTIL_VER)/lib/$(LIBTYPE)&nbsp;
+&nbsp; -lutil \
+&nbsp; -lm</pre>
+
+<p><br>
+<hr>
+<br><i></i>&nbsp;
+</body>
+</html>

@@ -1,0 +1,63 @@
+<HEADER>
+<TITLE>Parallel Mesh Database</TITLE>
+</HEADER>
+<BODY BGCOLOR="#ffffff" TEXT="#000000" LINK="#ff00ff" VLINK="#0000ff"
+ALINK="#00ff00">
+
+<P>
+
+<center>
+<H1>Parallel Mesh Database</H1>
+</center>
+
+
+The SCOREC Mesh Database (MDB) provides a hierarchical representation
+of a finite element mesh along with operators to query and update the
+mesh data structure.  The Parallel Mesh Database (PMDB), built on top
+of MDB, provides operators to create and manipulate distributed
+meshes.  PMDB holds MDB meshes on each processor that are subsets of
+the complete one.
+A
+<center>
+<H4>PMDB Interprocessor Boundary Structures</H4>
+<IMG SRC="gif/fig2_DS2.gif">
+</center>
+
+<P>
+
+<center>
+Doubly linked structures of partition boundary entities:
+(a) global view and (b) partition boundary view.  E and V denote 
+lists of all partition boundary edges and vertices, respectively.
+Symbols with subscripts indicate lists of entities adjacent to a particular
+processor.   The circled number two in (b) corresponds to the small number
+two in (a).  The ordered pairs are processor-address pairs.
+</center>
+
+<P>
+
+<center>
+<H4>PMDB Interprocessor Links</H4>
+<IMG SRC="gif/iplinks.color.gif">
+</center>
+
+<P>
+
+<center>
+Two-dimensional example of a distributed mesh.  Arrows
+represent interprocessor pointers between boundary entities.  Heavy
+edges and vertices indicate the unique owner of each shared boundary
+entity.
+</center>
+<P>
+<BR>
+
+Interprocessor boundary entity lists and interprocessor links provide
+fast query and update operations on mesh structures.  PMDB provides
+arbitrary <A HREF="migration.html"> multiple mesh migration </A> and
+routines to analyze partition quality.  PMDB data structures and
+operators are used in all stages of an adaptive computation.
+MPI is used for interprocessor communication.
+
+
+</BODY>

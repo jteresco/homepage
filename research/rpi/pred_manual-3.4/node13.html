@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Additions to Pred</TITLE>
+<META NAME="description" CONTENT="Additions to Pred">
+<META NAME="keywords" CONTENT="pred">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="pred.css">
+<LINK REL="previous" HREF="node12.html">
+<LINK REL="up" HREF="node12.html">
+<LINK REL="next" HREF="node14.html">
+</HEAD>
+<BODY >
+<H2><A NAME="SECTION00061000000000000000">
+Additions to Pred</A>
+</H2>
+<P><UL>
+<LI> <TT>void pred_set_ref_balancing(int balType)</TT>
+<P>
+Using a <TT>pred_oct*</TT> instance of the library adds: <BR>
+<P><TABLE CELLPADDING=3 BORDER="1" ALIGN=CENTER WIDTH=95% >
+<TR VALIGN="TOP"><TH ALIGN="LEFT" NOWRAP><B>PRED_PARMETIS</B></TH>
+<TD ALIGN="LEFT">use predictive ParMetis partitioning.  Balancing will
+be timed if the <TT>pred_parmet-time</TT> libarary is used.</TD>
+</TR>
+</TABLE> 
+<BR>
+<LI> <TT>void pred_check_env(void)</TT>
+<P>
+Using a <TT>pred_parmet*</TT> instance of the library adds: <BR>
+<P><TABLE CELLPADDING=3 BORDER="1" ALIGN=CENTER WIDTH=95%>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>2</TD>
+<TD ALIGN="LEFT" >same effect as using <B>PRED_PARMETIS</B> with <TT>
+pred_set_ref_balancing</TT></TD>
+</TR>
+</TABLE> <BR>
+<LI> <TT>void pred_set_parmetis_params(int type, idxtype
+  *options)</TT>
+<P>
+Type is one of the following: <BR>
+<P><TABLE CELLPADDING=3 BORDER="1" ALIGN=CENTER WIDTH=95%>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>1</TD>
+<TD ALIGN="LEFT" NOWRAP>PARKMETIS (k-way partitioning)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>2</TD>
+<TD ALIGN="LEFT" NOWRAP>(do not use with predictive balancing)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>3</TD>
+<TD ALIGN="LEFT" NOWRAP>PARUAMETIS (undirected diffusion)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>4</TD>
+<TD ALIGN="LEFT" NOWRAP>PARDAMETIS (directed diffusion)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>5</TD>
+<TD ALIGN="LEFT" NOWRAP>(do not use with predictive balancing)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>6</TD>
+<TD ALIGN="LEFT" NOWRAP>PARGKMETIS (coordinate-based with k-way)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>7</TD>
+<TD ALIGN="LEFT" NOWRAP>PARGRMETIS (coordinate-based plus refinement)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>8</TD>
+<TD ALIGN="LEFT" NOWRAP>PARGMETIS (coordinate-based partitioning)</TD>
+</TR>
+</TABLE>
+<P>
+If this function is never called, but predictive balancing is set to
+use ParMetis, then PARUAMETIS is used a the default.
+<P>
+The elements of the options array have the following significance: <BR>
+<P><TABLE CELLPADDING=3 BORDER="1" ALIGN=CENTER WIDTH=95%>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>options[0]</TD>
+<TD ALIGN="LEFT" >Returns the edge-cut of the computed partition.</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>options[1]</TD>
+<TD ALIGN="LEFT" >A parameter that controls successive folding.</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>options[2]</TD>
+<TD ALIGN="LEFT">Selects the type of initial partitioning algorithm at
+the coarsest graph: <BR> &nbsp;&nbsp; If = to 1, then a serial partitioning algorithm is
+used.  <BR> &nbsp;&nbsp; If = to 2, then a parallel algorithm is
+used.</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>options[3]</TD>
+<TD ALIGN="LEFT" NOWRAP>Always use the value 0.</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>options[4]</TD>
+<TD ALIGN="LEFT">Specifies the level of information to be retuned during the execution of ParMetis.</TD>
+</TR>
+</TABLE>
+<P>
+Unless you are familiar with the ParMetis libarary, NULL should be
+passed for the options parameter.  This indicates that options should
+not be changed from the default values of 0, 0, 2, 0, 0.
+<P>
+For more information on the options array and the different types of
+ParMetis partitioners, see&nbsp;[<A
+ HREF="node14.html#karypis97c">1</A>].
+<P></UL>
+<P><HR>
+</BODY>
+</HTML>

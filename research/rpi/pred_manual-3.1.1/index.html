@@ -1,0 +1,227 @@
+<HEAD>
+<TITLE> Predictive Load Balancing Routines</TITLE>
+</HEAD>
+<BODY>
+<P>
+
+<center>
+<H1>Predictive Library (PRED)</H1>
+</center>
+
+The library consists of a colletion of routines that perform balancing before
+the refinement stage of the refdref enrichment process by anticipating
+the results of refinement.  
+
+<P> 
+
+<HR>
+
+<H2> 0.  Getting Started </H2>
+
+This documentation covers version 3.1.1 for the SP located in
+<tt>/dept/scorec/software/pred/3.1.1</tt>.  Contact ziantzl@cs.rpi.edu
+if you wish to run PRED on another platform.
+
+<UL>
+<LI> <A HREF="instances.html"> Library Instances </A>
+<LI> <A HREF="includes.html"> Includes </A>
+<LI> <A HREF="linking.html"> Linking </A>
+<LI> Manual (See the following sections on this page.)
+<LI> <A HREF="program.html"> Example Program (Uniform Element Workload
+Predictive Balancing)</A>
+</UL>
+
+<P> 
+
+<HR>
+
+<H2> 1.  Modifications Since Last Documented Version </H2>
+
+None.  (First documented version.)
+
+<P> 
+
+<HR>
+<H2>2. Uniform Element Workload Predictive Balancing</H2>
+
+<PRE>void pred_set_ref_balancing(int balType)</PRE>
+
+	Sets predictive balancing to a particular default type if
+called from an application code.  Default types are as follows:
+
+<P>
+
+<TABLE BORDER>
+<TR>
+<TD><code>PRED_NONE</code></TD><TD>no predictive balancing done; standard nonpredictive
+ITB used during enrichment.  Note that setting predictive balancing to
+this type will allow timing to be performed on the nonpredictive
+balancing if the pred-time library is being used.</TD>
+</TR>
+<TR>
+<TD><code>PRED_ITB</code></TD><TD>use predictive Iterative Tree Balancing.  Balancing will
+be timed if the pred-time libarary is used.</TD>
+</TR>
+</TABLE>
+
+<P>
+
+<HR>
+
+
+
+<PRE>void pred_check_env(void)</PRE>
+
+	Allows predictive balancing types to be set by an environment
+variable (<b>PRED_REF_BAL</b>) if called by an application code.  Valid values
+for <b>PRED_REF_BAL</b> are as follows: 
+
+<P>
+
+<TABLE BORDER>
+<TR>
+<TD> 0 </TD><TD>same effect as using <code>PRED_NONE</code> with <tt>pred_set_ref_balancing</tt></TD>
+</TR>
+<TR>
+<TD> 1 </TD><TD>same effect as using <code>PRED_ITB</code> with <tt>pred_set_ref_balancing</tt></TD>
+</TR>
+</TABLE>
+
+<BR> 
+
+<b> NOTE: </B> <BR>
+
+<i> In application code, any call to <tt>refdref_set_rebal_func()</tt>
+should be placed AFTER a call to <tt>pred_check_env()</tt> or
+<tt>pred_set_ref_balancing()</tt> as they will set the refdref
+balancing function to a default if the value for predictive balancing
+is set to <code>PRED_NONE</code> (i.e., 0). </i>
+
+<P>
+
+<HR>
+
+<PRE>int pred_ref_balancing_on(void)</PRE>
+
+Returns 1 if predictive balancing before refinement is turned
+on; 0 otherwise.
+
+<P>
+
+<HR>
+
+<H2>3.  Variable Element Workload Predictive Balancing</H2>
+
+<PRE>PMDB_CBPROC pred_register_work_func(PMDB_CBPROC new_wt_func)</PRE>
+
+	Allows an application-dependent work function to be registered
+with pred.  The function is used to estimate the work required by a
+set of elements produced by the refinement of a single element before
+any refinement is done.  The predictive library will provide the work
+estimator with the expected number of subdivisions for use by the
+function.  The work estimator function is of the following prototype
+format: <BR>
+  <PRE>int work_estimator_func(pEntity entity, int weight);</PRE>
+
+Thus, <tt>work_estimator_func</tt> may be defined by the application
+code developer to return an element-based work measure determined by the
+solution technique being used.  The estimator function would be
+registered with pred as
+  <PRE>pred_register_work_func(work_estimator_func);</PRE>
+
+<HR>
+
+<PRE>int pred_using_work_func(void)</PRE>
+
+	Returns 1 if a work estimator function has been registered
+with pred by the application; 0 otherwise.
+
+<P>
+
+<HR>
+
+<PRE>PMDB_CBPROC pred_clear_work_func(void)</PRE>
+
+	Allows an existing work estimator function to be cleared so
+that it is no longer used.  All predictive balancing performed
+afterwards reverts to uniform element-weight balancing by default.
+
+<P>
+
+<HR>
+
+<h2>4. Making Other Balancers Predictive</h2>
+
+The following functions may be used to create other predictive
+balancing calls:
+
+<PRE>void pred_setup_before_ref_bal(pMeshPB pmeshpb)</PRE>
+
+	Performs all setup operations needed to do a predictive
+balancing before refinement.
+
+<P>
+
+<HR>
+
+<PRE>void pred_cleanup_after_ref_bal(pMeshPB pmeshpb)</PRE>
+
+	Performs all cleanup operations needed after a predictive
+balancing before refinement.
+
+<P>
+
+<HR>
+
+<PRE>void pred_set_ref_bal_func(void (*set_pred_ref_bal_func)()</PRE>
+
+	Allows a predictive balancing call other than the defaults to
+be registered with pred.
+
+<P>
+
+<HR>
+
+<PRE>void pred_unset_ref_bal_func(void)</PRE>
+
+	Used to clear a predictive balancing function registered with
+pred so that it is no longer used.
+
+<P>
+
+<HR>
+
+<P>
+
+EXAMPLE of the use of the functions in this section: 
+
+<PRE>
+void pred_example_balance_before_ref(pMeshPB pmeshpb)
+
+{
+
+  pred_setup_before_ref_bal(pmeshpb);
+
+  call_example_balancer(pmeshpb);
+
+  pred_cleanup_after_ref_bal(pmeshpb);
+
+}
+</PRE>
+
+After this is defined, the following may be called:
+
+  <PRE>pred_set_ref_bal_func(pred_example_balance_before_ref);</PRE>
+
+Now, when predictive balancing is performed,
+<tt>pred_example_balance_before_ref()</tt> will be called before
+refinement.
+
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Louis Ziantz <BR>
+Tue Jul 15 17:27:31 EDT 1997
+</I>
+</ADDRESS>
+</BODY>

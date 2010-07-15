@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> Partition Boundary Updates</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" Partition Boundary Updates">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html84 HREF="node7.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html82 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html76 HREF="node5.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html85 HREF="node7.html"> pmdb_dref_numb_own_gen</A>
+<B>Up:</B> <A NAME=tex2html83 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html77 HREF="node5.html"> Partition Boundary Queries</A>
+<BR> <HR> <P>
+<H1><A NAME=SECTION00150000000000000000> Partition Boundary Updates</A></H1>
+<P>
+<A NAME=secpbu>&#160;</A>
+<P>
+<HR>
+<PRE>void pmdb_del_all_en_iplinks(
+pMeshPB pmeshpb,          /* IN  */
+pEntity entity)           /* IN  */
+</PRE>
+<P>
+Deletes all the inter processor links from the partition
+  boundary entity. Note  that when this operator is
+     used only the links are deleted and the end result
+    is an entity <i> on the partition boundary</i> with <i> no</i> links.
+<tt> pmdb_en_num_iplinks()</tt>
+<P>
+will return 0 after this operator is applied
+   to the entity in question.
+   To remove the entity from the boundary use:
+<tt> pmdb_remove_ip_link()</tt>
+.
+<P>
+<HR>
+<PRE>int pmdb_del_iplink(
+pMeshPB pmeshpb,          /* IN */
+pEntity entity,           /* IN */
+int     pid)              /* IN */
+</PRE>
+<P>
+Given a processor id <code>pid</code>, this routine deletes the corresponding 
+inter-processor link for the partition boundary entity.
+It returns 1 if successfully deleted and 0 if not found and 
+therefore not deleted.
+<P>
+
+<P>
+<HR>
+<PRE>void pmdb_geom_setuplinks(
+pMeshPB pmeshpb)     /* IN */
+</PRE>
+<P>
+   If submeshes are loaded on  processors with absolutely no links
+which connect the partition boundaries (for example meshes which has 
+been broken into more than one submesh by the <code>split</code> utility),
+this routine can be used to initialize the <tt> PMDB</tt> structures and set up 
+the links. To do this, each processor executing this routine 
+first compute the centroid of each entity on the boundary of the submesh
+they own. The centroids are then sorted and passed in a ring of processors 
+together with the addresses of entities. At every processor, a 
+linear <i> merge </i> operation of sorted centroids take place. During 
+merging, if the same entity is found, then the link is setup by storing 
+the address of the shared entity.
+<P>
+<HR>
+<PRE>void pmdb_insert_iplink(
+pMeshPB  pmeshpb,
+pEntity  loc_p_en,
+int      pid,
+pEntity  off_p_en)
+</PRE>
+<P>
+   This  function inserts an ip-link into the list of links maintained by
+a partition boundary entity.
+<P>
+<TABLE BORDER>
+<TR>
+<TD><I>loc_p_en</I></TD><TD>local entity address.</TD>
+</TR>
+<TR>
+<TD><i>pid</I></TD><TD>off-processor id.</TD>
+</TR>
+<TR>
+<TD><i>off_p_en</I></TD><TD>off-processor shared entity address.</TD>
+</TR>
+</TABLE>
+
+<P>
+<HR>
+<PRE>int pmdb_remove_iplink(
+pMeshPB pmeshpb,          /* IN */
+pEntity entity)           /* IN */
+</PRE>
+<P>
+ This function  removes all the ip-links from the entity. At the end,
+the entity is also removed from the list of partition boundary entities.
+Hence traversal for example by:
+ <tt> pmdb_all_next_en</tt> 
+ will no longer
+have it.  Also 
+ <tt> pmdb_en_num_iplink</tt>
+ will also
+return <b>-1</b> for this entity. This function returns 1 if the entity is 
+successfully removed. It will return 0 if the entity is not on the partition 
+boundary and hence it is not removed.
+<P>
+<HR>
+<PRE>int pmdb_set_owner(
+pEntity entity,       /* IN */
+int     pid)          /* IN */
+</PRE>
+<P>
+ This function sets the processor with id <code>pid</code> to be the owner 
+of the entity. Note that <code>pid</code> should be in the list of processors
+sharing the entity.
+<P>
+<BR> <HR>
+<UL> 
+<LI> <A NAME=tex2html86 HREF="node7.html#SECTION00151000000000000000"> pmdb_dref_numb_own_gen</A>
+<LI> <A NAME=tex2html87 HREF="node8.html#SECTION00152000000000000000"> pmdb_dref_own_gen</A>
+</UL>
+<BR> <HR><A NAME=tex2html84 HREF="node7.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html82 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html76 HREF="node5.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html85 HREF="node7.html"> pmdb_dref_numb_own_gen</A>
+<B>Up:</B> <A NAME=tex2html83 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html77 HREF="node5.html"> Partition Boundary Queries</A>
+<BR> <HR> <P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Mon Oct 16 11:07:26 EDT 1995
+</I>
+</ADDRESS>
+</BODY>

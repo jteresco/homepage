@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Variable Element Workload Predictive Balancing</TITLE>
+<META NAME="description" CONTENT="Variable Element Workload Predictive Balancing">
+<META NAME="keywords" CONTENT="pred">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="pred.css">
+<LINK REL="next" HREF="node9.html">
+<LINK REL="previous" HREF="node7.html">
+<LINK REL="up" HREF="node4.html">
+<LINK REL="next" HREF="node9.html">
+</HEAD>
+<BODY >
+<H2><A NAME="SECTION00044000000000000000">
+Variable Element Workload Predictive Balancing</A>
+</H2>
+<P><UL>
+<LI> <TT>PMDB_CBPROC pred_register_work_func(PMDB_CBPROC
+	new_wt_func)</TT>
+<P>
+Allows an application-dependent work function to be registered
+with pred.  The function is used to estimate the work required by a
+set of elements produced by the refinement of a single element before
+any refinement is done.  The predictive library will provide the work
+estimator with the expected number of subdivisions for use by the
+function.  The work estimator function is of the following prototype
+format: 
+<PRE>
+int work_estimator_func(pEntity entity, int weight);
+</PRE>
+Thus, <TT>work_estimator_func</TT> may be defined by the application
+code developer to return an element-based work measure determined by the
+solution technique being used.  The estimator function would be
+registered with pred as 
+<PRE>
+  pred_register_work_func(work_estimator_func);
+</PRE>
+<BR>
+<LI> <TT>int pred_using_work_func(void)</TT>
+<P>
+Returns 1 if a work estimator function has been registered
+with pred by the application; 0 otherwise. <BR>
+<P>
+<LI> <TT>PMDB_CBPROC pred_clear_work_func(void)</TT>
+<P>
+Allows an existing work estimator function to be cleared so
+that it is no longer used.  All predictive balancing performed
+afterwards reverts to uniform element-weight balancing by default.
+<P></UL>
+<BR><HR>
+</BODY>
+</HTML>

@@ -1,0 +1,60 @@
+<HEAD>
+<TITLE> PRED Include Files </TITLE>
+</HEAD>
+<BODY>
+<P>
+
+<center>
+<H1>Include Files (PRED)</H1>
+</center>
+
+<P>
+
+To use pred, you need to include the following file:
+
+<PRE> pred.h </PRE>
+
+(located in <tt> /dept/scorec/software/pred/3.1.1/include</tt>).
+
+<P>
+
+A typical <tt>INCLUDES</tt> variable for use with pred looks like
+
+<PRE>
+
+SCSOFT_HOME = /dept/scorec/software
+
+COM_VER            = 1.1
+FRAME_MODEL_VER    = 0.4
+FRAME_UTIL_VER     = 0.1
+MDB_VER            = 3.0
+MEM_VER            = 1.0
+MESHOPT_VER        = 3.0
+MESHOPTPART_VER    = 2.0
+MESHTOOLS_VER      = 3.0
+PARA_VER           = 8.0
+PMDB_VER           = 5.0
+PRED_VER           = 3.1.1
+PRED_EXT           = -time
+REFDREF_VER        = 2.1
+
+INCLUDES   =  \
+           -I$(SCSOFT_HOME)/pred/$(PRED_VER)/include  \
+	   -I$(SCSOFT_HOME)/refdref/$(REFDREF_VER)/include  \
+	   -I$(SCSOFT_HOME)/pmdb/$(PMDB_VER)/include    \
+	   -I$(SCSOFT_HOME)/MeshTools/$(MESHTOOLS_VER)/include  \
+           -I$(SCSOFT_HOME)/comm_lib/$(COM_VER)/include  \
+           -I$(SCSOFT_HOME)/framework/model/$(FRAME_MODEL_VER)/include \
+           -I$(SCSOFT_HOME)/meshdb/$(MDB_VER)/include  
+
+
+</PRE>
+
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Louis Ziantz <BR>
+Tue Jul 15 17:27:31 EDT 1997
+</I>
+</ADDRESS>
+</BODY>

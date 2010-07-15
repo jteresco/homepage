@@ -1,0 +1,12 @@
+
+@INPROCEEDINGS{flaherty00b,
+  AUTHOR =      { Joseph E. Flaherty and 
+                  James D. Teresco},
+  TITLE  =      { Software for Parallel Adaptive Computation},
+  BOOKTITLE =   {Proc. 16th IMACS World Congress on Scientific Computation, Applied Mathematics and Simulation},
+  EDITOR =      {Michel Deville and Robert Owens},
+  ADDRESS =     {Lausanne},
+  ORGANIZATION = { IMACS },
+  NOTE =        { Paper 174--6 },
+  YEAR =	{ 2000 }
+}

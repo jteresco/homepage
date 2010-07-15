@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> PMDB Zoltan Interface</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" Misc">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+
+ <BR> <HR><A HREF="part_stats.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"> </A>  <A NAME=tex2html140 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html136 HREF="node12.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html135 HREF="part_stats.html"> Partition Quality Analysis Routines</A>
+<B>Up:</B> <A NAME=tex2html141 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html137 HREF="node12.html"> Visualization</A>
+<BR> <HR> <P>
+<H1><A NAME=start> Interface to Zoltan</A></H1>
+<P>
+<H2>PMDB Zoltan Interface</H2>
+
+The Zoltan Dynamic Load Balancing Library provides an interface to
+several partitioning and dynamic load balancing algorithms.  The PMDB
+functions here provide an interface to help use Zoltan to partition
+PMDB meshes.  See the <A HREF="http://www.cs.sandia.gov/Zoltan">Zoltan
+documentation</A> for more information about Zoltan and for details on
+its parameters.
+
+<HR>
+<PRE>
+void pmdb_zoltan_setup(
+pMeshPB pmeshpb,
+void *zoltan_struct);
+</PRE>
+
+This function sets up a given <TT>struct Zoltan_Struct</TT> to have
+callback functions to balance the given distributed mesh.  It also sets
+up good defaults for assorted Zoltan parameters, and sets a default
+method of Octree balancing with Morton ordering and a saved tree
+structure.<P>
+  
+We pass a <TT>void *</TT> instead of a <TT>struct Zoltan_Struct *</TT>
+to avoid having the <TT>Zoltan_Struct</TT> visible outside of this file
+which would require <TT>zoltan.h</TT> for any PMDB usage.<P>
+
+The <TT>Zoltan_Struct</TT> should be created by the application by a
+call to <TT>Zoltan_Create</TT> before calling this routine.<P>
+
+<P>
+<HR>
+<PRE>
+void pmdb_zoltan_balance(
+pMeshPB pmeshpb);
+</PRE>
+
+This function calls Zoltan's <TT>Zoltan_LB_Balance</TT> routine to
+compute a new decomposition, then calls PMDB migration routines to
+achieve that decomposition.  <TT>pmdb_zoltan_setup</TT> must be called
+prior to this routine.  Balancing methods and parameters may be
+changed using Zoltan calls between the call to
+<TT>pmdb_zoltan_setup</TT> and the call to this routine.  Zoltan
+parameters may be changed between successive calls to this routine.
+<P>
+
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Fri Jun  7 10:37:53 EDT 2002
+</I>
+</ADDRESS>
+</BODY>

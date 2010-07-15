@@ -1,0 +1,62 @@
+<HEADER>
+<TITLE>SCOREC Parallel Adaptive Framework</TITLE>
+</HEADER>
+<BODY BGCOLOR="#ffffff" TEXT="#000000" LINK="#ff00ff" VLINK="#0000ff"
+ALINK="#00ff00">
+
+<P>
+<center>
+<H1>SCOREC Parallel Adaptive Framework</H1>
+</center>
+
+
+The SCOREC Parallel Adaptive Framework integrates all of these tools
+into a single environment while providing higher levels of abstraction
+to simplify the creation of software to solve new problems. Each
+component of the system is designed with a common and consistent
+interface which allow the author of an anaylsis program to pick
+and choose appropriate components and be assured that they will be
+able to work together, where appropriate.  This includes components
+developed entirely within the framework, such as the mesh structures
+and solution database, as well as those implemented as wrapper
+interfaces to existing packages, such as the Parasolid or Shapes
+geometric modelling packages or an ODE solver such as DASPK.
+<P>
+
+The focus here is on the design and implementation of the structures
+which will be needed to run programs within the SCOREC analysis
+framework on parallel computers.  The same analysis application code
+should be able to execute on a single processor with a single thread
+of execution as well as on a parallel machine.  A proper design is
+essential to allow this to happen.
+<P>
+
+
+Not all components of the analysis framework need to be explicitly
+parallel.  Any component which has the potential to access
+off-processor data must either be aware of the parallelism explicitly
+or have the parallelism abstracted out to lower level structures.  As
+the underlying data structure for all framework code, the mesh
+structures are the most obvious place where parallelism will need to
+be explicit, but there are others. 
+<P>
+
+
+<H4>The Partition Model</H4>
+
+The notion of mesh partitioning is more general than that of PMDB.
+There, top-level mesh entities are each assigned to a unique processor
+and any entities shared between top-level entities on different
+processors are replicated.  The new distributed mesh structures are
+being implemented based on a <A HREF=partmodel.html>partition
+model</A> , analogous to the geometric model used to classify mesh
+entities on the geometry of the problem domain.  All mesh entities
+classified on a partition model entity must be assigned to the same
+processor.  More than one partition model entity may be assigned to a
+single process.  The ability to assign multiple partition model
+entities to a processor will allow these classifications to be used in
+mesh migration.  Dynamic creation and deletion of processor model
+entities is also necessary.
+<HR>
+
+</BODY>

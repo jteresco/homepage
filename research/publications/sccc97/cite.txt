@@ -1,0 +1,9 @@
+@InProceedings{flaherty97c,
+  author =       {Joseph E. Flaherty and Raymond M. Loy and  Patrick C. Scully and Mark S. Shephard and Boleslaw K. Szymanski and James D. Teresco and Louis H. Ziantz},
+  title =        {Load balancing and communication optimization for parallel adaptive finite element computation},
+  booktitle =    {Proc. XVII Int. Conf. Chilean Comp. Sci. Soc.},
+  pages =        {246--255},
+  year =         {1997},
+  address =      {Los Alamitos, CA},
+  publisher =    {IEEE}
+}

@@ -1,0 +1,13 @@
+@InProceedings{teresco05d,
+  author = 	 {James D. Teresco and Laura Effinger-Dean and Arjun Sharma},
+  title = 	 {Resource-aware Parallel Adaptive Computation for Clusters},
+  booktitle = 	 {Proc. Computational Science -- ICCS 2005: 5th
+International Conference},
+  pages = 	 {107--115},
+  year = 	 {2005},
+  editor = 	 {Vaidy S. Sunderam, Geert Dick van Albada, Peter M. A. Sloot, et al.},
+  volume = 	 {3515},
+  series = 	 {Lecture Notes in Computer Science},
+  address = 	 {Atlanta},
+  publisher = {Springer}
+}

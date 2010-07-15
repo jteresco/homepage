@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> Miscellaneous Routines</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" Misc">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+
+ <BR> <HR><A HREF="part_stats.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"> </A>  <A NAME=tex2html140 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html136 HREF="node12.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html135 HREF="part_stats.html"> Partition Quality Analysis Routines</A>
+<B>Up:</B> <A NAME=tex2html141 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html137 HREF="node12.html"> Visualization</A>
+<BR> <HR> <P>
+<H1><A NAME=start> Miscellaneous Routines</A></H1>
+<P>
+<H2>Reading and Writing Compressed Files from PMDB</H2>
+
+PMDB has the capability to read and write files which are compressed
+with the UNIX <code>compress</code> or GNU's <code>gzip</code>
+utilities.  Input files which are not found are automatically checked
+for the same files with <tt>.Z</tt> and </tt>.gz</tt> extensions.  If
+the compressed version of the file is found, it is passed through the
+appropriate uncompression, and an uncompressed copy of each file is
+written to temporary space.  Once the file has been read in, the
+uncompressed copy of the file is deleted.<P>
+
+On output, by default, files are not compressed.  However, if the
+operator <code>pmdb_set_output_compression()</code> has been called,
+all output files are first written to temporary space, compressed with
+the desired utility, then moved into the desired location.<P>
+
+<HR>
+<PRE>
+void pmdb_set_output_compression(
+int compression_type)   /* IN */
+</PRE>
+
+This routine sets the compression type to be used in subsequent file
+writes.  The following are the valid compression types:
+<P>
+
+<TABLE BORDER>
+<TR>
+<TD>Argument</TD><TD>Type of Compression Used</TD>
+</TR>
+<TR>
+<TD><code>PMDB_UNCOMPRESSED_OUTPUT</code></TD><TD>Do not compress
+output.</TD>
+</TR>
+<TR>
+<TD><code>PMDB_GZIP_OUTPUT</code></TD><TD>Compress using
+<tt>gzip</tt></TD>
+</TR>
+<TR>
+<TD><code>PMDB_GZIP9_OUTPUT</code></TD><TD>Compress using
+<tt>gzip -9</tt></TD>
+</TR>
+<TR>
+<TD><code>PMDB_COMPRESS_OUTPUT</code></TD><TD>Compress using
+<tt>compress</tt></TD>
+</TR>
+</TABLE>
+
+<P>
+
+The default paths to the commands needed by PMDB to read and write the
+compressed files, and the default path to the temporary space to use,
+are defined in the PMDB header file <tt>pmdb_config.h</tt> at
+library-compile time.  If the library is already compiled with command
+strings that are invalid, they can all be overwritten by setting the
+following environment variables: <P>
+
+<TABLE BORDER>
+<TR>
+<TD>Environment Variable</TD><TD>Command</TD>
+</TR>
+<TR>
+<TD><code>PMDB_ZCAT_EXE_PATH</code></TD><TD>Path to <tt>zcat</tt>
+command.  It is best to use <tt>gunzip -c</tt>, if possible, since it
+can handle both UNIX <tt>compress</tt> and <tt>gzip</tt> format
+compressed files.</TD>
+</TR>
+<TR>
+<TD><code>PMDB_ZCAT_TMP_PATH</code></TD><TD>Location to write
+temporary files.  Having this on a local disk can significantly
+improve performance.</TD>
+</TR>
+<TR>
+<TD><code>PMDB_GZIP_EXE_PATH</code></TD><TD>Path to the <tt>gzip</tt>
+command.</TD>
+</TR>
+<TR>
+<TD><code>PMDB_GZIP9_EXE_PATH</code></TD><TD>Path to the <tt>gzip -9</tt>
+command.</TD>
+</TR>
+<TR>
+<TD><code>PMDB_COMPRESS_EXE_PATH</code></TD><TD>Path to the <tt>compress</tt>
+command.</TD>
+</TR>
+<TR>
+<TD><code>PMDB_MV_COMMAND</code></TD><TD>Path to the <tt>mv</tt>
+command.  This is used to move the compressed files from the temporary
+space to the desired output location.  It must have the capability to
+move files across filesystems if the temp path and destination are on
+different filesystems.</TD>
+</TR>
+</TABLE>
+
+<BR>
+
+<h2>Other operators</h2>
+
+<HR>
+<PRE>
+pMesh pmdb_get_pmesh(
+pMeshPB pmeshpb)      /* IN */
+</PRE>
+
+Retrieves the Mesh Database mesh pointer for the mesh on each processor.<P>
+
+<HR>
+
+<PRE>
+char *pmdb_version(
+int *major,       /* OUT */
+int *minor)       /* OUT */
+</PRE>
+
+This function retrieves the version information about the current
+version of PMDB.  A major and minor version number are returned in
+<tt>major</tt> and <tt>minor</tt> respectively.  The return value is a
+pointer to a string containing the current version information.<P>
+
+<HR>
+
+<PRE>
+FILE *pmdb_gracefully_open(
+char *file,      /* IN */
+char *mode)      /* IN */
+</PRE>
+
+This function opens a file, just like <code>fopen</code> but with
+error checking provided.<P>
+
+<HR>
+
+<PRE>
+long pmdb_total_entities(
+pMeshPB pmeshpb, /* IN */
+eType etype)     /* IN */
+</PRE>
+
+This function returns the total number of the given entity type
+<tt>etype</tt>, <tt>(Tvertex, Tedge, Tface, Tregion)</tt> in the
+distributed mesh across all processors.<P>
+
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Wed Nov 29 08:51:10 EST 1995
+</I>
+</ADDRESS>
+</BODY>

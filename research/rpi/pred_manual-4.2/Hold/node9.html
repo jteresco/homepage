@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Making Other Balancers Predictive</TITLE>
+<META NAME="description" CONTENT="Making Other Balancers Predictive">
+<META NAME="keywords" CONTENT="pred">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="pred.css">
+<LINK REL="previous" HREF="node8.html">
+<LINK REL="up" HREF="node4.html">
+<LINK REL="next" HREF="node10.html">
+</HEAD>
+<BODY >
+<H2><A NAME="SECTION00045000000000000000">
+Making Other Balancers Predictive</A>
+</H2>
+<A NAME="sec:manual.other-bal"></A>
+<p>
+This section provides an example of making a balancer with more than
+one parameter work predictively.
+<P>
+Using the <TT>scorec2metis</TT> library, routines from the ParMetis
+partitioning package may be invoked in the SCOREC framework.  This is
+done using the following function:
+<PRE>
+void parmetis(pMesh mesh, pMeshPB pmeshpb, idxtype *options, int type);
+</PRE>
+where options and type are discussed in the documentation for the <TT>
+scorec2metis</TT> library.
+<P>
+To use parmetis predictively, the following functions can be used:
+<PRE>
+void example_set_parmetis_type(int type_val) 
+{
+
+  if((type_val &gt;= 1) &amp;&amp; (type_val &lt;= 8)) {
+    /* parmet_type is static */
+    parmet_type = type_val;
+  }
+  else {
+
+    if(COM_PID == COM_MASTER) {
+
+      printf(&quot;Invalid parmetis type passed to set_parmetis_type 
+(parameter = %d).\n&quot;, type_val);
+
+    }
+
+  }
+
+}
+
+void example_call_parmetis(pMeshPB pmeshpb) {
+
+  pMesh mesh = pmdb_get_pmesh(pmeshpb);
+  /*
+  &quot;parmet_type&quot; is an integer refering to the ParMetis 
+   algorithm to be run; it is a static variable.
+
+  &quot;options&quot; is an array of 5 integers that is used to
+  pass parameters to the various phases of the algorithm.
+
+  See scorec2metis documentation for more details.
+  */
+  int options[5];
+
+  options[1]=0;
+  options[2]=2;
+  options[3]=0;
+  options[4]=1;
+
+  if(COM_PID == COM_MASTER)
+    printf(&quot;Calling ParMetis repartitioner... (Type = %d)\n&quot;, 
+parmet_type);
+
+  parmetis(mesh, pmeshpb, options, parmet_type);
+
+}
+</PRE>
+<P>
+After writing the above functions, parmetis may be used to perform
+uniform weight predictive balancing as follows:
+<P><PRE>
+  example_set_parmetis_type(1); /* set type */
+  pred_set_ref_bal_func(example_call_parmetis);
+</PRE>
+<P>
+To perform varaible weight predictive balancing, a weight estimator
+function should also be registered using
+<code>pred_register_work_func</code>.
+<P>
+<BR><HR>
+</BODY>
+</HTML>

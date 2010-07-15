@@ -1,0 +1,69 @@
+<HEADER>
+<TITLE>Parallel Data Structures and Load Balancing for Adaptive Finite
+Element Methods</TITLE>
+</HEADER>
+<BODY BGCOLOR="#ffffff" TEXT="#000000" LINK="#ff00ff" VLINK="#0000ff"
+ALINK="#00ff00">
+
+<center>
+<H3>Software Support for Parallel Adaptive Finite Element Methods</H3>
+</center>
+
+In order to solve large problems in reasonable times, adaptive methods
+must execute efficiently on parallel computers.  Moving to a parallel
+environment introduces complications such as the need to balance
+processor loading, coordinate interprocessor communication, and manage
+distributed data.  However, a good initial partitioning of the
+space-time domain is not sufficient to assure high performance
+throughout the computation.  Adaptive enrichment causes load
+imbalances that necessitate a dynamic redistribution of data.
+
+<P>
+
+<!-- <H4>SCOREC Tools</H4> -->
+
+<P>
+
+<center>
+<A HREF=gif/overview.gif><IMG SRC="gif/overview-small.gif"></A>
+</center>
+
+<BR>
+
+A geometric (CAD) modeler may be used to define the computational
+domain.  The SCOREC Finite Octree Automatic Mesh Generator then uses
+the CAD model of the domain to create an initial mesh.  Visualization
+of both mesh partitionings and solution data is done using tools
+including IBM's Data Explorer.
+
+<P>
+
+Mesh enrichment procedures perform parallel <A HREF=refdref.html>
+spatial coarsening and refinement</A> (<I>h-</I>refinement) using
+error estimator information and enrichment thresholds.
+
+<P>
+
+<center>
+<A HREF=gif/meshstuff.gif><IMG SRC="gif/meshstuff-small.gif"></a>
+</center>
+
+<BR> 
+
+The Parallel Mesh Tools consist of <A HREF=pmdb.html>distributed
+mesh</A> and <A HREF=distoctree.html>octree</A> structures, <A
+HREF=migration.html> migration routines</A>, and <A
+HREF=balancers.html> dynamic load balancers</A>. 
+
+<P>
+ The <A
+HREF=framework.html>SCOREC Parallel Adaptive Framework</A> integrates
+all of these tools into a single environment.
+
+<P>
+
+</BODY>
+
+<ADDRESS>
+(contact information here) 
+</ADDRESS>

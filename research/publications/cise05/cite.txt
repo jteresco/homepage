@@ -1,0 +1,9 @@
+@Article{teresco05b,
+  author = 	 {James D. Teresco and Jamal Faik and Joseph E. Flaherty},
+  title = 	 {Resource-Aware Scientific Computation on a Heterogeneous Cluster},
+  journal = 	 {Computing in Science \& Engineering},
+  year = 	 {2005},
+  volume = 	 {7},
+  number = 	 {2},
+  pages = 	 {40--50}
+}

@@ -1,0 +1,29 @@
+<HEADER>
+<TITLE>Distributed Octree</TITLE>
+</HEADER>
+<BODY BGCOLOR="#ffffff" TEXT="#000000" LINK="#ff00ff" VLINK="#0000ff"
+ALINK="#00ff00">
+
+<P>
+
+<center>
+<H1>Distributed Octree</H1>
+<IMG SRC="gif/bothtrees-small.gif">
+</center>
+
+<P>
+
+<center>
+<B>Parallel tree construction:</B> A simple tree having root A appears
+on the left above.  Its data structure including bounding box
+information is stored in &Acirc;.  On the right, the tree has been
+distributed across three processors.  The dotted circles indicate
+remote references. Only the remote location is stored in these cases.
+All data associated with a node is stored on its assigned processor.
+Each processor has a local root list denoted by <I>LR</I>, and each
+local root has a data structure storing its bounding box and tree
+level information.
+</CENTER>
+
+
+</BODY>

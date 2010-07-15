@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> pmdb_dref_own_gen</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" pmdb_dref_own_gen">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html104 HREF="node9.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html102 HREF="node6.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html98 HREF="node7.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html105 HREF="node9.html"> Partition Boundary Node </A>
+<B>Up:</B> <A NAME=tex2html103 HREF="node6.html"> Partition Boundary Updates</A>
+<B> Previous:</B> <A NAME=tex2html99 HREF="node7.html"> pmdb_dref_numb_own_gen</A>
+<BR> <HR> <P>
+<H2><A NAME=SECTION00152000000000000000> pmdb_dref_own_gen</A></H2>
+<P>
+<A NAME=pmdbdref_numb_own_gen>&#160;</A>
+<P>
+<PRE>void pmdb_dref_own_gen(
+pMeshPB   pmeshpb)
+</PRE>
+<P>
+If refinement or derefinement modifies the partition boundary and causes 
+some shared entities' ownership to become invalid or does not set the 
+ownership, this operator must be called.  This function will 
+recompute ownership on partition boundaries.  Currently, applications call 
+<tt> pmdb_dref_numb_own_gen</tt> to generate ownership and global number
+entities.  If global numbers are not needed, 
+then this call will speed up post-ownership generation step after 
+refinement or derefinement. If the ownership generation is taken care of
+during refinement or derefinement, then there will be no need to 
+call this operator.
+<P>
+
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Tue Aug  1 14:37:38 EDT 1995</I>
+</ADDRESS>
+</BODY>

@@ -1,0 +1,52 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="description" content="Linking (pred)">
+   <meta name="keywords" content="pred">
+   <meta name="resource-type" content="document">
+   <meta name="distribution" content="global">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (X11; I; SunOS 5.6 sun4u) [Netscape]">
+   <title>Linking (pred)</title>
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<link REL="STYLESHEET" HREF="pred.css">
+<link REL="next" HREF="manual.html">
+<link REL="previous" HREF="includes.html">
+<link REL="up" HREF="pred.html">
+<link REL="next" HREF="manual.html">
+</head>
+<body>
+<!--End of Navigation Panel-->
+<h1>
+<a NAME="SECTION00030000000000000000"></a>Linking</h1>
+<a NAME="sec:linking"></a>
+<p>
+Example Link Line (on the SP)
+<P>
+<PRE>
+PARASOLID = /dept/scorec/software/parasolid/10.0/libparasolid.a
+LIBS =  \
+	$(DEVROOT)/parallel/pred/4.2/lib/$(ARCHOS)/libpred$(BALEXT)$(QUAL)$(PQUAL).a \
+        $(DEVROOT)/meshing/refdref/3.3/lib/$(ARCHOS)/librefdref$(PQUAL)$(QUAL).a \
+	$(DEVROOT)/parallel/meshOptPart/1.0/lib/$(ARCHOS)/libmeshOptPart$(PQUAL).a \
+	$(DEVROOT)/meshing/meshOpt/3.0/lib/$(ARCHOS)/libmeshOpt.a \
+	$(DEVROOT)/meshing/meshTools/3.1/lib/$(ARCHOS)/libmeshTools$(PQUAL)$(QUAL).a \
+	$(DEVROOT)/parallel/pmdb/5.2/lib/$(ARCHOS)/libpmdb$(PQUAL)$(QUAL).a \
+	$(DEVROOT)/parallel/comm/2.2/lib/$(ARCHOS)/libcomm$(PQUAL)$(QUAL).a \
+	$(DEVROOT)/model/model/1.2/lib/$(ARCHOS)/libmodel$(QUAL).a \
+	$(DEVROOT)/model/parasolidModel/1.2/lib/$(ARCHOS)/libparasolidModel$(QUAL).a \
+	$(PARASOLID)  \
+	$(DEVROOT)/model/mesh/4.2/lib/$(ARCHOS)/libmesh$(QUAL).a \
+	$(DEVROOT)/util/util/0.4/lib/$(ARCHOS)/libutil$(QUAL).a \
+	$(DEVROOT)/util/memory/1.0/lib/$(ARCHOS)/libmemory-O.a
+</PRE>
+
+<p><br>
+<hr>
+<br><i></i>&nbsp;
+</body>
+</html>

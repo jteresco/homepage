@@ -1,0 +1,141 @@
+<HEADER>
+<TITLE>Perforated Muzzle Brake</TITLE>
+</HEADER>
+<BODY>
+<CENTER>
+<TABLE 
+        BORDER = 0
+        CELLPADDING = 0
+        CELLSPACING = 0
+        WIDTH=512>
+<TR>
+        <TD COLSPAN=5 WIDTH=512>
+                <A BORDER=0 HREF="http://www.scorec.rpi.edu/scorec/SCOREC.html">
+                <IMG BORDER=0 SRC="../SCORECTitle2.GIF"
+                ALT="SCOREC"></A></TD></TR>
+<TR>
+        <TD COLSPAN=5 WIDTH=512>
+                <A BORDER=0 HREF="http://www.rpi.edu">
+                <IMG BORDER=0 SRC="../RPIBanner.GIF"
+                ALT="Rensselaer Polytechnic Institute"></A></TD></TR>
+</TABLE>
+
+<H1>Parallel Adaptive Finite Element Computation</H1>
+<H2>Perforated Muzzle Brake</H2>
+
+<TABLE BORDER=0>
+<TR>
+<TD>
+<B>
+<A HREF=/~flaherje>Joseph E. Flaherty</A>, Raymond M. Loy, Can
+Ozturan, <A HREF=http://www.scorec.rpi.edu/scorec/faculty/MarkS.Shephard.html>Mark S. Shephard</A>,
+<A HREF=/~terescoj>James D. Teresco</A>, <A HREF=/~ziantzl>Louis H. Ziantz</A>
+<P>
+
+Scientific Computation Research Center (SCOREC) and <BR>
+Department of Computer Science, <BR>
+Rensselaer Polytechnic Institute, Troy, NY
+</B>
+</TD>
+<TD>
+<IMG SRC=125.tiny.machnum.gif>
+</TD>
+</TR>
+</TABLE>
+
+</CENTER>
+<P>
+<HR>
+<P>
+
+Adaptive finite element methods (FEMs) for partial differential
+equations (PDEs) provide greater efficiency, reliability, and
+robustness than classical methods by automatically refining or
+coarsening portions of the space-time domain (<I>h</I>-refinement),
+varying the method order (<I>p-</I>refinement), and/or moving the mesh
+to follow evolving phenomena (<I>r-</I>refinement).  As such,
+extensive computational effort is confined to regions where solution
+resolution is inadequate.  Estimates of discretization errors are used
+to control solution accuracy and provide a measure of confidence in
+the results.<P>
+ 
+In order to solve large problems in reasonable times, adaptive methods
+must execute efficiently on parallel computers.  A good initial
+partitioning of the space-time domain is not sufficient to assure high
+performance throughout the computation.  Adaptive enrichment causes
+load imbalances that necessitate a dynamic redistribution of data.<P>
+
+<H3>SCOREC Tools</H3>
+
+Several tools that facilitate parallel adaptive FEM computation have
+been developed at the Rensselaer Polytechnic Institute.  The SCOREC
+Mesh Database (MDB) provides a hierarchical representation of a finite
+element mesh along with operators to query and update the mesh data
+structure.  The SCOREC Finite Octree Automatic Mesh Generator uses a
+geometric (CAD) model of the domain to generate an initial mesh.  Mesh
+enrichment procedures perform parallel <I>h-</I>refinement using error
+indicator information and enrichment thresholds.  The Parallel Mesh
+Database (PMDB), built on top of MDB, provides operators to create and
+manipulate distributed meshes.  PMDB holds MDB meshes on each
+processor that are subsets of the complete one.  Interprocessor
+boundary entity lists and interprocessor links provide fast query and
+update operations on mesh structures.  PMDB provides arbitrary
+multiple mesh migration, and routines to analyze partition quality.
+MPI is used for interprocessor communication.<P>
+
+<H3>Partitioning and Rebalancing</H3>
+
+Initial mesh partitioning uses either Inertial Recursive Bisection
+(IRB), which repeatedly bisects the mesh in a direction orthogonal to
+the principal axis of inertia of the domain, or Octree
+Partitioning (OCT), which uses the octree structure underlying the mesh
+to achieve a balanced load.  Rebalancing must be parallel since the
+mesh is distributed.  Available dynamic load balancing procedures
+include Iterative Tree Balancing (ITB), which migrates entities
+between partitions by optimizing neighborhood load-request trees,
+Parallel Sort Inertial Recursive Bisection (PSIRB), which performs IRB
+with a parallel sort of the data, and OCT.<P>
+
+<H3>Sample Results</H3>
+
+As an example, consider the three-dimensional unsteady compressible
+(EULER) flow in a cylinder containing a cylindrical ``vent hole.''
+This problem simulates a (simplified) perforated muzzle brake for a
+cannon.  Using symmetry, the flow need only be solved in one half of
+the domain bounded by a plane through the vent.  The <A HREF=pmb2.gif>initial mesh</A>
+contained 80,791 tetrahedral elements.  The larger cylinder initially
+contains helium gas moving at Mach 1.23 while the vent is quiet.  A
+hypothesized diaphragm between the two cylinders is ruptured to begin
+the flow.<P>
+ 
+Time steps are either accepted or rejected based on whether or not
+elemental error indicators exceed a prescribed tolerance.  Rejected
+time steps are repeated subsequent to adaptive h-refinement and
+rebalancing.  Coarsening is essential to keep mesh sizes manageable as
+areas of interest move through the domain.  Upon h-refinement, the
+solution is interpolated to the new mesh and the integration continues
+with, possibly, a new time step.  Accepted steps continue with,
+possibly, a new global time step.<P>
+ 
+The accompanying picture, obtained using 16 processors of an IBM SP-2,
+displays the Mach number with velocity vectors and mesh partitioning
+using PSIRB.  Flow features compare favorably with experimental and
+numerical results of Nagamatsu, Carofano, et al. (US Army ARDEC,
+ARCCB-TR-87016, 1987).  Animations of the <A
+HREF=anim.density.gif>solution density</A> and <A
+HREF=anim.machnum.gif>solution mach number</A> are available.  There
+are also animations of solution mach number with velocity vectors, a
+<A HREF=mach-arrows-big.html>large format</A> and <A
+HREF=mach-arrows.html>smaller format</A>.<P>
+
+We have demonstrated a capability to perform large-scale parallel
+adaptive FEM computation.  We have used these tools to examine the
+Euler flow in intersecting cylinders simulating a perforated muzzle
+brake.  The tools and techniques referenced here are generic and are
+being used to solve problems in many areas including materials
+processing, crystal growth, and biomechanics.<P>
+
+<ADDRESS>
+terescoj@cs.rpi.edu-
+Mon Feb  3 23:01:05 EST 1997
+</ADDRESS>

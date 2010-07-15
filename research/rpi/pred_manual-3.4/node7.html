@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Uniform Element Workload Predictive Balancing</TITLE>
+<META NAME="description" CONTENT="Uniform Element Workload Predictive Balancing">
+<META NAME="keywords" CONTENT="pred">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="pred.css">
+<LINK REL="next" HREF="node8.html">
+<LINK REL="previous" HREF="node6.html">
+<LINK REL="up" HREF="node4.html">
+<LINK REL="next" HREF="node8.html">
+</HEAD>
+<BODY >
+<H2><A NAME="SECTION00043000000000000000">
+Uniform Element Workload Predictive Balancing</A>
+</H2>
+<P><UL>
+<LI> <TT>void pred_set_ref_balancing(int balType)</TT>
+<P>
+Sets predictive balancing to a particular default type if
+called from an application code.  Default types are as follows: <BR>
+<P><TABLE CELLPADDING=3 BORDER="1" ALIGN=CENTER WIDTH=95% >
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><B>PRED_NONE</B></TD>
+<TD ALIGN="LEFT">no predictive balancing done; standard nonpredictive
+ITB used during enrichment.  Note that setting
+predictive balancing tothis type will allow timing to be performed on the
+nonpredictive balancing if the <TT>pred-time</TT> library is being used.</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><B>PRED_ITB</B></TD>
+<TD ALIGN="LEFT" >use predictive Iterative Tree Balancing.  Balancing will
+be timed if the <TT>pred-time</TT> libarary is used.</TD>
+</TR>
+</TABLE> <BR>
+<P>
+Using a <TT>pred_oct*</TT> instance of the library adds: <BR>
+<P><TABLE CELLPADDING=3 BORDER="1" ALIGN=CENTER WIDTH=95% >
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><B>PRED_OCT</B></TD>
+<TD ALIGN="LEFT">use predictive Octree Partitioning.  Balancing will
+be timed if the <TT>pred_oct-time</TT> libarary is used.</TD>
+</TR>
+</TABLE>
+<P><BR>
+<LI> <TT>void pred_check_env(void)</TT>
+<P>
+Allows predictive balancing types to be set by an environment
+variable (<B>PRED_REF_BAL</B>) if called by an application code.  Valid values
+for <B>PRED_REF_BAL</B> are as follows: <BR>
+<P><TABLE CELLPADDING=3 BORDER="1" ALIGN=CENTER WIDTH=95%>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>0</TD>
+<TD ALIGN="LEFT">same effect as using <B>PRED_NONE</B> with <TT>
+pred_set_ref_balancing</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>1</TD>
+<TD ALIGN="LEFT" >same effect as using <B>PRED_ITB</B> with <TT>
+pred_set_ref_balancing</TT></TD>
+</TR>
+</TABLE> <BR>
+<P>
+Using a <TT>pred_oct*</TT> instance of the library adds: <BR>
+<P><TABLE CELLPADDING=3 BORDER="1" ALIGN=CENTER WIDTH=95%>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>3</TD>
+<TD ALIGN="LEFT" NOWRAP>same effect as using <B>PRED_OCT</B> with <TT>
+pred_set_ref_balancing</TT></TD>
+</TR>
+</TABLE>
+<P><P>
+<P>
+<BR>
+<P><B>NOTE: </B><I>In application code, any call to <TT>
+refdref_set_rebal_func()</TT> 
+should be placed AFTER a call to <TT>pred_check_env()</TT> or <BR>
+<TT>pred_set_ref_balancing()</TT> as they will set the refdref
+balancing function to a default if the value for predictive balancing
+is set to <BR>
+<B>PRED_NONE</B> (i.e., 0).</I> 
+<P>
+<LI> <TT>int pred_ref_balancing_on(void)</TT>
+<P>
+Returns 1 if predictive balancing before refinement is turned
+on; 0 otherwise. <BR>
+<P>
+<LI> <TT>int pred_balancing_on(void)</TT>
+<P>
+Returns 1 if predictive balancing before refinement is turned on; 0
+otherwise.  If extensions to allow for predictive balancing before
+coarsening are ever added, this will return 1 if balancing before
+refinement or coarsening is turned on.  Currently, identical to <TT>
+pred_ref_balancing_on</TT>.
+<P></UL><HR>
+</BODY>
+</HTML>

@@ -1,0 +1,9 @@
+@InBook{elmaghraoui05b,
+  author = 	 {K. El~Maghraoui and T. Desell and B.~K. Szymanski and J.~D. Teresco and C.~A. Varela},
+  editor = 	 {L. Grandinetti},
+  title = 	 {Grid Computing: New Frontiers of High Performance Computing},
+  chapter = 	 {Towards a Middleware Framework for Dynamically
+Reconfigurable Scientific Computing},
+  publisher = 	 {Elsevier},
+  year = 	 {2005}
+}

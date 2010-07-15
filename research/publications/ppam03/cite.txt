@@ -1,0 +1,13 @@
+
+@InProceedings{elmaghraoui03a,
+  author = 	 {Kaoutar El~Maghraoui and Joseph E. Flaherty and Boleslaw K. Szymanski and James D. Teresco and Carlos Varela},
+  title = 	 {Adaptive Computation over Dynamic and Heterogeneous Networks},
+  booktitle = 	 {Proc. Fifth International Conference on Parallel Processing and Applied Mathematics (PPAM 2003)},
+  year = 	 {2004},
+  address = 	 {Czestochowa},
+  pages =        {1083--1090},
+  editor =       {R. Wyrzykowski and J. Dongarra and M. Paprzycki and J. Wasniewski},
+  series =       {Lecture Notes in Computer Science},
+  volume =       {3019},
+  publisher =    {Springer Verlag}
+}

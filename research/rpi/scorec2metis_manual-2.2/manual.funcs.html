@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Library Functions</TITLE>
+<META NAME="description" CONTENT="Library Functions">
+<META NAME="keywords" CONTENT="scorec2metis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="scorec2metis.css">
+<LINK REL="previous" HREF="manual.mods.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="references.html">
+</HEAD>
+<BODY >
+<H2><A NAME="SECTION00033000000000000000">
+Library Functions</A>
+</H2>
+<P><UL>
+<LI> <code>void parmetis(pMesh mesh, pMeshPB pmeshpb, idxtype *options, int Type)</code>
+<P>
+Performs conversion of SCOREC mesh structures to ParMetis structures
+and then calls a partitioner from the ParMetis library.  The routine
+also migrates mesh data to reflect the new partitioning.
+<P>
+The elements of the options array have the following significance:
+<P>
+<TABLE CELLPADDING=3 BORDER ALIGN=CENTER WIDTH=95% >
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>options[0]</TD>
+<TD ALIGN="LEFT" >Returns the edge-cut of the computed partition.</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>options[1]</TD>
+<TD ALIGN="LEFT" >A parameter that controls successive folding.</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>options[2]</TD>
+<TD ALIGN="LEFT" >Selects the type of initial partitioning
+algorithm at the coarsest graph:<BR>
+&nbsp; &nbsp; If = to 1, then a serial partitioning algorithm is
+used.<BR>
+&nbsp; &nbsp; If = to 2, then a parallel algorithm is
+used.</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>options[3]</TD>
+<TD ALIGN="LEFT" >Always use the value 0.</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>options[4]</TD>
+<TD ALIGN="LEFT" >Specifies the level of information to be
+retuned during the execution of ParMetis.</TD>
+</TR>
+</TABLE>
+<P>
+Unless you are familiar with the ParMetis library, the following
+values should be assigned to the options array: 0, 0, 2, 0, 0.
+<P>
+Type is one of the following:
+<P><TABLE CELLPADDING=3 BORDER ALIGN=CENTER WIDTH=95% >
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>1</TD>
+<TD ALIGN="LEFT" >PARKMETIS (k-way partitioning)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>2</TD>
+<TD ALIGN="LEFT" >PARRMETIS (partition refinement/smoothing)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>3</TD>
+<TD ALIGN="LEFT" >PARUAMETIS (undirected diffusion)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>4</TD>
+<TD ALIGN="LEFT" >PARDAMETIS (directed diffusion)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>5</TD>
+<TD ALIGN="LEFT" >INIT_PARKMETIS (initial k-way partitioning; assumes
+mesh is loaded on one processor and needs to be distributed)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>6</TD>
+<TD ALIGN="LEFT" >PARGKMETIS (coordinate-based with k-way)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>7</TD>
+<TD ALIGN="LEFT" >PARGRMETIS (coordinate-based plus refinement)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>8</TD>
+<TD ALIGN="LEFT" >PARGMETIS (coordinate-based partitioning)</TD>
+</TR>
+</TABLE>
+<P>
+For more information on the options array and the different types of
+ParMetis partitioners, see&nbsp;[<A
+ HREF="references.html#karypis97c">2</A>].
+<P></UL>
+<P>
+The following two functions are provided to allow the timing of the
+conversion of structures to be separated from the timing of the actual
+partitioning.
+<P><UL>
+<LI> <code>void parmetis_setup (pMesh mesh, pMeshPB pmeshpb, int Type,</code>
+        <code>double *migTime, double *calcTime, double *setupTime)</code>
+<P>
+Performs conversion of SCOREC mesh structures to ParMetis structures.
+If Type is set to 5 (INIT_PARKMETIS), the function will partition the
+mesh on processor 0 using serial KMETIS&nbsp;[<A
+ HREF="references.html#karypis95a">1</A>] before
+converting parallel structures.  The last three parameters return
+timing information.  The migTime parameter stores the time spent in
+migrating data if Type is set to 5 while calcTime stores the time
+taken to convert serial structures and compute the partitioning if
+Type is set to 5.  The setupTime parameter gives the total time spent
+in <code>parmetis_setup</code>.
+<P>
+<LI> <code>void parmetis_balance (pMesh mesh, pMeshPB pmeshpb,</code> <BR>
+        <code>idxtype *options, int Type)</code>
+<P>
+Calls a partitioner from the ParMetis library based on the Type
+parameter.  The routine also migrates mesh data to reflect the new
+partitioning.  The Type and options parameters have the same meaning
+as for <code>parmetis</code>.
+<P></UL>
+<P><HR>
+</BODY>
+</HTML>

@@ -1,0 +1,12 @@
+@Article{devine05a,
+  author = 	 {Karen D. Devine and Erik G. Boman and Robert
+                  T. Heaphy and Bruce A. Hendrickson and James
+                  D. Teresco and Jamal Faik and Joseph E. Flaherty and
+                  Luis G. Gervasio},
+  title = 	 {New challenges in dynamic load balancing},
+  journal = 	 {Appl. Numer. Math.},
+  year = 	 {2005},
+  volume = 	 {52},
+  number = 	 {2--3},
+  pages = 	 {133--152}
+}

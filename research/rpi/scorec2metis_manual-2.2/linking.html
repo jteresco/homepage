@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Linking</TITLE>
+<META NAME="description" CONTENT="Linking">
+<META NAME="keywords" CONTENT="scorec2metis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="scorec2metis.css">
+<LINK REL="next" HREF="manual.html">
+<LINK REL="previous" HREF="includes.html">
+<LINK REL="up" HREF="index.html">
+<LINK REL="next" HREF="manual.html">
+</HEAD>
+<BODY >
+<H1><A NAME="SECTION00020000000000000000">
+Linking</A>
+</H1> 
+<A NAME="sec:linking"></A>
+<P>
+Example Link Line (on the SP)
+<P><PRE>
+PARASOLID = /dept/scorec/software/parasolid/10.0/libparasolid.a
+LIBS =  \
+	$(DEVROOT)/parallel/pmdb/5.2/lib/$(ARCHOS)/libpmdb$(PQUAL)$(QUAL).a \
+	$(DEVROOT)/parallel/comm/2.2/lib/$(ARCHOS)/libcomm$(PQUAL)$(QUAL).a \
+	$(DEVROOT)/model/model/1.2/lib/$(ARCHOS)/libmodel$(QUAL).a \
+	$(DEVROOT)/model/parasolidModel/1.2/lib/$(ARCHOS)/libparasolidModel$(QUAL).a \
+	$(PARASOLID)  \
+	$(DEVROOT)/model/mesh/4.2/lib/$(ARCHOS)/libmesh$(QUAL).a \
+	$(DEVROOT)/util/util/0.4/lib/$(ARCHOS)/libutil$(QUAL).a \
+	$(DEVROOT)/util/memory/1.0/lib/$(ARCHOS)/libmemory-O.a \
+	$(DEVROOT)/parallel/scorec2metis/2.2/lib/$(ARCHOS)/libscorec2metis$(PQUAL).a \
+	$(DEVROOT)/parallel/metis/2.0/lib/$(ARCHOS)/libmetis.a \
+	$(DEVROOT)/parallel/parmetis/1.0/lib/$(ARCHOS)/libparmetis$(PQUAL).a
+</PRE>
+<P>
+<BR><HR>
+</BODY>
+</HTML>

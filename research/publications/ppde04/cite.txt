@@ -1,0 +1,8 @@
+@InBook{teresco05a,
+  author = 	 {James D. Teresco and Karen D. Devine and Joseph E. Flaherty},
+  editor = 	 {Are Magnus Bruaset, Petter Bj{\o}rstad, Aslak Tveito},
+  title = 	 {Numerical Solution of Partial Differential Equations on Parallel Computers},
+  chapter = 	 {Partitioning and Dynamic Load Balancing for the Numerical Solution of Partial Differential Equations},
+  publisher = 	 {Springer-Verlag},
+  year = 	 {2005}
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE> Introduction</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value=" Introduction">
+<meta name="keywords" value="root">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html44 HREF="node3.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html42 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html36 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html45 HREF="node3.html"> Mesh Loading/Partitioning </A>
+<B>Up:</B> <A NAME=tex2html43 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html37 HREF="node1.html"> PMDB User's Manual</A>
+<BR> <HR> <P>
+<H1><A NAME=SECTION00110000000000000000> Introduction</A></H1>
+<P>
+  This document describes the routines or <i> operators</i> available in the 
+<tt> PMDB</tt> runtime library.   
+<tt> PMDB</tt> executes a copy of <tt> MDB</tt> in 
+SPMD mode on each processor and provides the following categories of 
+procedures to manipulate, manage, and provide information about the 
+distributed mesh:
+<UL><LI> <i> Mesh loading and partitioning routines</i> read in meshes stored 
+      in files and distribute them onto the processors. The meshes 
+      can either be already partitioned in which case they are read in 
+      parallel,  or they can be partitioned after
+      they are loaded on processor(s).  
+<LI> <i> Geometric model operators</i> initializes up the correspondence between
+      the addresses of geometric entities and their geometric model
+      identification tags. This needs to done by <tt> PMDB</tt> since
+      when the geometric model is loaded on each processor, mesh
+      entities point to the addresses of geometric entities as part 
+      of their classification. 
+<LI> <i> Query routines</i> return information related 
+      to the entities which are shared between processors. 
+      A rich set of queries about processor adjacency, and links to 
+      other shared entities are supported.
+<LI> <i> Update routines</i> provide the operators 
+      with which the shared entities and their links accross the 
+     processors can be manipulated.  If the mesh is not changed by 
+     an application, then there is no need to use these routines.
+<LI> <i> Gather/scatter maps</i> are no longer supported, as the <I>node</I> structures are gone as of mesh 4.x.
+
+<LI> <i> Mesh Migration</i> routines enable entities to be redistributed
+   in an unrestrictive manner. In addition,
+ applications which use 
+ routines such as load balancing or just need to migrate 
+   entities among processors needs a mechanism whereby user specific data
+   should also be migrated together with the entities. For example,
+   adaptive finite element programs may store solution or elemental 
+   matrices on entities. The stored data may be irregular - e.g. 
+   p-adaptive methods may need to store vectors of different length 
+   on each entity. <tt> PMDB</tt> provides operators which users  can 
+   call to register attached data by its tag and its storage size.  Any 
+   entity which is migrated and which has data identified with a 
+   registered tag will also have its data migrated and attached 
+   automatically after reaching the destination processor. 
+
+   The mesh migration routines also support the new callback
+   operations.  If a "MigrateIn" or "MigrateOut" callback is attached,
+   the callback will be called before an entity is packed to be
+   migrated, or after it is unpacked after being migrated.
+
+<LI> <i> Load balancing</i> may be needed after refinement or coarsening is 
+  performed. <tt> PMDB</tt> provides an iterative scheme which 
+  balances the number of elements on each processor.  Other load balancers are available which use the PMDB interface but which are not part of PMDB.  Please see the documentaion on the <TT>OCTPART</TT>, <TT>ribPart</TT>, and <TT>ParMetis</TT> documentation for more information.
+
+<LI> <i> Visualization</i>: These routines provide IBM data explorer 
+  output to aid in visualization of partitioned meshes.
+</UL>
+<P>
+ The following types are used and are described in detail in 
+the <tt> SCOREC MDB</tt> manual [<A HREF="#mbeall"></A>].
+<UL><LI> <tt> pEntity</tt> a generic entity which can be region, face 
+                    edge or vertex.
+<LI> <tt> eType</tt>: represents the type of the entity. It can be any one 
+                   of <code>Tvertex</code>, <code>Tedge</code>, <code>Tface</code>, 
+                   or <code>Tregion</code>.
+</UL>
+<P>
+ Throughout manual the variable names given below appear extensively as 
+parameters to library routines:
+<UL><LI> <tt> num_of_procs</tt> : total number of processors used.
+<LI> <tt> pid</tt>: processor id.
+</UL>
+<P>
+  Figure <A HREF="ex1.c"><IMG ALIGN=BOTTOM ALT="gif" SRC="http://www.cs.rpi.edu/icons/cross_ref_motif.gif"></A> presents an example code of how 
+<tt> PMDB</tt> library can be used to load and partition a mesh 
+using orthogonal bisection. The code presents a standard template
+of calls to load and distribute a mesh over processors. The call 
+to <tt> pmdb_ortho_rb()</tt> can be replaced with any other mesh loading
+or partitioning routines described in section <A HREF="node3.html#opmpar"><IMG ALIGN=BOTTOM ALT="gif" SRC="http://www.cs.rpi.edu/icons/cross_ref_motif.gif"></A>. The 
+call to <tt> do_something()</tt> can be replaced with code that uses 
+the library routines presented in this manual.
+<P>
+<!P><!A NAME=lab_man_ex1><!&#160;><!/A><!IMG  ALIGN=BOTTOM ALT="" SRC="img1.gif"><!P>
+<!P>
+<BR> <HR><A NAME=tex2html44 HREF="node3.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.rpi.edu/icons/next_motif.gif"></A>   <A NAME=tex2html42 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.rpi.edu/icons/up_motif.gif"></A>   <A NAME=tex2html36 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.rpi.edu/icons/previous_motif.gif"></A>         <BR>
+<B> Next:</B> <A NAME=tex2html45 HREF="node3.html"> Mesh LoadingPartitioning </A>
+<B>Up:</B> <A NAME=tex2html43 HREF="node1.html"> PMDB User's Manual</A>
+<B> Previous:</B> <A NAME=tex2html37 HREF="node1.html"> PMDB User's Manual</A>
+<BR> <HR> <P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Jim Teresco <BR>
+Tue Aug  1 14:37:38 EDT 1995</I>
+</ADDRESS>
+</BODY>

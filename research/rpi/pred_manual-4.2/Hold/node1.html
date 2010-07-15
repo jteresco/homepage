@@ -1,0 +1,126 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="description" content="Library Instances (pred)">
+   <meta name="keywords" content="pred">
+   <meta name="resource-type" content="document">
+   <meta name="distribution" content="global">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (X11; I; SunOS 5.6 sun4u) [Netscape]">
+   <title>Library Instances (pred)</title>
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<link REL="STYLESHEET" HREF="pred.css">
+<link REL="next" HREF="includes.html">
+<link REL="previous" HREF="pred.html">
+<link REL="up" HREF="pred.html">
+<link REL="next" HREF="includes.html">
+</head>
+<body>
+
+<h1>
+<a NAME="SECTION00010000000000000000"></a>Library Instances</h1>
+<a NAME="sec:instances"></a>There are two instances of the library
+compiled with different flags available:
+<P>
+<table BORDER CELLPADDING=3 ALIGN=CENTER WIDTH=95% >
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred</code></td>
+
+<td ALIGN=LEFT>is compiled with -g and all optimizations turned
+off</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred-O</code></td>
+
+<td ALIGN=LEFT>does not use the -g option and uses -O3 -qstrict</td>
+</tr>
+</table>
+
+<P>
+
+Due to code changes, the following instances of the library no longer
+exist with version 4.2 of pred :
+<P>
+<table BORDER CELLPADDING=3 ALIGN=CENTER WIDTH=95% >
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred-time</code></td>
+
+<td ALIGN=LEFT >is optimized just as pred-O is and contains code
+to do instrumentation; it will create a directory 'PredTimes' in your
+current working directory and deposit files with timings of
+refinement, predictive, and nonpredictive balancing.&nbsp; [<a
+NAME="tex2html1" HREF="footnode.html#fnm">*</a>]</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred_oct</code></td>
+
+<td ALIGN=LEFT>contains functions to perform predictive Octree
+balancing; it is otherwise the same as pred</td> 
+</tr>
+
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred_oct-O</code></td>
+
+<td ALIGN=LEFT>contains functions to perform predictive
+Octree balancing; it is otherwise the same as pred-O</td> 
+</tr>
+
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred_oct-time</code></td>
+
+<td ALIGN=LEFT>contains functions to perform predictive Octree
+balancing; it is otherwise the same as pred-time</td> 
+</tr>
+
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred_parmet</code></td>
+
+<td ALIGN=LEFT >contains functions to perform predictive balancing using the ParMetis [<a href="http://www.cs.rpi.edu/~scorec/pred_manual-4.2/references.html#karypis97c">1</a>]
+partitioning library; it is otherwise the same as pred_oct</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred_parmet-O</code></td>
+
+<td ALIGN=LEFT >contains functions to perform predictive
+balancing using the ParMetis [<a href="http://www.cs.rpi.edu/~scorec/pred_manual-4.2/references.html#karypis97c">1</a>]
+partitioning library; it is otherwise the same as pred_oct-O</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td ALIGN=LEFT NOWRAP><code>pred_parmet-time</code></td>
+
+<td ALIGN=LEFT >contains functions to perform predictive balancingusing the ParMetis [<a href="http://www.cs.rpi.edu/~scorec/pred_manual-4.2/references.html#karypis97c">1</a>]
+partitioning library; it is otherwise the same as pred_oct-time</td>
+</tr>
+</table>
+
+<p>
+
+
+The code formerly contained in the <code> pred-time </code> instance has been
+disabled, but can be restored upon request.
+
+<p>
+
+The <code> *\_oct* </code> and <code> *\_parmet* </code> instances of
+the library are no longer necessary as a different mechanism is now
+used in setting up the load balancing algorithm that will be applied
+predictively.  See the <a href="http://www.cs.rpi.edu/~scorec/pred_manual-4.2/manual.html">Manual</a>.
+
+
+<p>
+<hr>
+</body>
+</html>
+
+
+
+
+

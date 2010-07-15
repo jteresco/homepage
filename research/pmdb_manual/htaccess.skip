@@ -1,0 +1,9 @@
+<Limit GET>
+order deny,allow
+deny from all
+allow from cs.rpi.edu
+allow from scorec.rpi.edu
+allow from rrtc.rpi.edu
+allow from simmetrix.com
+allow from nycap.rr.com
+</Limit>

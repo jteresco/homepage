@@ -1,0 +1,9 @@
+
+@TechReport{faik03a,
+  author = 	 {Jamal Faik and Luis G. Gervasio and Joseph E. Flaherty and Jin Chang and James D. Teresco and Erik G. Boman and Karen D. Devine},
+  title = 	 {A model for resource-aware load balancing on heterogeneous clusters},
+  institution =  {Williams College Department of Computer Science},
+  year = 	 {2003},
+  number = 	 {CS-03-03},
+  note = 	 {Submitted to HCW, IPDPS '04}
+}
