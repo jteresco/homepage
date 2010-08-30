@@ -21,6 +21,7 @@ Siena College<br>
 Loudonville, NY  12211<br>
 jteresco@siena.edu<br>
 Office: Roger Bacon 332<br>
+(518) 783-4171<br>
 </div>
 </td>
 </tr>
@@ -29,8 +30,8 @@ Office: Roger Bacon 332<br>
 <p class ="heading">Fall 2010 Courses</p>
 
 <div class="text">
-<li>Computer Science 010, Introduction to Computer Applications</li>
-<li>Computer Science 220, Assembly Language and Computer Architecture</li>
+<li><a href="http://courses.teresco.org/cs010_f10/">Computer Science 010, Introduction to Computer Applications</a></li>
+<li><a href="http://courses.teresco.org/cs220_f10/">Computer Science 220, Assembly Language and Computer Architecture</a></li>
 </div>
 
 <p class ="heading">Research Interests</p>
