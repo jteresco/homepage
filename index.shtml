@@ -27,12 +27,11 @@ Office: Roger Bacon 332<br>
 </tr>
 </table>
 
-<p class ="heading">Spring 2011 Courses</p>
+<p class ="heading">Fall 2011 Courses</p>
 
 <div class="text">
-<li><a href="http://courses.teresco.org/cs120_s11/">Computer Science 120, Introduction to Programming</a></li>
-<li><a href="http://courses.teresco.org/cs385_s11/">Computer Science 385, Analysis of Algorithms</a></li>
-<li>Computer Science 010, Introduction to Computer Applications (Laboratory)</li>
+<li>Computer Science 180, Web Design</li>
+<li>Computer Science 220, Assembly Language and Computer Architecture</a></li>
 </div>
 
 <p class ="heading">Research Interests</p>
@@ -55,5 +54,3 @@ Clinched Highway Mapping Data as a Pedagogical Tool</a>.
 
 </body>
 </html>
-
-
