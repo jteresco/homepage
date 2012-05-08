@@ -1,27 +1,33 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link rel="stylesheet" href="http://j.teresco.org/jdtstyle.css" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="http://j.teresco.org/jdtstyle.css" type="text/css" />
 
 <title>James D. Teresco, Ph.D.</title>
 </head>
 
-<!--#include virtual="./title.html" -->
 <body>
+<!--#include virtual="./title.html" -->
 
-<table border=0>
+<table border="0">
 <tr>
-<td valign="center">
-<img src="jdt.jpg">
+<td valign="middle">
+<img src="jdt.jpg" alt="James D. Teresco, Ph.D." />
 </td>
-<td valign="center">
+<td valign="middle">
 <div class="text">
-Visiting Assistant Professor of Computer Science<br>
-Siena College<br>
-515 Loudon Rd.<br>
-Loudonville, NY  12211<br>
-jteresco@siena.edu<br>
-Office: Roger Bacon 314<br>
-(518) 783-4171<br>
+Visiting Assistant Professor of Computer Science<br />
+Siena College<br />
+515 Loudon Rd.<br />
+Loudonville, NY  12211<br />
+jteresco@siena.edu<br />
+Office: Roger Bacon 314<br />
+(518) 783-4171<br />
+<br />
+Starting Fall 2012:<br />
+Assistant Professor of Computer Science<br />
+The College of Saint Rose<br />
 </div>
 </td>
 </tr>
@@ -30,15 +36,17 @@ Office: Roger Bacon 314<br>
 <p class ="heading">Spring 2012 Courses</p>
 
 <div class="text">
+<ul>
 <li><a href="http://courses.teresco.org/cs120_s12/">Computer Science 120, Introduction to Programming</a></li>
 <li><a href="http://courses.teresco.org/cs330_s12/">Computer Science 330, Operating Systems</a></li>
+</ul>
 </div>
 
 <p class ="heading">Research Interests</p>
 
 <div class="text">
 <!--#include virtual="research/interests.html" -->
-<p>
+<p />
 <a href="research/">[More]</a>
 
 </div>
