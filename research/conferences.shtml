@@ -12,14 +12,27 @@
 
 <div class="text">
 
-<li>I will be presenting a demo entitled "Using the Google Maps API
+<li>I presented a paper entitled "Highway Data and Map Visualizations
+  for Educational Use"
+  at <a href="http://www.sigcse.org/sigcse2012/">SIGCSE 2012, The 43rd
+  ACM Technical Symposium on Computer Science Education</a> in Raleigh
+  in March 2012.<p>
+
+<li>I presented a contributed talk entitled "Evaluating
+application-level vs. middleware-level load balancing for parallel
+adaptive computation" at
+the <a href="http://www.siam.org/meetings/pp12/">SIAM Conference on
+Parallel Processing for Scientific Computing</a> in Savannah in
+February 2012.<p>
+
+<li>I presented a demo entitled "Using the Google Maps API
 with Highway Mapping Data as a Pedagogical Tool"
 at <a href="http://www.ccscne.org/2011/">CCSCNE 2011: the 16th Annual
 Consortium for Computing Sciences in Colleges Northeastern
 Conference</a> at Western New England College in Springfield in April
 2011.<p>
 
-<li>I will be presenting a poster entitled "Graph Algorithms Using
+<li>I presented a poster entitled "Graph Algorithms Using
   Highway Mapping Data and the Google Maps API"
   at <a href="http://www.sigcse.org/sigcse2011/">SIGCSE 2011: The 42nd
   ACM Technical Symposium on Computer Science Education</a> in Dallas
@@ -43,7 +56,7 @@ HREF="http://www.iasted.org/conferences/home-551.html">IASTED
 Parallel and Distributed Computing and Networks Conference (PDCN
 2007)</A> in Innsbruck, Austria, in February 2007.<P>
 
-<LI>I have spoken at and organized minisymposia at recent SIAM
+<LI>I have spoken at and organized minisymposia at several other SIAM
    conferences.<P>
 
    I organized a minisymposium entitled "The Pipeline: Education in
