@@ -29,12 +29,13 @@ Office: Albertus 400-2<br />
 </tr>
 </table>
 
-<p class ="heading">Fall 2012 Courses</p>
+<p class ="heading">Spring 2013 Courses</p>
 
 <div class="text">
 <ul>
-<li><a href="http://courses.teresco.org/cs202_f12">Computer Science 202, Introduction to Programming</a> (cross-listed with CIS 522 and MBA 542, Object-Oriented Programming)</li>
-<li><a href="http://courses.teresco.org/cs433_f12">Computer Science 433, Programming Languages</a></li>
+<li><a href="http://courses.teresco.org/cs112_s13">Computer Science 112, The Art and Science of Computer Graphics</a></li>
+<li><a href="http://courses.teresco.org/cs431_s13">Computer Science 431, Algorithms</a></li>
+<li><a href="http://courses.teresco.org/cs507_s13">Computer Science 507, Software Engineering</a></li>
 </ul>
 </div>
 
