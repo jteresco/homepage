@@ -29,13 +29,14 @@ Office: Albertus 400-2<br />
 </tr>
 </table>
 
-<p class ="heading">Spring 2013 Courses</p>
+<p class ="heading">Fall 2013 Courses</p>
 
 <div class="text">
 <ul>
-<li><a href="http://courses.teresco.org/cs112_s13">Computer Science 112, The Art and Science of Computer Graphics</a></li>
-<li><a href="http://courses.teresco.org/cs431_s13">Computer Science 431, Algorithms</a></li>
-<li><a href="http://courses.teresco.org/cs507_s13">Computer Science 507, Software Engineering</a></li>
+<li><a href="http://courses.teresco.org/cs202_f13/">Computer Science 202, Introduction to Programming</a></li>
+<li><a href="http://courses.teresco.org/cs381_f13/">Computer Science 381, Programming Unix with C (1 credit)</a></li>
+<li>Computer Science 461/561, Parallel and High Performance Computing</li>
+<li><a href="http://courses.teresco.org/cs501_f13/">Computer Science 501, Data Structures and Algorithm Analysis</a></li>
 </ul>
 </div>
 
