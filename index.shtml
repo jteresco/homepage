@@ -29,22 +29,11 @@ Office: Albertus 400-2<br />
 </tr>
 </table>
 
-<p class ="heading">Fall 2013 Courses</p>
-
-<div class="text">
-<ul>
-<li><a href="http://courses.teresco.org/cs202_f13/">Computer Science 202, Introduction to Programming</a></li>
-<li><a href="http://courses.teresco.org/cs252_f13/">Computer Science 252, Problem Solving with Java</a></li>
-<li><a href="http://courses.teresco.org/cs381_f13/">Computer Science 381, Programming Unix with C (1 credit)</a></li>
-<li><a href="http://courses.teresco.org/cs501_f13/">Computer Science 501, Data Structures and Algorithm Analysis</a></li>
-</ul>
-</div>
-
 <p class ="heading">Winter Immersion 2013-14 Course</p>
 
 <div class="text">
 <ul>
-<li><!-- a href="http://courses.teresco.org/cs381_w14/" -->Computer Science 381, Programming Unix with C (1 credit, online)</a></li>
+<li><a href="http://courses.teresco.org/cs381_w14/">Computer Science 381, Programming Unix with C (1 credit, online)</a></li>
 </ul>
 </div>
 
@@ -52,10 +41,27 @@ Office: Albertus 400-2<br />
 
 <div class="text">
 <ul>
-<li><!-- a href="http://courses.teresco.org/cs252_s14/" -->Computer Science 252, Problem Solving with Java</a></li>
-<li><!-- a href="http://courses.teresco.org/cs507_s14/" -->Computer Science 507, Software Engineering</a></li>
+<li><a href="http://courses.teresco.org/cs252_s14/">Computer Science 252, Problem Solving with Java</a></li>
+<li><a href="http://courses.teresco.org/cs507_s14/">Computer Science 507, Software Engineering</a></li>
 </ul>
 </div>
+
+<p class ="heading">Summer 2014 Courses</p>
+
+<div class="text">
+<li><!-- a href="cs381_m14/" -->Computer Science 381, Programming Unix with C (1 credit, primarily online)</a></li>
+<li>Computer Science 523, Advanced Programming</li>
+</div>
+
+<p class ="heading">Fall 2014 Courses</p>
+
+<div class="text">
+<li><!-- a href="cs252_f14/" -->Computer Science 252, Problem Solving with Java</a></li>
+<li><!-- a href="cs381_f14/" -->Computer Science 381, Programming Unix with C (1 credit)</a></li>
+<li><!-- a href="cs433_f14/" -->Computer Science 433, Programming Languages</a></li>
+<li><!-- a href="cs501_f14/" -->Computer Science 501, Data Structures and Algorithm Analysis</a></li>
+</div>
+
 
 <p class ="heading">Research Interests</p>
 

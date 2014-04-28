@@ -12,84 +12,90 @@
 
 <div class="text">
 
+<li>I presented the work of my MS student Manar Alohaly in a paper
+entitled "Popularity-Based Temporal Relevance Estimation for
+Micro-Blogging Retrieval" at
+the <a href="http://acmse14.kennesaw.edu/index.php">52nd Annual ACM
+Southeast Conference</a> in Kennesaw, Georgia, in March 2014.</li><p />
+
 <li>I, along with Mike Gousie of Wheaton College, presented a paper
   entitled "Helping Students Understand the Datapath with Simulators
   and Crazy Models"
   at <a href="http://www.sigcse.org/sigcse2012/">SIGCSE 2013, The 44th
   ACM Technical Symposium on Computer Science Education</a> in Denver
-  in March 2013.<p>
+  in March 2013.</li><p />
 
 <li>I presented a paper entitled "Highway Data and Map Visualizations
   for Educational Use"
   at <a href="http://www.sigcse.org/sigcse2012/">SIGCSE 2012, The 43rd
   ACM Technical Symposium on Computer Science Education</a> in Raleigh
-  in March 2012.<p>
+  in March 2012.</li><p />
 
 <li>I presented a contributed talk entitled "Evaluating
 application-level vs. middleware-level load balancing for parallel
 adaptive computation" at
 the <a href="http://www.siam.org/meetings/pp12/">SIAM Conference on
 Parallel Processing for Scientific Computing</a> in Savannah in
-February 2012.<p>
+February 2012.</li><p />
 
 <li>I presented a demo entitled "Using the Google Maps API
 with Highway Mapping Data as a Pedagogical Tool"
 at <a href="http://www.ccscne.org/2011/">CCSCNE 2011: the 16th Annual
 Consortium for Computing Sciences in Colleges Northeastern
 Conference</a> at Western New England College in Springfield in April
-2011.<p>
+2011.</li><p />
 
 <li>I presented a poster entitled "Graph Algorithms Using
   Highway Mapping Data and the Google Maps API"
   at <a href="http://www.sigcse.org/sigcse2011/">SIGCSE 2011: The 42nd
   ACM Technical Symposium on Computer Science Education</a> in Dallas
-  in March 2011.<p>
+  in March 2011.</li><p />
 
 <LI>I presented a faculty poster entitled "A Dijkstra's
 Algorithm Shortest Path Assignment Using the Google Maps API" at the
 <A HREF="http://uhaweb.hartford.edu/ccscne/">Fifteenth Annual
 Consortium for Computing Sciences in Colleges Northeastern
-Conference</A> at the University of Hartford in April 2010.<P>
+Conference</A> at the University of Hartford in April 2010.</li><p />
 
 <LI>I presented a minisymposium talk at the <A
 HREF="http://www.me.berkeley.edu/compmat/USACM/main.html">9th
 U.S. Congress on Computational Mechanics</A> in San Francisco in
-July 2007.<P>
+July 2007.</li><p />
 
 <LI>I presented, along with my thesis student from 2005-06 at Williams College,
 Travis Vachon, work on load balancing of virtualized operating systems
 at the <A
 HREF="http://www.iasted.org/conferences/home-551.html">IASTED
 Parallel and Distributed Computing and Networks Conference (PDCN
-2007)</A> in Innsbruck, Austria, in February 2007.<P>
+2007)</A> in Innsbruck, Austria, in February 2007.</li><p />
 
 <LI>I have spoken at and organized minisymposia at several other SIAM
-   conferences.<P>
+   conferences.</li><p />
 
    I organized a minisymposium entitled "The Pipeline: Education in
    Parallel and Scientific Computation" and gave a talk entitled
    "Teaching Parallel Processing to Upper Level Undergraduates" in
    that session at the SIAM Conference on Parallel Processing for
-   Scientific Computing in Atlanta, Georgia, in March 2008.<P>
+   Scientific Computing in Atlanta, Georgia, in March 2008.</li><p />
 
    I gave a talk at the <A
    HREF="http://www.siam.org/meetings/cse07/">SIAM Conference on
    Computational Science and Engineering</A> in Costa Mesa,
-   California, in February 2007.<P>
+   California, in February 2007.</li><p />
 
    I gave a talk and organized a minisymposium "Tools
    for High-Performance Scientific Computation in Cluster
    Environments" at the <A
    HREF="http://www.siam.org/meetings/pp06/">SIAM Conference on
    Parallel Processing for Scientific Computing</A> in San Francisco
-   in February 2006.<P>
+   in February 2006.</li><p />
 
    I was co-chair of and a speaker in the <A
    HREF="research/cse05">minisymposium on "Resource-Aware Parallel
    Computation"</A> held at the <A
    HREF="http://www.siam.org/meetings/CSE05/">SIAM Conference on
    Computational Science and Engineering</A> in Orlando in
-   February 2005.<P>
+   February 2005.</li><p />
 
    I was co-chair of the minisymposium on "Architecture-Aware Parallel
    Computation" held at the <A
@@ -98,12 +104,12 @@ Parallel and Distributed Computing and Networks Conference (PDCN
    Francisco in February 2004.  A <A
    HREF="research/publications/index.html#pp04">paper highlighting the
    work presented in this minisymposium</A> was also submitted for
-   inclusion in the conference proceedings.<P>
+   inclusion in the conference proceedings.</li><p />
 
 <LI>I was a co-organizer for <A HREF="http://www.cs.williams.edu/adapt03/">ADAPT '03</A>, a
 conference held at RPI in October, 2003, in honor of my Ph.D. advisor,
 Joe Flaherty, and I was co-editor of the proceedings volume, which 
-appeared as a <A HREF="http://www.sciencedirect.com/science?_ob=IssueURL&_tockey=%23TOC%235616%232005%23999479997%23543317%23FLP%23Volume_52,_Issues_2-3,_Pages_129-310_(February_2005)%2BMADAPT_'03%3A_Conference_on_Adaptive_Methods_for_Partial_Differential_Equations_and_Large-Scale_Computation%2BMEdited_by_S._Adjerid,_P._Moore,_J._Teresco&_auth=y&view=c&_acct=C000050221&_version=1&_urlVersion=0&_userid=10&md5=6db4240d9e68d676854631297b713ecd">special issue of <I>Applied Numerical Mathematics</I> in February 2005</A>.<P>
+appeared as a <A HREF="http://www.sciencedirect.com/science?_ob=IssueURL&_tockey=%23TOC%235616%232005%23999479997%23543317%23FLP%23Volume_52,_Issues_2-3,_Pages_129-310_(February_2005)%2BMADAPT_'03%3A_Conference_on_Adaptive_Methods_for_Partial_Differential_Equations_and_Large-Scale_Computation%2BMEdited_by_S._Adjerid,_P._Moore,_J._Teresco&_auth=y&view=c&_acct=C000050221&_version=1&_urlVersion=0&_userid=10&md5=6db4240d9e68d676854631297b713ecd">special issue of <I>Applied Numerical Mathematics</I> in February 2005</A>.</li><p />
 
 </div>
 
