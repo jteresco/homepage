@@ -1,0 +1,18 @@
+@inproceedings{Gousie:2013:HSU:2445196.2445295,
+ author = {Gousie, Michael B. and Teresco, James D.},
+ title = {Helping Students Understand the Datapath with Simulators and Crazy Models},
+ booktitle = {Proceeding of the 44th ACM Technical Symposium on Computer Science Education},
+ series = {SIGCSE '13},
+ year = {2013},
+ isbn = {978-1-4503-1868-6},
+ location = {Denver, Colorado, USA},
+ pages = {329--334},
+ numpages = {6},
+ url = {http://doi.acm.org/10.1145/2445196.2445295},
+ doi = {10.1145/2445196.2445295},
+ acmid = {2445295},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {computer organization pedagogy, laboratory assignments, modeling computer architecture, simulating computer architecture},
+} 
+
