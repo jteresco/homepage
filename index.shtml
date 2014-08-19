@@ -29,18 +29,12 @@ Office: Albertus 400-2<br />
 </tr>
 </table>
 
-<p class ="heading">Summer 2014 Course</p>
-
-<div class="text">
-<li><a href="http://courses.teresco.org/cs523_m14/">Computer Science 523, Advanced Programming</a></li>
-</div>
-
 <p class ="heading">Fall 2014 Courses</p>
 
 <div class="text">
 <li><a href="http://courses.teresco.org/cs252_f14/">Computer Science 252, Problem Solving with Java</a></li>
 <li><!-- a href="cs381_f14/" -->Computer Science 381, Programming Unix with C (1 credit)</a></li>
-<li><!-- a href="http://courses.teresco.org/cs433_f14/" -->Computer Science 433, Programming Languages</a></li>
+<li><a href="http://courses.teresco.org/cs433_f14/">Computer Science 433, Programming Languages</a></li>
 <li><a href="http://courses.teresco.org/cs501_f14/">Computer Science 501, Data Structures and Algorithm Analysis</a></li>
 </div>
 
