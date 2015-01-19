@@ -29,14 +29,20 @@ Office: Albertus 400-2<br />
 </tr>
 </table>
 
-<p class ="heading">Fall 2014 Courses</p>
+<p class ="heading">Spring 2015 Courses</p>
 
 <div class="text">
-<li><a href="http://courses.teresco.org/cs252_f14/">Computer Science 252, Problem Solving with Java</a></li>
-<li><a href="http://courses.teresco.org/cs433_f14/">Computer Science 433, Programming Languages</a></li>
-<li><a href="http://courses.teresco.org/cs501_f14/">Computer Science 501, Data Structures and Algorithm Analysis</a></li>
+<li><a href="http://courses.teresco.org/cs252_s15/">Computer Science 252, Problem Solving with Java</a></li>
+<li><a href="http://courses.teresco.org/cs385_s15/">Computer Science 385, Competitive Programming</a></li>
+<li><a href="http://courses.teresco.org/cs431_s15/">Computer Science 431, Algorithms</a></li>
+<li><a href="http://courses.teresco.org/cs507_s15/">Computer Science 507, Software Engineering</a></li>
 </div>
 
+<p class="heading">Spring 2015 Office Hours</p>
+
+<div class="text">
+  Monday 1:30-2:30, Tuesday 2:00-3:30, Wednesday 1:30-2:30, or by appointment.
+</div>
 
 <p class ="heading">Research Interests</p>
 
