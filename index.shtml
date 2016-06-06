@@ -18,30 +18,22 @@
 <td valign="middle">
 <div class="text">
 Associate Professor of Computer Science<br />
-The College of Saint Rose<br />
-432 Western Ave.<br />
-Albany, NY  12203<br />
-terescoj@strose.edu<br />
-Phone: (518) 485-3755<br />
-Office: Albertus 400-6<br />
+Siena College<br />
+515 Loudon Road<br />
+Loudonville, NY  12211<br />
+jteresco@siena.edu<br />
+Phone: (518) 782-6992<br />
+Office: Roger Bacon TBD<br />
 </div>
 </td>
 </tr>
 </table>
 
-<p class ="heading">Spring 2015 Courses</p>
+<p class ="heading">Fall 2016 Courses</p>
 
 <div class="text">
-<li><a href="http://courses.teresco.org/cs252_s15/">Computer Science 252, Problem Solving with Java</a></li>
-<li><a href="http://courses.teresco.org/cs385_s15/">Computer Science 385, Competitive Programming</a></li>
-<li><a href="http://courses.teresco.org/cs431_s15/">Computer Science 431, Algorithms</a></li>
-<li><a href="http://courses.teresco.org/cs507_s15/">Computer Science 507, Software Engineering</a></li>
-</div>
-
-<p class="heading">Spring 2015 Office Hours</p>
-
-<div class="text">
-  Monday 1:30-2:30, Tuesday 2:00-3:30, Wednesday 1:30-2:30, or by appointment.
+<li><!-- a href="http://courses.teresco.org/cs112_s16/" -->Computer Science 011, Problem Solving with Spreadsheets</a></li>
+<li><!-- a href="http://courses.teresco.org/cs252_s16/" -->Computer Science 210, Data Structures</a></li>
 </div>
 
 <p class ="heading">Research Interests</p>
