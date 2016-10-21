@@ -23,7 +23,7 @@ Siena College<br />
 Loudonville, NY  12211<br />
 jteresco@siena.edu<br />
 Phone: (518) 782-6992<br />
-Office: Roger Bacon TBD<br />
+Office: Roger Bacon 321<br />
 </div>
 </td>
 </tr>
@@ -32,8 +32,8 @@ Office: Roger Bacon TBD<br />
 <p class ="heading">Fall 2016 Courses</p>
 
 <div class="text">
-<li><!-- a href="http://courses.teresco.org/cs112_s16/" -->Computer Science 011, Problem Solving with Spreadsheets</a></li>
-<li><!-- a href="http://courses.teresco.org/cs252_s16/" -->Computer Science 210, Data Structures</a></li>
+<li>Computer Science 011, Problem Solving with Spreadsheets (Blackboard Only)</li>
+<li><a href="http://courses.teresco.org/cs210_f16/">Computer Science 210, Data Structures</a></li>
 </div>
 
 <p class ="heading">Research Interests</p>
@@ -48,8 +48,7 @@ Office: Roger Bacon TBD<br />
 <p class ="heading">Featured Work</p>
 
 <div class="text">
-Learn more about <a href="http://courses.teresco.org/chm/">Using
-Clinched Highway Mapping Data as a Pedagogical Tool</a>.
+Learn more about <a href="http://courses.teresco.org/metal/">Map-based Educational Tools for Algorithm Learning (METAL)</a>.
 </div>
 
 <p class="bottom"></p>
