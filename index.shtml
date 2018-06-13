@@ -29,11 +29,10 @@ Office: Roger Bacon 321<br />
 </tr>
 </table>
 
-<p class ="heading">Fall 2017 Courses</p>
+<p class ="heading">Fall 2018 Course</p>
 
 <div class="text">
-<li><a href="http://courses.teresco.org/cs210_f17/">Computer Science 210, Data Structures</a></li>
-<li><a href="http://courses.teresco.org/cs400_f17/">Computer Science 400, Parallel Processing</a></li>
+<li><!-- a href="http://courses.teresco.org/cs210_f18/" -->Computer Science 210, Data Structures</a> (2 lectures, 3 labs)</li>
 </div>
 
 <p class ="heading">Research Interests</p>
@@ -48,7 +47,7 @@ Office: Roger Bacon 321<br />
 <p class ="heading">Featured Work</p>
 
 <div class="text">
-Learn more about <a href="http://courses.teresco.org/metal/">Map-based Educational Tools for Algorithm Learning (METAL)</a>.
+Learn more about <a href="http://courses.teresco.org/metal/">Map-based Educational Tools for Algorithm Learning (METAL)</a> and the <a href="http://courses.teresco.org/metal/hdx/">Highway Data Examiner</a> featuring interactive algorithm visualizations.
 </div>
 
 <p class="bottom"></p>
