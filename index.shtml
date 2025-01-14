@@ -29,27 +29,33 @@ Office: Roger Bacon 308<br />
 </tr>
 </table>
 
-<p class ="heading">Fall 2024 Courses</p>
+<p class ="heading">Spring 2025 Teaching</p>
 
 <div class="text">
-    <li><a href="https://courses.teresco.org/cs335_f24/">Computer Science 335, Parallel Processing and High Performance Computing</a></li>
-    <li><a href="https://courses.teresco.org/cs301_f24/">Computer Science 301, Programming C in Unix, 1 credit, first half of the semester</a></li>
-    <li>Computer Science 011, Problem Solving with Spreadsheets (in Canvas only)</li>
+    <li><a href="https://courses.teresco.org/cs385_s25/">Computer Science 385, Design and Analysis of Algorithms</a> (all sections)</li>
 </div>
 
-<p class ="heading">Research Interests</p>
-
-<div class="text">
-<!--#include virtual="research/interests.html" -->
-<p />
-<a href="research/">[More]</a>
-
-</div>
-
-<p class ="heading">Featured Work</p>
+<p class ="heading">Featured Scholarship and Service</p>
 
 <div class="text">
 Learn more about <a href="https://courses.teresco.org/metal/">Map-based Educational Tools for Algorithm Learning (METAL)</a> and the <a href="https://courses.teresco.org/metal/hdx/">Highway Data Examiner</a> featuring interactive algorithm visualizations.
+</div>
+
+<div class="text">
+Join us for a conference of the <a href="https://ccsc.org">Consortium
+of Computing Sciences in Colleges (CCSC)</a>.  I am board chair and a
+regular conference committee member
+for <a href="https://ccscne.org">CCSC Northeast</A>.
+</div>
+
+<div class="text">
+  Check out the activities of
+the <a href="https://computing-in-the-liberal-arts.github.io/">SIGCSE
+Committee on Computing Education in Liberal Arts Colleges</a>.
+</div>
+
+<div class="text">
+  For more about my research and service, please see my <a href="bio.pdf">CV</a>.
 </div>
 
 <p class="bottom"></p>
