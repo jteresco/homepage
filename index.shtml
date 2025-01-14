@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" href="http://j.teresco.org/jdtstyle.css" type="text/css" />
+<link rel="stylesheet" href="https://j.teresco.org/jdtstyle.css" type="text/css" />
 
 <title>James D. Teresco, Ph.D.</title>
 </head>
@@ -17,23 +17,24 @@
 </td>
 <td valign="middle">
 <div class="text">
-Associate Professor of Computer Science<br />
+Professor and Chair of Computer Science<br />
 Siena College<br />
 515 Loudon Road<br />
 Loudonville, NY  12211<br />
 jteresco@siena.edu<br />
 Phone: (518) 782-6992<br />
-Office: Roger Bacon 321<br />
+Office: Roger Bacon 308<br />
 </div>
 </td>
 </tr>
 </table>
 
-<p class ="heading">Fall 2020 Courses</p>
+<p class ="heading">Fall 2024 Courses</p>
 
 <div class="text">
-<li><!-- a href="http://courses.teresco.org/cs210_f20/" -->Computer Science 210, Data Structures</a></li>
-<li><!-- a href="http://courses.teresco.org/cs330_f20/" -->Computer Science 330, Operating Systems</a></li>
+    <li><a href="https://courses.teresco.org/cs335_f24/">Computer Science 335, Parallel Processing and High Performance Computing</a></li>
+    <li><a href="https://courses.teresco.org/cs301_f24/">Computer Science 301, Programming C in Unix, 1 credit, first half of the semester</a></li>
+    <li>Computer Science 011, Problem Solving with Spreadsheets (in Canvas only)</li>
 </div>
 
 <p class ="heading">Research Interests</p>
@@ -48,7 +49,7 @@ Office: Roger Bacon 321<br />
 <p class ="heading">Featured Work</p>
 
 <div class="text">
-Learn more about <a href="http://courses.teresco.org/metal/">Map-based Educational Tools for Algorithm Learning (METAL)</a> and the <a href="http://courses.teresco.org/metal/hdx/">Highway Data Examiner</a> featuring interactive algorithm visualizations.
+Learn more about <a href="https://courses.teresco.org/metal/">Map-based Educational Tools for Algorithm Learning (METAL)</a> and the <a href="https://courses.teresco.org/metal/hdx/">Highway Data Examiner</a> featuring interactive algorithm visualizations.
 </div>
 
 <p class="bottom"></p>

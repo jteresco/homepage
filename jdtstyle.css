@@ -2,7 +2,7 @@ body {
   margin-top: 10px;
   position: center;
   background: #ffffff;
-  width: 750px;
+  min-width: 750px;
   color: #000000;
   font-size: 12pt;
 }
@@ -19,7 +19,7 @@ body {
   margin-top: 5px;
   margin-bottom: 0px;
   padding-right: 8px;
-  width: 750px;
+  min-width: 750px;
   height: auto;
   color: #eeeeee;
   background: #000040;
@@ -38,7 +38,7 @@ body {
   padding-right: 8px;
   margin-top: 0px;
   margin-bottom: 0px;
-  width: 750px;
+  min-width: 750px;
   height: auto;
   color: #ffffff;
   background: #000040;
@@ -79,7 +79,7 @@ body {
   padding-bottom: 2px;
   margin-top: 0px;
   margin-bottom: 8px;
-  width: 750px;
+  min-width: 750px;
   height: auto;
   background: #101080;
   color: #ffffff;
@@ -99,7 +99,7 @@ body {
 }
 
 .main {
- width: 758px;
+ min-width: 758px;
 }
 
 .rfloaty {
@@ -115,7 +115,7 @@ margin-left: 10px;
 /* mini bar under menu bar */
 .minibar {
   text-align: right;
-  width: 750px;
+  min-width: 750px;
 }
 
 
@@ -124,7 +124,7 @@ margin-left: 10px;
   position: relative;
   margin-top: 0px;
   margin-bottom: -10px;
-  width: 750px;
+  min-width: 750px;
   background: #ffffff;
   padding-left: 6px;
   padding-right: 6px;
@@ -141,7 +141,7 @@ margin-left: 10px;
   margin-top: 20px;
   margin-left: 0px;
   margin-bottom: 0px;
-  width: 750px;
+  min-width: 750px;
   height: auto;
   color: #000000;
   background: #ffffff;
@@ -159,7 +159,7 @@ margin-left: 10px;
   margin-top: 20px;
   margin-left: 00px;
   margin-bottom: 0px;
-  width: 750px;
+  min-width: 750px;
   height: 36px;
   color: #000000;
   padding-bottom: 10px;
@@ -179,7 +179,7 @@ margin-left: 10px;
   margin-left: 50px;
   margin-top: 10px;
   margin-bottom: 8px;
-  width: 700px;
+  min-width: 700px;
   background: #ffffff;
   color: #000000;
   padding: 2px;
@@ -197,7 +197,7 @@ margin-left: 10px;
   margin-left: 50px;
   margin-top: 3px;
   margin-bottom: 20px;
-  width: 700px;
+  min-width: 700px;
   background: #e8e8e8;
   color: #000000;
   padding: 4px;
@@ -219,6 +219,6 @@ margin-left: 10px;
 }
 
 .right {
-	width: 750px;
+	min-width: 750px;
 	text-align: right;
 }
